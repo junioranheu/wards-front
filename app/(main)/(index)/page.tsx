@@ -1,11 +1,11 @@
 'use client';
-import CONSTS_SISTEMA from '@/utils/consts/outros/sistema';
+import StylesLayout from '@/app/(main)/styles/layout.module.scss';
 import { lazy } from 'react';
 const Intro = lazy(() => import('./components/intro'));
 
 export default function Page() {
     return (
-        <section className={CONSTS_SISTEMA.ANIMATE}>
+        <section className={StylesLayout.session} >
             <Intro />
         </section>
     )

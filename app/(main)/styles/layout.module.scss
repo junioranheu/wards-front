@@ -7,12 +7,12 @@
     overflow: hidden;
 
     .main {
-        // background-color: palegreen !important;
+        background-color: palegreen !important;
         background-color: var(--background);
 
-        width: 90vw;
+        width: 100vw;
         min-height: 100vh;
-        padding: 2rem;
+        padding: 2rem 2rem;
 
         color: var(--texto);
         font-size: 1.15rem;
@@ -24,13 +24,9 @@
         align-items: center;
 
         .session {
-            // background-color: purple;
+            background-color: purple;
             min-height: fit-content;
             width: 50vw;
-
-            // display: flex;
-            // flex-direction: column;
-            // align-items: center;
         }
     }
 }

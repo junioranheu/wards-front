@@ -4,11 +4,12 @@ import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
 import { CONST_MONTSERRAT } from '@/utils/fonts/fonts';
 import 'nprogress/nprogress.css';
+import { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Styles from './styles/layout.module.scss';
 
 interface iParametros {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 export default function LayoutPublic({ children }: iParametros) {
