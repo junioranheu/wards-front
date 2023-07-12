@@ -1,0 +1,97 @@
+.body {
+    // background-color: purple;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    overflow: hidden;
+
+    .main {
+        // background-color: palegreen !important;
+        background-color: var(--background);
+
+        width: 90vw;
+        min-height: 100vh;
+        padding: 2rem;
+
+        color: var(--texto);
+        font-size: 1.15rem;
+        font-weight: 400;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .session {
+            // background-color: purple;
+            min-height: fit-content;
+            width: 50vw;
+
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res ++ */
+@media (max-width:1980px) {
+    .body {
+        .main {
+            .session {
+                // background-color: purple;
+                width: 70vw;
+            }
+        }
+    }
+}
+
+/* hi-res + */
+@media (max-width:1536px) {
+    .body {
+        .main {
+            .session {
+                // background-color: purple;
+                width: 75vw;
+            }
+        }
+    }
+}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .body {
+        .main {
+            .session {
+                // background-color: orange;
+                width: 80vw;
+                padding: 0rem 2rem;
+            }
+        }
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+    .body {
+        .main {
+            .session {
+                // background-color: orange;
+                width: 100vw;
+                gap: 1.5rem;
+                padding: 0rem 2rem;
+            }
+        }
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

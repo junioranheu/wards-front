@@ -1,4 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    reactStrictMode: false,
+    swcMinify: true, // Minify em produção;
 
-module.exports = nextConfig
+    images: {
+        domains: ['localhost']
+    }
+}
+
+module.exports = nextConfig;
