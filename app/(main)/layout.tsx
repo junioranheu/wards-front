@@ -3,7 +3,6 @@ import Head from '@/app/head';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
 import { CONST_MONTSERRAT } from '@/utils/fonts/fonts';
-import 'animate.css/animate.min.css';
 import 'nprogress/nprogress.css';
 import { Toaster } from 'react-hot-toast';
 import Styles from './styles/layout.module.scss';

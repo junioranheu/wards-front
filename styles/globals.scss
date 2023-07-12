@@ -1,0 +1,220 @@
+:root {
+    --principal: #f59822;
+    --secundaria: #FFBE00;
+    --preto: #15171A;
+    --branco: #FFFDFA;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    user-select: none;
+    background-color: #FFFFFF;
+    color: var(--preto);
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    letter-spacing: 0.03em;
+}
+
+img {
+    pointer-events: none;
+}
+
+/* =-=-=-=-=-=-=-=-= Misc =-=-=-=-=-=-=-=-= */
+a {
+    color: var(--principal);
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        color: var(--secundaria);
+        transition: 0.3s;
+    }
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.notAllowed {
+    cursor: not-allowed !important;
+}
+
+.cor-principal {
+    color: var(--principal) !important;
+    fill: var(--principal) !important;
+}
+
+.cor-principal-hover {
+    transition: .2s ease-in-out;
+
+    &:hover {
+        color: var(--principal) !important;
+        fill: var(--principal) !important;
+        opacity: 1 !important;
+        transition: .2s ease-in-out;
+    }
+}
+
+.wavy {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--principal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3.5px;
+}
+
+.tituloSessao {
+    color: var(--principal);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.075rem;
+    margin-right: 0.5rem;
+}
+
+svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke-width: 2;
+    stroke: var(--texto);
+    vertical-align: middle;
+    transition: .3s;
+
+    &:hover {
+        cursor: pointer;
+        transition: .3s;
+        transform: translate(0, -0.25rem);
+    }
+
+    &:hover:not(.svgSemEfeito) {
+        stroke: var(--principal);
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Botão =-=-=-=-=-=-=-=-=-=-= */
+.botao {
+    color: var(--principal);
+    background-color: transparent;
+    border: 1px solid var(--principal);
+    border-radius: 0.4rem;
+    padding: 1.25rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover:not(:disabled),
+    &:focus-visible:not(:disabled) {
+        outline: none;
+        box-shadow: 4px 4px 0 0 var(--principal);
+        transform: translate(-5px, -5px);
+    }
+
+    &:after {
+        display: none !important;
+    }
+
+    &:disabled {
+        background-color: var(--principal);
+        color: var(--preto);
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= react-hot-toast =-=-=-=-=-=-=-=-=-=-= */
+.toaster {
+    position: fixed !important;
+    z-index: 999999999 !important;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= react-tooltip =-=-=-=-=-=-=-=-=-=-= */
+.react-tooltip {
+    font-size: 0.9rem !important;
+    background-color: var(--principal) !important;
+    z-index: 999999999 !important;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= nProgress =-=-=-=-=-=-=-=-=-=-= */
+#nprogress {
+    .bar {
+        background: var(--secundaria) !important;
+        height: 3px !important;
+        box-shadow: none !important;
+        z-index: 999999999 !important;
+    }
+
+    .peg {
+        box-shadow: 0 0 10px var(--secundaria), 0 0 5px var(--secundaria) !important;
+        box-shadow: none !important;
+        height: 3px !important;
+    }
+
+    .spinner-icon {
+        border-top-color: var(--secundaria) !important;
+        border-left-color: var(--secundaria) !important;
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Scroll =-=-=-=-=-=-=-=-=-=-= */
+::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--branco);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--texto);
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--principal);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res + */
+@media (max-width:1536px) {}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+    .tituloSessao {
+        //  background-color: orange;
+        font-size: 0.65rem;
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .wavy {
+        text-decoration-line: none;
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

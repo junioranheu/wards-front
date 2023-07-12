@@ -1,0 +1,16 @@
+.intro {
+    background-color: orange;
+
+    .imagem {
+        width: 50%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .texto {
+        background-color: purple !important;
+        width: 50%;
+    }
+}
