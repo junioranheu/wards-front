@@ -1,5 +1,5 @@
 .intro {
-    background-color: orange;
+    // background-color: orange;
     display: flex;
     gap: 3rem;
 
@@ -16,7 +16,7 @@
     }
 
     .texto {
-        // background-color: purple !important;
+        background-color: purple !important;
         display: flex;
         flex-direction: column;
         gap: 1rem;

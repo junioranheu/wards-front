@@ -10,8 +10,9 @@ export default function Intro() {
             </div>
 
             <div className={Styles.texto}>
-                <span className='titulo'>E aí 👋 Meu nome é Junior, bla bla bla</span>
-                <span className='subtitulo'>Subscribe below to receive my latest posts directly in your inbox. No advertisement, the whole article in your inbox!</span>
+                <span className='titulo'>E aí. 👋<br />Meu nome é Junior, e tô aqui pra te ajudar!</span>
+                <span className='subtitulo'>Inscreva-se abaixo para receber meus posts mais recentes diretamente na sua caixa de correio.</span>
+                <input type='text' placeholder='junior@exemplo.com' />
             </div>
         </section>
     )
