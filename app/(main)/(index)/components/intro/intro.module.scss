@@ -1,16 +1,22 @@
 .intro {
     background-color: orange;
+    display: flex;
+    gap: 3rem;
+
+    min-height: 90vh;
 
     .imagem {
         width: 50%;
+        height: 100%;
 
         img {
             width: 100%;
+            height: 30%;
         }
     }
 
     .texto {
-        background-color: purple !important;
+        // background-color: purple !important;
         width: 50%;
     }
 }

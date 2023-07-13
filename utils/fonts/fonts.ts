@@ -1,13 +1,7 @@
-import { Caveat, Montserrat } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 
-export const CONST_MONTSERRAT = Montserrat({
-    weight: ['400', '600'],
-    style: ['normal', 'italic'],
-    subsets: ['latin']
-});
-
-export const CONST_CAVEAT = Caveat({
-    weight: ['400', '600'],
+export const CONST_MANROPE = Manrope({
+    weight: ['400', '500', '600', '700'],
     style: ['normal'],
     subsets: ['latin']
 });

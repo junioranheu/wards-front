@@ -2,7 +2,7 @@
 import Head from '@/app/head';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
-import { CONST_MONTSERRAT } from '@/utils/fonts/fonts';
+import { CONST_MANROPE } from '@/utils/fonts/fonts';
 import 'nprogress/nprogress.css';
 import { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -21,7 +21,7 @@ export default function LayoutPublic({ children }: iParametros) {
             <Head />
 
             <body
-                className={`${Styles.body} ${CONST_MONTSERRAT.className}`}
+                className={`${Styles.body} ${CONST_MANROPE.className}`}
                 suppressHydrationWarning={true}
             >
                 <Toaster containerClassName='toaster' />

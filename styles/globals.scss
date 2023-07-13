@@ -78,11 +78,9 @@ a {
 }
 
 .tituloSessao {
-    color: var(--principal);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.075rem;
-    margin-right: 0.5rem;
+    color: var(--preto);
+    font-size: 3rem;
+    font-weight: 800;
 }
 
 svg {
@@ -179,7 +177,7 @@ svg {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--branco);
+    background: var(--preto);
 }
 
 ::-webkit-scrollbar-thumb {
