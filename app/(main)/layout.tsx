@@ -1,5 +1,6 @@
 'use client';
 import Head from '@/app/head';
+import Navbar from '@/components/navbar';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
 import { CONST_MANROPE } from '@/utils/fonts/fonts';
@@ -25,6 +26,8 @@ export default function LayoutPublic({ children }: iParametros) {
                 suppressHydrationWarning={true}
             >
                 <Toaster containerClassName='toaster' />
+
+                <Navbar />
 
                 <main className={Styles.main}>
                     {children}
