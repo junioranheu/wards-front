@@ -17,6 +17,10 @@
 
     .texto {
         // background-color: purple !important;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
         width: 50%;
     }
 }

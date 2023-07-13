@@ -77,12 +77,6 @@ a {
     text-underline-offset: 3.5px;
 }
 
-.tituloSessao {
-    color: var(--preto);
-    font-size: 3rem;
-    font-weight: 800;
-}
-
 svg {
     width: 1.5rem;
     height: 1.5rem;
@@ -101,6 +95,21 @@ svg {
     &:hover:not(.svgSemEfeito) {
         stroke: var(--principal);
     }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Fontes =-=-=-=-=-=-=-=-=-=-= */
+.titulo {
+    color: var(--preto);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 3.75rem;
+}
+
+.subtitulo {
+    color: var(--preto);
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 2.5rem;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Botão =-=-=-=-=-=-=-=-=-=-= */
