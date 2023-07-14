@@ -1,15 +1,31 @@
 import ImgPerfil from '@/assets/images/outros/kapas.webp';
 import useWindowSize from '@/hooks/useWindowSize';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Styles from './index.module.scss';
 
 export default function Intro() {
 
+    const windowSize = useWindowSize();
+
     const refDivMain = useRef<HTMLDivElement>(null);
     const refDivInfo = useRef<HTMLDivElement>(null);
 
-    const windowSize = useWindowSize();
+    const [tamanhoDivMain, setTamanhoDivMain] = useState<number>(0);
+    const [porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain, setPorcentagemTamanhoDivTextoDescontadoComBaseNaDivMain] = useState<number>(0);
+
+    useEffect(() => {
+        if (refDivMain?.current) {
+            const { offsetTop, clientHeight } = refDivMain.current;
+            const bottomPosition = offsetTop + clientHeight;
+            setTamanhoDivMain(bottomPosition);
+        }
+
+        if (refDivInfo?.current) {
+            const porcentagem = (refDivInfo.current.getBoundingClientRect().height / tamanhoDivMain) * 100;
+            setPorcentagemTamanhoDivTextoDescontadoComBaseNaDivMain(porcentagem);
+        }
+    }, [tamanhoDivMain]);
 
     useEffect(() => {
         if (refDivInfo?.current) {
@@ -23,6 +39,8 @@ export default function Intro() {
         function handleScroll() {
             if (refDivInfo?.current) {
                 if (windowSize.width > 1025) {
+                    const porcentagemExtraDesconto = 7.5;
+                    const maxPorcentagem = (100 - porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain) - porcentagemExtraDesconto;
                     const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
 
                     if (porcentagemScrollada <= maxPorcentagem) {
@@ -32,26 +50,9 @@ export default function Intro() {
             }
         }
 
-        let tamanhoDivMain = 0;
-        let porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain = 0;
-        const porcentagemExtraDesconto = 7.5;
-
-        if (refDivMain?.current) {
-            const { offsetTop, clientHeight } = refDivMain.current;
-            const bottomPosition = offsetTop + clientHeight;
-            tamanhoDivMain = bottomPosition;
-        }
-
-        if (refDivInfo?.current) {
-            porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain = (refDivInfo.current.getBoundingClientRect().height / tamanhoDivMain) * 100;
-        }
-
-        const maxPorcentagem = (100 - porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain) - porcentagemExtraDesconto;
-        console.log(maxPorcentagem);
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [windowSize]);
+    }, [windowSize, tamanhoDivMain, porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain]);
 
     return (
         <section className={Styles.intro} ref={refDivMain}>
@@ -63,7 +64,6 @@ export default function Intro() {
                 <span className='titulo'>E aí. 👋<br />Meu nome é Junior,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
                 <input type='text' placeholder='junior@exemplo.com' />
-                <h1>{windowSize.width}</h1>
             </div>
         </section>
     )
