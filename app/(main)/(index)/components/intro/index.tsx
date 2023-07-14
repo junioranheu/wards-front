@@ -1,49 +1,16 @@
 import ImgPerfil from '@/assets/images/outros/kapas.webp';
-import useWindowSize from '@/hooks/useWindowSize';
+import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Styles from './index.module.scss';
 
 export default function Intro() {
-
-    const windowSize = useWindowSize();
 
     const refDivMain = useRef<HTMLDivElement>(null);
     const refDivInfo = useRef<HTMLDivElement>(null);
     const mediaQueryLimite = 1025;
 
-    useEffect(() => {
-        function handleScroll() {
-            if (refDivInfo?.current && refDivMain?.current) {
-                if (windowSize.width > mediaQueryLimite) {
-                    const refDivMainCurrent = refDivMain.current;
-                    const refDivInfoCurrent = refDivInfo.current;
-
-                    const { offsetTop, clientHeight } = refDivMain.current;
-                    const tamanhoDivMain = offsetTop + clientHeight;
-
-                    const porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain = (refDivInfoCurrent.getBoundingClientRect().height / tamanhoDivMain) * 100;
-                    const porcenatemTamanhoOffsetTopDivMain = (offsetTop / refDivMainCurrent.getBoundingClientRect().height) * 100;
-
-                    const maxPorcentagem = 100 - (porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain + porcenatemTamanhoOffsetTopDivMain);
-                    const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
-
-                    if (porcentagemScrollada <= maxPorcentagem) {
-                        refDivInfoCurrent.style.top = `${window.scrollY}px`;
-                    }
-                }
-            }
-        }
-
-        if (refDivInfo?.current) {
-            if (windowSize.width <= mediaQueryLimite) {
-                refDivInfo.current.style.top = '0px';
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [windowSize]);
+    useElementoAcompanhaScroll(refDivMain, refDivInfo, mediaQueryLimite);
 
     return (
         <section className={Styles.intro} ref={refDivMain}>
