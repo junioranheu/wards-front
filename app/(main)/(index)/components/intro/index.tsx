@@ -1,4 +1,5 @@
 import ImgPerfil from '@/assets/images/outros/kapas.webp';
+import useWindowSize from '@/hooks/useWindowSize';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import Styles from './index.module.scss';
@@ -7,6 +8,8 @@ export default function Intro() {
 
     const refDivMain = useRef<HTMLDivElement>(null);
     const refDivInfo = useRef<HTMLDivElement>(null);
+
+    const windowSize = useWindowSize();
 
     useEffect(() => {
         function handleScroll() {
@@ -49,6 +52,8 @@ export default function Intro() {
                 <span className='titulo'>E aí. 👋<br />Meu nome é Junior,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
                 <input type='text' placeholder='junior@exemplo.com' />
+                <h1>{windowSize.height}</h1>
+                <h1>{windowSize.width}</h1>
             </div>
         </section>
     )
