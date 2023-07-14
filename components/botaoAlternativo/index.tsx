@@ -1,17 +1,18 @@
 import Router from 'next/router';
-import { ReactNode, Ref } from 'react';
+import { Ref } from 'react';
+import Styles from './index.module.scss';
 
 interface iParametros {
-    texto: string;
+    placeholderInput: string;
+    placeholderBotao: string;
     url: string | null;
     isNovaAba: boolean;
     handleFuncao: any | null;
-    Svg: ReactNode | null;
     refBtn: Ref<any>;
     isEnabled: boolean;
 }
 
-export default function BotaoAlternativo({ texto, url, isNovaAba, handleFuncao, Svg, refBtn, isEnabled }: iParametros) {
+export default function BotaoAlternativo({ placeholderInput, placeholderBotao, url, isNovaAba, handleFuncao, refBtn, isEnabled }: iParametros) {
 
     function handleAbrirUrl() {
         if (!url) {
@@ -30,15 +31,16 @@ export default function BotaoAlternativo({ texto, url, isNovaAba, handleFuncao, 
     }
 
     return (
-        <section>
-            <input type='text' placeholder='junior@exemplo.com' />
+        <section className={Styles.form}>
+            <input type='email' placeholder={placeholderInput} />
+
             <button
                 className='botao'
                 onClick={() => handleAbrirUrl()}
                 ref={refBtn}
                 disabled={!isEnabled}
             >
-                {Svg ? Svg : ''}{texto}
+                {placeholderBotao}
             </button>
         </section>
     )

@@ -23,7 +23,7 @@ export default function Intro() {
                 <span className='titulo'>E aí. 👋<br />Meu nome é <span className='wavy'>Junior</span>,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
 
-                <BotaoAlternativo texto='Enviar avaliação' url={null} isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
+                <BotaoAlternativo placeholderInput='junior@exemplo.com' placeholderBotao='Enviar avaliação' url={null} isNovaAba={false} handleFuncao={() => null} refBtn={null} isEnabled={true} />
             </div>
         </section>
     )

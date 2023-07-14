@@ -1,0 +1,39 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: #EBEBEB;
+    padding: 0.55rem 0.55rem 0.55rem 1.5rem;
+    border-radius: 4.5rem;
+
+    input[type=text],
+    input[type=email],
+    input[type=number] {
+        // background-color: orange;
+        border-bottom: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    button {
+        // background-color: orange !important;
+        color: var(--branco);
+        background-color: var(--principal);
+        border-radius: 4.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+
+        &:hover:not(:disabled),
+        &:focus-visible:not(:disabled) {
+            outline: none;
+            box-shadow: none;
+            transform: none;
+            background-color: var(--secundaria);
+            border: 1px solid var(--secundaria);
+        }
+    }
+}
