@@ -12,15 +12,23 @@ export default function useElementoAcompanhaScroll(refDivPai: RefObject<HTMLDivE
                     const refDivPaiCurrent = refDivPai.current;
                     const refDivScrollavelCurrent = refDivScrollavel.current;
 
-                    const { offsetTop, clientHeight } = refDivPai.current;
-                    const tamanhoDivMain = offsetTop + clientHeight;
+                    // Obter o height da div pai;
+                    const { offsetTop, clientHeight } = refDivPaiCurrent;
+                    const tamanhoDivPai = offsetTop + clientHeight;
 
-                    const porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain = (refDivScrollavelCurrent.getBoundingClientRect().height / tamanhoDivMain) * 100;
-                    const porcenatemTamanhoOffsetTopDivMain = (offsetTop / refDivPaiCurrent.getBoundingClientRect().height) * 100;
+                    // Obter porcentagem a ser descontada com base no tamanho da refDivScrollavel (para que ela não exceda o limite da refDivPai);
+                    const porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain = (refDivScrollavelCurrent.getBoundingClientRect().height / tamanhoDivPai) * 100;
 
-                    const maxPorcentagem = 100 - (porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain + porcenatemTamanhoOffsetTopDivMain);
-                    const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
+                    // Obter porcentagem a ser descontada com base no tamanho do espaço acima da refDivPaiCurrent (para evitar que elementos, como um navbar, atrapalhe no processo);
+                    const porcentagemTamanhoOffsetTopDivMain = (offsetTop / refDivPaiCurrent.getBoundingClientRect().height) * 100;
 
+                    // Calcular o limite máximo que a refDivScrollavel pode chegar no scroll;
+                    const maxPorcentagem = 100 - (porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain + porcentagemTamanhoOffsetTopDivMain);
+
+                    // Porcentam da refDivPai scrollada atualmente;
+                    const porcentagemScrollada = (window.scrollY / tamanhoDivPai) * 100;
+
+                    // Enquanto possível, scrolle a refDivScrollavel;
                     if (porcentagemScrollada <= maxPorcentagem) {
                         refDivScrollavelCurrent.style.top = `${window.scrollY}px`;
                     }
@@ -29,6 +37,8 @@ export default function useElementoAcompanhaScroll(refDivPai: RefObject<HTMLDivE
         }
 
         if (refDivScrollavel?.current) {
+            // Se o navegador estiver com um width menor a quebra de query definida, 
+            // a refDivScrollavel deve voltar a sua posição inicial;
             if (windowSize.width <= mediaQueryLimite) {
                 refDivScrollavel.current.style.top = '0px';
             }
