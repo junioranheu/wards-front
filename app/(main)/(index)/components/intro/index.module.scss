@@ -1,12 +1,10 @@
 .intro {
-    background-color: orange;
+    // background-color: orange;
     display: flex;
     gap: 3rem;
 
-    max-height: 90vh;
-
     .imagem {
-        background-color: purple;
+        // background-color: purple;
         width: 50%;
         height: 100%;
 
@@ -17,7 +15,7 @@
     }
 
     .infos {
-        background-color: purple;
+        // background-color: purple;
         display: flex;
         flex-direction: column;
         gap: 1rem;
