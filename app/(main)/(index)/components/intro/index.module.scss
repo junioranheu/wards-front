@@ -3,6 +3,8 @@
     display: flex;
     gap: 3rem;
 
+    // max-height: 90vh;
+
     .imagem {
         background-color: purple;
         width: 50%;
@@ -14,7 +16,7 @@
         }
     }
 
-    .texto {
+    .infos {
         background-color: purple;
         display: flex;
         flex-direction: column;
@@ -41,7 +43,7 @@
             width: 100%;
         }
 
-        .texto {
+        .infos {
             // background-color: purple !important;
             width: 100%;
         }
