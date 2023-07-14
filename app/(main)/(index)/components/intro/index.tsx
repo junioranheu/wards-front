@@ -1,7 +1,7 @@
 import ImgPerfil from '@/assets/images/outros/kapas.webp';
 import useWindowSize from '@/hooks/useWindowSize';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Styles from './index.module.scss';
 
 export default function Intro() {
@@ -10,49 +10,40 @@ export default function Intro() {
 
     const refDivMain = useRef<HTMLDivElement>(null);
     const refDivInfo = useRef<HTMLDivElement>(null);
-
-    const [tamanhoDivMain, setTamanhoDivMain] = useState<number>(0);
-    const [porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain, setPorcentagemTamanhoDivTextoDescontadoComBaseNaDivMain] = useState<number>(0);
-
-    useEffect(() => {
-        if (refDivMain?.current) {
-            const { offsetTop, clientHeight } = refDivMain.current;
-            const bottomPosition = offsetTop + clientHeight;
-            setTamanhoDivMain(bottomPosition);
-        }
-
-        if (refDivInfo?.current) {
-            const porcentagem = (refDivInfo.current.getBoundingClientRect().height / tamanhoDivMain) * 100;
-            setPorcentagemTamanhoDivTextoDescontadoComBaseNaDivMain(porcentagem);
-        }
-    }, [tamanhoDivMain]);
-
-    useEffect(() => {
-        if (refDivInfo?.current) {
-            if (windowSize.width <= 1025) {
-                refDivInfo.current.style.top = '0px';
-            }
-        }
-    }, [windowSize]);
+    const mediaQueryLimite = 1025;
 
     useEffect(() => {
         function handleScroll() {
-            if (refDivInfo?.current) {
-                if (windowSize.width > 1025) {
-                    const porcentagemExtraDesconto = 7.5;
-                    const maxPorcentagem = (100 - porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain) - porcentagemExtraDesconto;
+            if (refDivInfo?.current && refDivMain?.current) {
+                if (windowSize.width > mediaQueryLimite) {
+                    const refDivMainCurrent = refDivMain.current;
+                    const refDivInfoCurrent = refDivInfo.current;
+
+                    const { offsetTop, clientHeight } = refDivMain.current;
+                    const tamanhoDivMain = offsetTop + clientHeight;
+
+                    const porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain = (refDivInfoCurrent.getBoundingClientRect().height / tamanhoDivMain) * 100;
+                    const porcenatemTamanhoOffsetTopDivMain = (offsetTop / refDivMainCurrent.getBoundingClientRect().height) * 100;
+
+                    const maxPorcentagem = 100 - (porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain + porcenatemTamanhoOffsetTopDivMain);
                     const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
 
                     if (porcentagemScrollada <= maxPorcentagem) {
-                        refDivInfo.current.style.top = `${window.scrollY}px`;
+                        refDivInfoCurrent.style.top = `${window.scrollY}px`;
                     }
                 }
             }
         }
 
+        if (refDivInfo?.current) {
+            if (windowSize.width <= mediaQueryLimite) {
+                refDivInfo.current.style.top = '0px';
+            }
+        }
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [windowSize, tamanhoDivMain, porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain]);
+    }, [windowSize]);
 
     return (
         <section className={Styles.intro} ref={refDivMain}>
