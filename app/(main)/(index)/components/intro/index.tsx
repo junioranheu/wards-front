@@ -12,12 +12,22 @@ export default function Intro() {
     const windowSize = useWindowSize();
 
     useEffect(() => {
+        if (refDivInfo?.current) {
+            if (windowSize.width <= 1025) {
+                refDivInfo.current.style.top = '0px';
+            }
+        }
+    }, [windowSize]);
+
+    useEffect(() => {
         function handleScroll() {
             if (refDivInfo?.current) {
-                const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
+                if (windowSize.width > 1025) {
+                    const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
 
-                if (porcentagemScrollada <= maxPorcentagem) {
-                    refDivInfo.current.style.top = `${window.scrollY}px`;
+                    if (porcentagemScrollada <= maxPorcentagem) {
+                        refDivInfo.current.style.top = `${window.scrollY}px`;
+                    }
                 }
             }
         }
@@ -37,10 +47,11 @@ export default function Intro() {
         }
 
         const maxPorcentagem = (100 - porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain) - porcentagemExtraDesconto;
+        console.log(maxPorcentagem);
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [windowSize]);
 
     return (
         <section className={Styles.intro} ref={refDivMain}>
@@ -52,7 +63,6 @@ export default function Intro() {
                 <span className='titulo'>E aí. 👋<br />Meu nome é Junior,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
                 <input type='text' placeholder='junior@exemplo.com' />
-                <h1>{windowSize.height}</h1>
                 <h1>{windowSize.width}</h1>
             </div>
         </section>
