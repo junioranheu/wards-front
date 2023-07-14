@@ -13,17 +13,23 @@ export default function Intro() {
 
     useEffect(() => {
         function handleScroll() {
-            if (refDivMain?.current) {
-                setPosicaoBottomDivMain(refDivMain.current.getBoundingClientRect().bottom);
-            }
-
             if (refDivInfo?.current) {
+                const { offsetTop, clientHeight } = refDivInfo.current;
+                const bottomPosition = offsetTop + clientHeight;
+                setPosicaoBottomDivInfo(bottomPosition);
+
                 if (posicaoBottomDivMain >= posicaoBottomDivInfo) {
                     refDivInfo.current.style.marginTop = `${window.scrollY}px`;
+                } else {
+                    refDivInfo.current.style.marginTop = `0px`;
                 }
-
-                setPosicaoBottomDivInfo(refDivInfo.current.getBoundingClientRect().bottom);
             }
+        }
+
+        if (refDivMain?.current) {
+            const { offsetTop, clientHeight } = refDivMain.current;
+            const bottomPosition = offsetTop + clientHeight;
+            setPosicaoBottomDivMain(bottomPosition);
         }
 
         window.addEventListener('scroll', handleScroll);
