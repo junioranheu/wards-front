@@ -22,6 +22,8 @@ export default function Intro() {
                 <span className='titulo'>E aí. 👋<br />Meu nome é <span className='wavy'>Junior</span>,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
                 <input type='text' placeholder='junior@exemplo.com' />
+
+                <textarea placeholder='aeqwdwqdqw' />
             </div>
         </section>
     )

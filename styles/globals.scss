@@ -82,7 +82,7 @@ svg {
     height: 1.5rem;
     fill: none;
     stroke-width: 2;
-    stroke: var(--texto);
+    stroke: var(--preto);
     vertical-align: middle;
     transition: .3s;
 
@@ -94,6 +94,74 @@ svg {
 
     &:hover:not(.svgSemEfeito) {
         stroke: var(--principal);
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */
+input[type=text] {
+    color: var(--preto);
+    font: inherit;
+    margin: 0;
+    line-height: normal;
+    background: none;
+    border: none;
+    border-bottom: solid 2px var(--principal);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0em 0 1.875em 0;
+    padding: 0 0 1rem 0;
+    width: 100%;
+    transition: 0.3s;
+}
+
+textarea {
+    color: var(--preto);
+    font: inherit;
+    margin: 0;
+    overflow: auto;
+    background: none;
+    border: none;
+    border-bottom: solid 2px var(--principal);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0em 0 1.875em 0;
+    padding: 0 0 0.875em 0;
+    width: 100%;
+    line-height: 1.5rem;
+    resize: none;
+    width: 100%;
+    transition: 0.5s;
+}
+
+input[type=text],
+textarea {
+    &:focus {
+        outline: none;
+        border-bottom: solid 2px var(--secundaria);
+        transition: 0.5s;
+
+        &::placeholder {
+            font-size: 0.65rem;
+            transition: 0.25s;
+        }
+    }
+
+    &::placeholder {
+        color: rgba(21, 23, 26, 0.5);
+        transition: 0.25s;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        color: var(--preto);
+    }
+
+    // bug fix;
+    &:-webkit-autofill {
+        -webkit-text-fill-color: var(--preto) !important;
+        -webkit-box-shadow: 0 0 0 30px var(--principal) inset !important;
     }
 }
 
@@ -186,16 +254,16 @@ svg {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--preto);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--texto);
+    background: var(--principal);
     border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--principal);
+    background: var(--secundaria);
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
