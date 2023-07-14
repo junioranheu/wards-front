@@ -14,7 +14,7 @@ interface iParametros {
 
 export default function BotaoAlternativo({ placeholderInput, placeholderBotao, url, isNovaAba, handleFuncao, refBtn, isEnabled }: iParametros) {
 
-    function handleAbrirUrl() {
+    function handleClick() {
         if (!url) {
             if (handleFuncao) {
                 handleFuncao();
@@ -36,7 +36,7 @@ export default function BotaoAlternativo({ placeholderInput, placeholderBotao, u
 
             <button
                 className='botao'
-                onClick={() => handleAbrirUrl()}
+                onClick={() => handleClick()}
                 ref={refBtn}
                 disabled={!isEnabled}
             >

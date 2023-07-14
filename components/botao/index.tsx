@@ -13,7 +13,7 @@ interface iParametros {
 
 export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn, isEnabled }: iParametros) {
 
-    function handleAbrirUrl() {
+    function handleClick() {
         if (!url) {
             if (handleFuncao) {
                 handleFuncao();
@@ -32,7 +32,7 @@ export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn
     return (
         <button
             className='botao'
-            onClick={() => handleAbrirUrl()}
+            onClick={() => handleClick()}
             ref={refBtn}
             disabled={!isEnabled}
         >

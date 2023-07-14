@@ -7,7 +7,7 @@ import { CONST_MANROPE } from '@/utils/fonts/fonts';
 import 'nprogress/nprogress.css';
 import { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
-import Styles from './styles/layout.module.scss';
+import Styles from './layout.module.scss';
 
 interface iParametros {
     children: ReactNode;

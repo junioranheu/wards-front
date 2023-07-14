@@ -94,6 +94,11 @@ svg {
 
     &:hover:not(.svgSemEfeito) {
         stroke: var(--principal);
+
+        path {
+            stroke: var(--principal);
+            transition: 0.125s;
+        }
     }
 }
 

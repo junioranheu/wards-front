@@ -1,3 +1,5 @@
+import Botao from '@/components/botao';
+import IconeLupa from '@/components/icones/lupa';
 import Styles from './index.module.scss';
 
 export default function Navbar() {
@@ -9,9 +11,24 @@ export default function Navbar() {
             </div>
 
             <div className={Styles.direita}>
-                <a>Icone de busca</a>
+                <IconeLupa
+                    escala={0.75}
+                    url={null}
+                    isNovaAba={false}
+                    handleFuncao={() => null}
+                />
+
                 <a>Entrar</a>
-                <a>Criar conta</a>
+
+                <Botao
+                    texto='Inscrever-se'
+                    url={null}
+                    isNovaAba={true}
+                    handleFuncao={() => null}
+                    Svg={null}
+                    refBtn={null}
+                    isEnabled={true}
+                />
             </div>
         </nav>
     )

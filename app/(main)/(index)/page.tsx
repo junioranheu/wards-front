@@ -1,5 +1,5 @@
 'use client';
-import StylesLayout from '@/app/(main)/styles/layout.module.scss';
+import StylesLayout from '@/app/(main)/layout.module.scss';
 import { lazy } from 'react';
 const Intro = lazy(() => import('./components/intro'));
 
