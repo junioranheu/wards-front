@@ -21,7 +21,7 @@ export default function Navbar() {
                 <a>Entrar</a>
 
                 <Botao
-                    texto='Inscrever-se'
+                    texto='Criar conta'
                     url={null}
                     isNovaAba={true}
                     handleFuncao={() => null}
