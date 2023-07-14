@@ -8,20 +8,18 @@ export default function Intro() {
     const refDivMain = useRef<HTMLDivElement>(null);
     const refDivInfo = useRef<HTMLDivElement>(null);
 
-    const [posicaoBottomDivMain, setPosicaoBottomDivMain] = useState<number>(0);
-    const [posicaoBottomDivInfo, setPosicaoBottomDivInfo] = useState<number>(0);
+    const [tamanhoDivMain, setTamanhoDivMain] = useState<number>(0);
 
     useEffect(() => {
         function handleScroll() {
             if (refDivInfo?.current) {
-                const { offsetTop, clientHeight } = refDivInfo.current;
-                const bottomPosition = offsetTop + clientHeight;
-                setPosicaoBottomDivInfo(bottomPosition);
+                const porcentagemScrollada = (window.scrollY / tamanhoDivMain) * 100;
+                const teste = refDivInfo.current.getBoundingClientRect().height / tamanhoDivMain;
+                const maxPorcentagem = (100 - (teste * 100)) - 3;
+                console.log(teste, maxPorcentagem);
 
-                if (posicaoBottomDivMain >= posicaoBottomDivInfo) {
-                    refDivInfo.current.style.marginTop = `${window.scrollY}px`;
-                } else {
-                    refDivInfo.current.style.marginTop = `0px`;
+                if (porcentagemScrollada <= maxPorcentagem) {
+                    refDivInfo.current.style.top = `${window.scrollY}px`;
                 }
             }
         }
@@ -29,12 +27,12 @@ export default function Intro() {
         if (refDivMain?.current) {
             const { offsetTop, clientHeight } = refDivMain.current;
             const bottomPosition = offsetTop + clientHeight;
-            setPosicaoBottomDivMain(bottomPosition);
+            setTamanhoDivMain(bottomPosition);
         }
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [posicaoBottomDivMain, posicaoBottomDivInfo]);
+    }, [tamanhoDivMain]);
 
     return (
         <section
@@ -52,8 +50,7 @@ export default function Intro() {
                 <span className='titulo'>E aí. 👋<br />Meu nome é Junior,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
                 <input type='text' placeholder='junior@exemplo.com' />
-                <h1>posicaoBottomDivMain: {posicaoBottomDivMain}</h1>
-                <h1>posicaoBottomDivInfo: {posicaoBottomDivInfo}</h1>
+                <h1>posicaoBottomDivMain: {tamanhoDivMain}</h1>
             </div>
         </section>
     )
