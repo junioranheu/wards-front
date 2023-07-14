@@ -18,14 +18,13 @@
 
     .infos {
         // background-color: purple;
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 1rem;
 
         width: 50%;
         height: fit-content;
-
-        position: relative;
     }
 }
 

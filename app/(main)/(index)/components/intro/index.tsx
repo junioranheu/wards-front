@@ -1,4 +1,5 @@
 import ImgPerfil from '@/assets/images/outros/kapas.webp';
+import BotaoAlternativo from '@/components/botaoAlternativo';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
 import Image from 'next/image';
 import { useRef } from 'react';
@@ -21,9 +22,8 @@ export default function Intro() {
             <div className={Styles.infos} ref={refDivInfo}>
                 <span className='titulo'>E aí. 👋<br />Meu nome é <span className='wavy'>Junior</span>,<br />e tô aqui pra te ajudar!</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
-                <input type='text' placeholder='junior@exemplo.com' />
 
-                <textarea placeholder='aeqwdwqdqw' />
+                <BotaoAlternativo texto='Enviar avaliação' url={null} isNovaAba={false} handleFuncao={() => null} Svg={null} refBtn={null} isEnabled={true} />
             </div>
         </section>
     )
