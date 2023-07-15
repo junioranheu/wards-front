@@ -1,4 +1,4 @@
-import ImgPerfil from '@/assets/images/outros/kapas.webp';
+import ImgPerfil from '@/assets/images/outros/junioranheu.jpg';
 import BotaoAlternativo from '@/components/botaoAlternativo';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
 import Image from 'next/image';

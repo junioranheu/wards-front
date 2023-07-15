@@ -23,7 +23,7 @@ export default function useElementoAcompanhaScroll(refDivPai: RefObject<HTMLDivE
                     const porcentagemTamanhoOffsetTopDivMain = (offsetTop / refDivPaiCurrent.getBoundingClientRect().height) * 100;
 
                     // Calcular o limite máximo que a refDivScrollavel pode chegar no scroll;
-                    const porcentagemExtraParaCompensar = 2.5;
+                    const porcentagemExtraParaCompensar = 1;
                     const maxPorcentagem = 100 - (porcentagemTamanhoDivTextoDescontadoComBaseNaDivMain + porcentagemTamanhoOffsetTopDivMain) + porcentagemExtraParaCompensar;
 
                     // Porcentam da refDivPai scrollada atualmente;
