@@ -28,6 +28,7 @@ export default function Navbar() {
                     Svg={null}
                     refBtn={null}
                     isEnabled={true}
+                    isPequeno={true}
                 />
             </div>
         </nav>

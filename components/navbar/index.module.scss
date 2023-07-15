@@ -14,14 +14,11 @@
         font-weight: 700;
     }
 
-    .esquerda {
-        display: flex;
-        gap: 2rem;
-    }
-
+    .esquerda,
     .direita {
         display: flex;
-        gap: 2rem;
+        align-items: center;
+        gap: 2.5rem;
     }
 }
 

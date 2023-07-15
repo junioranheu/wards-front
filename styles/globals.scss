@@ -1,5 +1,6 @@
 :root {
     --principal: #4ECDC4;
+    --principal-escuro: #33B5AC;
     --secundaria: #CD4E57;
     --preto: #15171A;
     --branco: #FFFDFA;
@@ -40,7 +41,7 @@ a {
     transition: 0.3s;
 
     &:hover {
-        color: var(--secundaria);
+        color: var(--principal-escuro);
         transition: 0.3s;
     }
 }
@@ -146,7 +147,7 @@ input[type=number],
 textarea {
     &:focus {
         outline: none;
-        border-bottom: solid 2px var(--secundaria);
+        border-bottom: solid 2px var(--principal-escuro);
         transition: 0.5s;
 
         &::placeholder {
@@ -192,10 +193,10 @@ textarea {
     color: var(--principal);
     background-color: transparent;
     border: 1px solid var(--principal);
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     padding: 1.25rem 1.75rem;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: inherit;
     text-decoration: none;
     transition: 0.3s;
@@ -219,6 +220,12 @@ textarea {
         opacity: 0.5;
         cursor: not-allowed;
     }
+
+    &.btnPequeno {
+        // background-color: orange;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.85rem;
+    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= react-hot-toast =-=-=-=-=-=-=-=-=-=-= */
@@ -237,21 +244,21 @@ textarea {
 /* =-=-=-=-=-=-=-=-=-=-= nProgress =-=-=-=-=-=-=-=-=-=-= */
 #nprogress {
     .bar {
-        background: var(--secundaria) !important;
+        background: var(--principal-escuro) !important;
         height: 3px !important;
         box-shadow: none !important;
         z-index: 999999999 !important;
     }
 
     .peg {
-        box-shadow: 0 0 10px var(--secundaria), 0 0 5px var(--secundaria) !important;
+        box-shadow: 0 0 10px var(--principal-escuro), 0 0 5px var(--principal-escuro) !important;
         box-shadow: none !important;
         height: 3px !important;
     }
 
     .spinner-icon {
-        border-top-color: var(--secundaria) !important;
-        border-left-color: var(--secundaria) !important;
+        border-top-color: var(--principal-escuro) !important;
+        border-left-color: var(--principal-escuro) !important;
     }
 }
 
@@ -270,7 +277,7 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secundaria);
+    background: var(--principal-escuro);
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */

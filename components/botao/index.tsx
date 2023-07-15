@@ -9,9 +9,10 @@ interface iParametros {
     Svg: ReactNode | null;
     refBtn: Ref<any>;
     isEnabled: boolean;
+    isPequeno: boolean;
 }
 
-export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn, isEnabled }: iParametros) {
+export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn, isEnabled, isPequeno }: iParametros) {
 
     function handleClick() {
         if (!url) {
@@ -31,7 +32,7 @@ export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn
 
     return (
         <button
-            className='botao'
+            className={`botao ${isPequeno ? 'btnPequeno' : ''}`}
             onClick={() => handleClick()}
             ref={refBtn}
             disabled={!isEnabled}
