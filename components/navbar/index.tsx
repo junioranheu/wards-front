@@ -1,12 +1,13 @@
 import Botao from '@/components/botao';
 import IconeLupa from '@/components/icones/lupa';
+import { CONST_NANUM } from '@/utils/fonts/fonts';
 import Styles from './index.module.scss';
 
 export default function Navbar() {
     return (
         <nav className={Styles.navbar}>
             <div className={Styles.esquerda}>
-                <a>Logo</a>
+                <a className={`${Styles.logo} ${CONST_NANUM.className} wavy`}>Wards</a>
                 <a>Sobre</a>
             </div>
 

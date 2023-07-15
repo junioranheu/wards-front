@@ -12,6 +12,12 @@
     a {
         color: var(--preto);
         font-weight: 700;
+
+        &.logo {
+            // background-color: orange;
+            font-size: 2rem;
+            transform: rotate(0deg);
+        }
     }
 
     .esquerda,
