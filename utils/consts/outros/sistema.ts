@@ -1,6 +1,6 @@
 const CONSTS_SISTEMA = {
-    NOME_SISTEMA: 'Wards • bla bla bla',
-    DESCRICAO_SISTEMA: 'xxx • @junioranheu',
+    NOME_SISTEMA: 'Wards',
+    DESCRICAO_SISTEMA: 'BLA BLA BLA PROGRAMAÇÃO FÁCIL',
     KEYWORDS_SISTEMA: 'xxx, junioranheu',
     COR_SISTEMA: '#0A192F',
 

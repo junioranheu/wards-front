@@ -1,3 +1,5 @@
+const withVideos = require('next-videos');
+
 const nextConfig = {
     reactStrictMode: false,
     swcMinify: true, // Minify em produção;
@@ -7,4 +9,4 @@ const nextConfig = {
     }
 }
 
-module.exports = nextConfig;
+module.exports = withVideos(nextConfig);

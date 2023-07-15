@@ -5,12 +5,13 @@
 
     margin-top: 3.5rem;
 
-    .imagem {
+    .conteudo {
         // background-color: purple;
         width: 50%;
         height: 100%;
 
-        img {
+        img,
+        video {
             object-fit: cover;
             width: 100%;
             height: 90vh;

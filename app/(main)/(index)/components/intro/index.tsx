@@ -1,7 +1,5 @@
-import ImgPerfil from '@/assets/images/outros/junioranheu.jpg';
 import BotaoAlternativo from '@/components/botaoAlternativo';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
-import Image from 'next/image';
 import { useRef } from 'react';
 import Styles from './index.module.scss';
 
@@ -15,12 +13,16 @@ export default function Intro() {
 
     return (
         <section className={Styles.intro} ref={refDivMain}>
-            <div className={Styles.imagem}>
-                <Image src={ImgPerfil} alt='' />
+            <div className={Styles.conteudo}>
+                {/* <Image src={ImgPerfil} alt='' /> */}
+
+                <video className={Styles.video} autoPlay loop muted playsInline disablePictureInPicture controls={false}>
+                    <source src={(require('@/assets/videos/gongos.mp4'))} type='video/mp4' />
+                </video>
             </div>
 
             <div className={Styles.infos} ref={refDivInfo}>
-                <span className='titulo'>E aí. 👋<br />Meu nome é <span className='wavy'>Junior</span>,<br />e tô aqui pra te ajudar!</span>
+                <span className='titulo'>E aí. 👋<br />Meu nome é Junior,<br />e aqui você vai aprender programação! &lt;/&gt;</span>
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
                 <BotaoAlternativo placeholderInput='Seu melhor e-mail' placeholderBotao='Inscrever' url={null} isNovaAba={false} handleFuncao={() => null} refBtn={null} isEnabled={true} />
             </div>
