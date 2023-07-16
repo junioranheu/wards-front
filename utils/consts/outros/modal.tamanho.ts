@@ -1,4 +1,5 @@
 const CONSTS_MODAL = {
+    MENOR: 'menor',
     PEQUENO: 'pequeno',
     MEDIO: 'medio',
     GRANDE: 'grande',

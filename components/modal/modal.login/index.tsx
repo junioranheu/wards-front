@@ -6,7 +6,6 @@ import Styles from './index.module.scss';
 interface iParametros {
     handleModal: Dispatch<boolean>;
     titulo: string;
-    descricao: string;
     textoFooter: string | null;
 
     textoBotao1: string;
@@ -22,15 +21,18 @@ interface iParametros {
     isBtnEnabled2: boolean;
 }
 
-export default function ModalLogin({ handleModal, titulo, descricao, textoFooter, textoBotao1, funcaoBotao1, urlBotao1, isNovaAba1, isBtnEnabled1, textoBotao2, funcaoBotao2, urlBotao2, isNovaAba2, isBtnEnabled2 }: iParametros) {
+export default function ModalLogin({ handleModal, titulo, textoFooter, textoBotao1, funcaoBotao1, urlBotao1, isNovaAba1, isBtnEnabled1, textoBotao2, funcaoBotao2, urlBotao2, isNovaAba2, isBtnEnabled2 }: iParametros) {
     return (
         <div className={Styles.main}>
-            <span className={Styles.titulo}>{(titulo ?? CONSTS_SISTEMA.NOME_SISTEMA)}</span>
+            <div className={Styles.titulo}>
+                <span>{(titulo ?? CONSTS_SISTEMA.NOME_SISTEMA)}</span>
+            </div>
 
-            <span
-                className={Styles.texto}
-                dangerouslySetInnerHTML={{ __html: descricao }}
-            />
+            <span className='separadorHorizontal'></span>
+
+            <div className={Styles.input}>
+                <input className='inputAlt' type='email' placeholder='E-mail' />
+            </div>
 
             <span className='separadorHorizontal'></span>
             <div className={Styles.botoes}>

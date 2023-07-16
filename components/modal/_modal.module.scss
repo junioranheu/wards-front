@@ -41,8 +41,8 @@
             .cabecalhoTitulo {
                 // background-color: pink;
                 color: var(--preto);
-                font-size: 1.3em;
-                font-weight: 600;
+                font-size: 1.125em;
+                font-weight: 800;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
@@ -55,8 +55,9 @@
                 align-items: center;
 
                 .logo {
-                    width: 2.5rem;
-                    height: 2.5rem;
+                    // background-color: orange;
+                    width: 2rem;
+                    height: auto;
                 }
             }
 
@@ -121,6 +122,10 @@
 
 .modalPequeno {
     width: 30vw !important;
+}
+
+.modalMenor {
+    width: fit-content !important;
 }
 
 .modal::-webkit-scrollbar {

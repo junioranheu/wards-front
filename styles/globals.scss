@@ -4,6 +4,7 @@
     --secundaria: #CD4E57;
     --preto: #15171A;
     --branco: #FFFDFA;
+    --border: 1px solid rgba(42, 42, 42, 7%);
 }
 
 * {
@@ -104,7 +105,7 @@ svg {
 }
 
 .separadorHorizontal {
-    border-top: 1px solid rgba(42, 42, 42, 7%);
+    border-top: var(--border);
     height: 1px;
     width: 100%;
     margin-top: 1rem;
@@ -121,13 +122,18 @@ input[type=number] {
     line-height: normal;
     background: none;
     border: none;
+    border-bottom: solid 1px rgba(42, 42, 42, 7%);
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 1px;
-    margin: 0em 0 1.875em 0;
+    margin: 0;
     padding: 0 0 1rem 0;
     width: 100%;
     transition: 0.3s;
+
+    &::placeholder {
+        font-size: 0.9rem;
+    }
 }
 
 textarea {
@@ -155,7 +161,7 @@ input[type=number],
 textarea {
     &:focus {
         outline: none;
-        border-bottom: solid 2px var(--principal-escuro);
+        border-bottom: solid 1px var(--principal-escuro);
         transition: 0.5s;
 
         &::placeholder {
@@ -178,6 +184,17 @@ textarea {
     &:-webkit-autofill {
         -webkit-text-fill-color: var(--preto) !important;
         -webkit-box-shadow: 0 0 0 30px var(--principal) inset !important;
+    }
+}
+
+.inputAlt {
+    // background-color: orange !important;
+    border: var(--border) !important;
+    padding: 1rem !important;
+    border-radius: 0.25rem !important;
+
+    &:focus {
+        border-bottom: var(--border) !important;
     }
 }
 

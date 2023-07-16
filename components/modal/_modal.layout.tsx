@@ -11,7 +11,7 @@ interface iParametros {
     isExibirApenasLogo: boolean;
     titulo: string | null;
     children: ReactNode;
-    tamanho: typeof CONSTS_MODAL.PEQUENO | typeof CONSTS_MODAL.MEDIO | typeof CONSTS_MODAL.GRANDE | typeof CONSTS_MODAL.GIGANTE | typeof CONSTS_MODAL.NULL;
+    tamanho: typeof CONSTS_MODAL.MENOR | typeof CONSTS_MODAL.PEQUENO | typeof CONSTS_MODAL.MEDIO | typeof CONSTS_MODAL.GRANDE | typeof CONSTS_MODAL.GIGANTE | typeof CONSTS_MODAL.NULL;
     isCentralizado: boolean;
     isFecharModalClicandoNoFundo: boolean;
 }
@@ -33,7 +33,7 @@ export default function ModalLayout({ handleModal, logo, isExibirApenasLogo, tit
             onMouseDown={(e) => FecharModal.fecharModalClicandoNoFundo(isFecharModalClicandoNoFundo, handleModal, e, setAnimarDiv)}
         >
             <div className={animarDiv}>
-                <div className={`${Styles.modal} ${(tamanho === CONSTS_MODAL.GIGANTE ? Styles.modalGigante : tamanho === CONSTS_MODAL.GRANDE ? Styles.modalGrande : tamanho === CONSTS_MODAL.PEQUENO ? Styles.modalPequeno : '')} animate__animated animate__fadeIn animate__faster`}>
+                <div className={`${Styles.modal} ${(tamanho === CONSTS_MODAL.GIGANTE ? Styles.modalGigante : tamanho === CONSTS_MODAL.GRANDE ? Styles.modalGrande : tamanho === CONSTS_MODAL.PEQUENO ? Styles.modalPequeno : tamanho === CONSTS_MODAL.MENOR ? Styles.modalMenor : '')} animate__animated animate__fadeIn animate__faster`}>
                     <div className={Styles.divCabecalho}>
                         <BotaoFecharModal fecharModal={() => FecharModal.fecharModalClicandoNoBotao(handleModal)} />
 

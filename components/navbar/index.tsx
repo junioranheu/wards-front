@@ -21,17 +21,16 @@ export default function Navbar() {
                 <ModalLayout
                     handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
                     logo={null}
-                    isExibirApenasLogo={false}
-                    titulo='Bem-vindo de volta! 🖖'
-                    tamanho={CONSTS_MODAL.PEQUENO}
+                    isExibirApenasLogo={true}
+                    titulo={null}
+                    tamanho={CONSTS_MODAL.MENOR}
                     isCentralizado={true}
                     isFecharModalClicandoNoFundo={false}
                 >
                     <ModalLogin
                         handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
-                        titulo='Pera aí, você tem certeza disso?'
-                        descricao='AEA PUES'
-                        textoFooter={'aeaeaea'}
+                        titulo='Bem-vindo de volta! 🖖'
+                        textoFooter='Não tem uma conta?<br/>Crie uma agora mesmo'
 
                         textoBotao1='Voltar'
                         urlBotao1={null}
@@ -39,7 +38,7 @@ export default function Navbar() {
                         funcaoBotao1={() => setIsModalLoginOpen(false)}
                         isBtnEnabled1={true}
 
-                        textoBotao2='Confirmar'
+                        textoBotao2='Continuar'
                         urlBotao2={null}
                         isNovaAba2={false}
                         funcaoBotao2={() => null}
