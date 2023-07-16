@@ -36,7 +36,7 @@ img {
 
 /* =-=-=-=-=-=-=-=-= Misc =-=-=-=-=-=-=-=-= */
 a {
-    color: var(--principal);
+    color: var(--preto);
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
@@ -115,7 +115,8 @@ svg {
 /* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */
 input[type=text],
 input[type=email],
-input[type=number] {
+input[type=number],
+input[type=password] {
     color: var(--preto);
     font: inherit;
     margin: 0;
@@ -158,6 +159,7 @@ textarea {
 input[type=text],
 input[type=email],
 input[type=number],
+input[type=password],
 textarea {
     &:focus {
         outline: none;

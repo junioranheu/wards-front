@@ -32,6 +32,7 @@ export default function ModalLogin({ handleModal, titulo, textoFooter, textoBota
 
             <div className={Styles.input}>
                 <input className='inputAlt' type='email' placeholder='E-mail' />
+                <input className='inputAlt' type='password' placeholder='Senha' />
             </div>
 
             <span className='separadorHorizontal'></span>

@@ -30,7 +30,7 @@ export default function Navbar() {
                     <ModalLogin
                         handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
                         titulo='Bem-vindo de volta! 🖖'
-                        textoFooter='Não tem uma conta?<br/>Crie uma agora mesmo'
+                        textoFooter='Não tem uma conta?<br/><a>Crie uma agora mesmo</a>'
 
                         textoBotao1='Voltar'
                         urlBotao1={null}
