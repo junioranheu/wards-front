@@ -1,7 +1,7 @@
 import ImgLogo from '@/assets/images/outros/logo.webp';
 import CONSTS_MODAL from '@/utils/consts/outros/modal.tamanho';
 import Image, { StaticImageData } from 'next/image';
-import { Dispatch, ReactNode, useState } from 'react';
+import { Dispatch, ReactNode, useEffect, useState } from 'react';
 import BotaoFecharModal from './_botaoFecharModal';
 import Styles from './_modal.module.scss';
 
@@ -18,6 +18,14 @@ interface iParametros {
 
 export default function ModalLayout({ handleModal, logo, isExibirApenasLogo, titulo, children, tamanho, isCentralizado, isFecharModalClicandoNoFundo }: iParametros) {
     const [animarDiv, setAnimarDiv] = useState<string>('');
+
+    useEffect(() => {
+        document.querySelector('html')!.style.overflow = 'hidden';
+
+        return () => {
+            document.querySelector('html')!.style.overflow = 'auto';
+        };
+    }, []);
 
     return (
         <section
