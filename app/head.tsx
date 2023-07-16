@@ -12,7 +12,7 @@ export default function Head() {
             <meta name='viewport' content='width=device-width, initial-scale=1' />
             <meta name='theme-color' content={CONSTS_SISTEMA.COR_SISTEMA} />
             <meta name='robots' content='index' />
-            <link rel='icon' href='/favicon.ico' />
+            <link rel='icon' href='/favicon.png' />
         </Fragment>
     )
 }
