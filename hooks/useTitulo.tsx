@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 export default function useTitulo(titulo: string, isUsarSufixoPadrao: boolean) {
 
     useEffect(() => {
-        document.title = `${titulo} ${(isUsarSufixoPadrao ? CONSTS_SISTEMA.NOME_SISTEMA : '')}`;
+        document.title = `${titulo} ${(isUsarSufixoPadrao ? `• ${CONSTS_SISTEMA.NOME_SISTEMA}` : '')}`;
     }, [titulo, isUsarSufixoPadrao]);
 
 }

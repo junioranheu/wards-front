@@ -3,8 +3,6 @@
     display: flex;
     gap: 3.5rem;
 
-    margin-top: 3.5rem;
-
     .conteudo {
         // background-color: purple;
         width: 50%;
@@ -43,8 +41,8 @@
         flex-direction: column-reverse;
         gap: 1rem;
 
-        .imagem {
-            width: 100%;
+        .conteudo {
+            display: none;
         }
 
         .infos {
