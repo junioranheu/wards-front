@@ -14,7 +14,7 @@ export default function Intro() {
     return (
         <section className={Styles.intro} ref={refDivMain}>
             <div className={Styles.conteudo}>
-                <video className={Styles.video} autoPlay loop muted playsInline disablePictureInPicture controls={false}>
+                <video autoPlay loop muted playsInline disablePictureInPicture controls={false}>
                     <source src={(require('@/assets/videos/coding.mp4'))} type='video/mp4' />
                 </video>
             </div>

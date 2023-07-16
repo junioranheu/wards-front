@@ -31,7 +31,7 @@ export default function Navbar() {
                         handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
                         titulo='Pera aí, você tem certeza disso?'
                         descricao='AEA PUES'
-                        textoFooter={null}
+                        textoFooter={'aeaeaea'}
 
                         textoBotao1='Voltar'
                         urlBotao1={null}
