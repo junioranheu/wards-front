@@ -1,0 +1,79 @@
+.main {
+    // background-color: orange;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    .titulo {
+        // background-color: orange;
+        color: var(--preto);
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    .texto {
+        // background-color: orange;
+        width: 80%;
+        color: var(--preto);
+        font-size: 1.125rem;
+        font-weight: 400;
+    }
+
+    .botoes {
+        // background-color: orange;
+        display: flex;
+        gap: 1rem;
+
+        button {
+            min-width: 10rem;
+
+            &:nth-of-type(2) {
+                background-color: var(--principal);
+                color: var(--branco);
+            }
+        }
+    }
+
+    .footer {
+        // background-color: orange;
+        width: 70%;
+        color: var(--preto);
+        font-size: 0.7rem;
+        font-weight: 400;
+
+        a {
+            color: var(--principal);
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .main {
+        // background-color: orange;
+
+        .texto {
+            // background-color: orange;
+            width: 100%;
+        }
+
+        .footer {
+            // background-color: orange;
+            width: 90%;
+        }
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

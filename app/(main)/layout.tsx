@@ -4,6 +4,7 @@ import Navbar from '@/components/navbar';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
 import { CONST_MANROPE } from '@/utils/fonts/fonts';
+import 'animate.css/animate.min.css';
 import 'nprogress/nprogress.css';
 import { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -32,6 +33,8 @@ export default function LayoutPublic({ children }: iParametros) {
                 <main className={Styles.main}>
                     {children}
                 </main>
+
+                <div id='modalWrapper'></div>
             </body>
         </html>
     )

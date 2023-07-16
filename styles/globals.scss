@@ -103,6 +103,14 @@ svg {
     }
 }
 
+.separadorHorizontal {
+    border-top: 1px solid rgba(42, 42, 42, 7%);
+    height: 1px;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */
 input[type=text],
 input[type=email],
