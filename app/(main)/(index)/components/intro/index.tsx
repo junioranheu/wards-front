@@ -17,7 +17,7 @@ export default function Intro() {
                 {/* <Image src={ImgPerfil} alt='' /> */}
 
                 <video className={Styles.video} autoPlay loop muted playsInline disablePictureInPicture controls={false}>
-                    <source src={(require('@/assets/videos/gongos.mp4'))} type='video/mp4' />
+                    <source src={(require('@/assets/videos/coding.mp4'))} type='video/mp4' />
                 </video>
             </div>
 
