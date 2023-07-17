@@ -8,7 +8,7 @@ interface iContext {
 const _item = '_auth';
 export const UsuarioContext = createContext<iContext | null>(null);
 
-export const UsuarioProvider = (props: any) => {
+export function UsuarioProvider(props: any) {
     const [isAuth, setIsAuth] = useState<boolean>(Auth?.get()?.isAuth ?? false);
 
     return (
