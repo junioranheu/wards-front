@@ -1,8 +1,11 @@
 import BotaoAlternativo from '@/components/botaoAlternativo';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
+import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Auth } from '@/utils/context/usuarioContext';
+import { Aviso } from '@/utils/functions/aviso';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
+import validarEmail from '@/utils/functions/validar.email';
 import { useRef, useState } from 'react';
 import Styles from './index.module.scss';
 
@@ -19,6 +22,11 @@ export default function Intro() {
     useElementoAcompanhaScroll(refDivMain, refDivInfo, mediaQueryLimite);
 
     function handleCadastrarParaReceberPosts() {
+        if (!emailCadastroPost || !validarEmail(emailCadastroPost)) {
+            Aviso.toast('Preencha o campo com um e-mail válido antes de prosseguir', 5500, CONSTS_EMOJIS.ERRO, true);
+            return false;
+        }
+
         alert(emailCadastroPost);
     }
 

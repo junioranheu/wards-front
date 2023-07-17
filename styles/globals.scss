@@ -42,7 +42,7 @@ a {
     transition: 0.3s;
 
     &:hover {
-        color: var(--principal-escuro);
+        color: var(--principal-escuro) !important;
         transition: 0.3s;
     }
 }
