@@ -2,6 +2,7 @@
 import Head from '@/app/head';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
+import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { UsuarioProvider } from '@/utils/context/usuarioContext';
 import { CONST_MANROPE } from '@/utils/fonts/fonts';
 import 'animate.css/animate.min.css';
@@ -25,7 +26,7 @@ export default function LayoutPublic({ children }: iParametros) {
 
             <UsuarioProvider>
                 <body
-                    className={`${Styles.body} ${CONST_MANROPE.className}`}
+                    className={`${Styles.body} ${CONST_MANROPE.className} ${CONSTS_SISTEMA.ANIMATE}`}
                     suppressHydrationWarning={true}
                 >
                     <Toaster containerClassName='toaster' />
