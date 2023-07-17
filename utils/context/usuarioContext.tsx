@@ -1,5 +1,5 @@
 import iUsuarioContext from '@/utils/types/iUsuario.context';
-import { Dispatch, SetStateAction, createContext, useState } from 'react';
+import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react';
 
 interface iContext {
     isAuthContext: [isAuth: boolean, setIsAuth: Dispatch<SetStateAction<boolean>>];
@@ -9,7 +9,11 @@ const _item = '_auth';
 export const UsuarioContext = createContext<iContext | null>(null);
 
 export function UsuarioProvider(props: any) {
-    const [isAuth, setIsAuth] = useState<boolean>(Auth?.get()?.isAuth ?? false);
+    const [isAuth, setIsAuth] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsAuth(Auth?.get()?.isAuth ?? false);
+    }, [Auth?.get()?.isAuth]);
 
     return (
         <UsuarioContext.Provider value={{ isAuthContext: [isAuth, setIsAuth] }}>
