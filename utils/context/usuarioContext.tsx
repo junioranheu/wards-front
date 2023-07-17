@@ -23,7 +23,8 @@ export const Auth = {
         const dadosUsuario = {
             nomeCompleto: data.nomeCompleto,
             email: data.email,
-            foto: data.foto
+            foto: data.foto,
+            isAuth: data.isAuth
         } as iUsuarioContext;
 
         const parsedData = JSON.stringify(dadosUsuario);
