@@ -1,8 +1,10 @@
 import Router from 'next/router';
-import { Ref } from 'react';
+import { Dispatch, Ref, SetStateAction } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
+    valorInput: string;
+    setValorInput: Dispatch<SetStateAction<string>>;
     placeholderInput: string;
     placeholderBotao: string;
     url: string | null;
@@ -12,7 +14,7 @@ interface iParametros {
     isEnabled: boolean;
 }
 
-export default function BotaoAlternativo({ placeholderInput, placeholderBotao, url, isNovaAba, handleFuncao, refBtn, isEnabled }: iParametros) {
+export default function BotaoAlternativo({ valorInput, setValorInput, placeholderInput, placeholderBotao, url, isNovaAba, handleFuncao, refBtn, isEnabled }: iParametros) {
 
     function handleClick() {
         if (!url) {
@@ -32,7 +34,13 @@ export default function BotaoAlternativo({ placeholderInput, placeholderBotao, u
 
     return (
         <section className={Styles.form}>
-            <input type='email' placeholder={placeholderInput} />
+            <input
+                type='email'
+                placeholder={placeholderInput}
+                disabled={!isEnabled}
+                value={valorInput}
+                onChange={(e) => setValorInput(e.target.value)}
+            />
 
             <button
                 className='botao'
