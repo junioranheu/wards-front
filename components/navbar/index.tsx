@@ -78,10 +78,7 @@ export default function Navbar() {
             senha: senha
         };
 
-        console.log(input);
-
         const resp = await Fetch.postApi(CONSTS_USUARIOS.criar, input) as iUsuario;
-        console.log(resp);
 
         if (resp?.mensagens || !resp) {
             Aviso.toast(resp.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);

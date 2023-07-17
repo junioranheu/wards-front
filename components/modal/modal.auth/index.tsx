@@ -1,6 +1,6 @@
 import Botao from '@/components/botao';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, KeyboardEvent, SetStateAction } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
@@ -20,6 +20,13 @@ interface iParametros {
 }
 
 export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFooter, textoBotao1, funcaoBotao1, textoBotao2, funcaoBotao2, setEmail, setSenha }: iParametros) {
+
+    function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
+        if (event.key === 'Enter') {
+            funcaoBotao2();
+        }
+    }
+
     return (
         <div className={Styles.main}>
             <div className={Styles.titulo}>
@@ -29,8 +36,8 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFoot
             <span className='separadorHorizontal'></span>
 
             <div className={Styles.input}>
-                <input className='inputAlt' type='email' placeholder='E-mail' onChange={(e) => setEmail(e.target.value)} />
-                <input className='inputAlt' type='password' placeholder='Senha' onChange={(e) => setSenha(e.target.value)} />
+                <input className='inputAlt' type='email' placeholder='E-mail' onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => handleKeyPress(e)} />
+                <input className='inputAlt' type='password' placeholder='Senha' onChange={(e) => setSenha(e.target.value)} onKeyDown={(e) => handleKeyPress(e)} />
             </div>
 
             <span className='separadorHorizontal'></span>
