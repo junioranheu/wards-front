@@ -1,10 +1,14 @@
 import BotaoAlternativo from '@/components/botaoAlternativo';
+import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
 import { Auth } from '@/utils/context/usuarioContext';
+import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import { useRef, useState } from 'react';
 import Styles from './index.module.scss';
 
 export default function Intro() {
+
+    const [isAuth, setIsAuth] = useUsuarioContext();
 
     const [emailCadastroPost, setEmailCadastroPost] = useState<string>(Auth.get()?.email ?? '');
 
@@ -27,7 +31,18 @@ export default function Intro() {
             </div>
 
             <div className={Styles.infos} ref={refDivInfo}>
-                <span className='titulo'>E aí. 👋<br />Meu nome é Junior,<br />e aqui você vai aprender programação! &lt;/&gt;</span>
+                <span className='titulo'>
+                    {
+                        isAuth ? (
+                            <span>E aí, {obterPrimeiraPalavra(Auth.get()?.nomeCompleto ?? 'amigo')}. 👋</span>
+                        ) : (
+                            <span>E aí. 👋</span>
+                        )
+                    }
+
+                    <br />Aqui você vai aprender programação! &lt;/&gt;
+                </span>
+
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
 
                 <BotaoAlternativo

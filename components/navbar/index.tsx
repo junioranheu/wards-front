@@ -26,12 +26,13 @@ export default function Navbar() {
 
     const [isModalLoginOpen, setIsModalLoginOpen] = useState<boolean>(false);
     const [isModalCriarContaOpen, setIsModalCriarContaOpen] = useState<boolean>(false);
+    const [nomeCompleto, setNomeCompleto] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
 
     async function handleLogar() {
         if (!email || !senha) {
-            Aviso.toast('Preencha os campos de e-mail e senha antes de continuar', 5500, CONSTS_EMOJIS.ERRO, true);
+            Aviso.toast('Preencha os campos de e-mail e senha antes de prosseguir', 5500, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
@@ -65,15 +66,15 @@ export default function Navbar() {
     }
 
     async function handleCriarConta() {
-        if (!email || !senha) {
-            Aviso.toast('Preencha os campos de e-mail e senha antes de continuar', 5500, CONSTS_EMOJIS.ERRO, true);
+        if (!nomeCompleto || !email || !senha) {
+            Aviso.toast('Preencha todos os campos antes de prosseguir', 5500, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
         const input = {
-            nomeCompleto: gerarStringAleatoria(22),
             nomeUsuarioSistema: gerarStringAleatoria(22),
             chamado: gerarStringAleatoria(3),
+            nomeCompleto: nomeCompleto,
             email: email,
             senha: senha
         };
@@ -121,6 +122,7 @@ export default function Navbar() {
                         textoBotao2='Continuar'
                         funcaoBotao2={() => handleLogar()}
 
+                        setNomeCompleto={null}
                         setEmail={setEmail}
                         setSenha={setSenha}
                     />
@@ -149,6 +151,7 @@ export default function Navbar() {
                         textoBotao2='Criar conta'
                         funcaoBotao2={() => handleCriarConta()}
 
+                        setNomeCompleto={setNomeCompleto}
                         setEmail={setEmail}
                         setSenha={setSenha}
                     />

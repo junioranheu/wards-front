@@ -15,11 +15,12 @@ interface iParametros {
     textoBotao2: string;
     funcaoBotao2: () => void;
 
+    setNomeCompleto: Dispatch<SetStateAction<string>> | null;
     setEmail: Dispatch<SetStateAction<string>>;
     setSenha: Dispatch<SetStateAction<string>>;
 }
 
-export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFooter, textoBotao1, funcaoBotao1, textoBotao2, funcaoBotao2, setEmail, setSenha }: iParametros) {
+export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFooter, textoBotao1, funcaoBotao1, textoBotao2, funcaoBotao2, setNomeCompleto, setEmail, setSenha }: iParametros) {
 
     function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
@@ -36,6 +37,10 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFoot
             <span className='separadorHorizontal'></span>
 
             <div className={Styles.input}>
+                {
+                    setNomeCompleto && <input className='inputAlt' type='text' placeholder='Nome' onChange={(e) => setNomeCompleto(e.target.value)} onKeyDown={(e) => handleKeyPress(e)} />
+                }
+
                 <input className='inputAlt' type='email' placeholder='E-mail' onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => handleKeyPress(e)} />
                 <input className='inputAlt' type='password' placeholder='Senha' onChange={(e) => setSenha(e.target.value)} onKeyDown={(e) => handleKeyPress(e)} />
             </div>
