@@ -1,8 +1,8 @@
 import iUsuarioContext from '@/utils/types/iUsuario.context';
-import { createContext, useState } from 'react';
+import { Dispatch, SetStateAction, createContext, useState } from 'react';
 
 interface iContext {
-    isAuthContext: [isAuth: boolean, setIsAuth: any];
+    isAuthContext: [isAuth: boolean, setIsAuth: Dispatch<SetStateAction<boolean>>];
 }
 
 const _item = '_auth';
