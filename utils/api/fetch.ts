@@ -1,8 +1,10 @@
 import CONSTS_VERBOS_HTTP from '@/utils/consts/verbosHTTP';
 import gerarHorarioBrasilia from '@/utils/functions/gerar.horarioBrasilia';
+import NProgress from 'nprogress';
 
 export const Fetch = {
     async getApi(url: string) {
+        NProgress.start();
         let respostaJson;
         let headers = {
             'Accept': 'application/json',
@@ -26,6 +28,7 @@ export const Fetch = {
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
+                NProgress.done();
             }
         } catch (erro: any) {
             const e = {
@@ -35,9 +38,11 @@ export const Fetch = {
             }
 
             console.table(e);
+            NProgress.done();
             // Aviso.error('Houve uma falha na requisição GET ao servidor!', 5000);
         }
 
+        NProgress.done();
         return respostaJson;
     },
 
@@ -57,6 +62,7 @@ export const Fetch = {
     },
 
     async conteudoPostPutDelete(verboHTTP: string, url: string, body: string | any | null) {
+        NProgress.start();
         let respostaJson;
         let headers = {
             'Accept': 'application/json',
@@ -79,6 +85,7 @@ export const Fetch = {
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
+                NProgress.done();
             }
         } catch (erro: any) {
             const e = {
@@ -89,13 +96,16 @@ export const Fetch = {
             }
 
             console.table(e);
+            NProgress.done();
             // Aviso.error('Houve uma falha na requisição POST ao servidor!', 5000);
         }
 
+        NProgress.done();
         return respostaJson;
     },
 
     async getApiCorsExterno(url: string) {
+        NProgress.start();
         let respostaJson;
         let headers = {
             'Accept': 'application/json',
@@ -119,6 +129,7 @@ export const Fetch = {
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
+                NProgress.done();
             }
         } catch (erro: any) {
             const e = {
@@ -128,9 +139,11 @@ export const Fetch = {
             }
 
             console.table(e);
+            NProgress.done();
             // Aviso.error('Houve uma falha na requisição GET ao servidor!', 5000);
         }
 
+        NProgress.done();
         return respostaJson;
     }
 }

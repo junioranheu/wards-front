@@ -181,10 +181,20 @@ textarea {
         cursor: not-allowed;
         color: var(--preto);
     }
+}
 
-    // bug fix;
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password] {
     &:-webkit-autofill {
-        -webkit-text-fill-color: var(--preto) !important;
+        -webkit-background-clip: text !important; // bug fix;
+    }
+}
+
+textarea {
+    &:-webkit-autofill {
+        -webkit-text-fill-color: var(--preto) !important; // bug fix;
         -webkit-box-shadow: 0 0 0 30px var(--principal) inset !important;
     }
 }
