@@ -7,6 +7,7 @@ interface iParametros {
     handleModal: Dispatch<boolean>;
     titulo: string;
     textoFooter: string;
+    funcaoFooter: () => void;
 
     textoBotao1: string;
     funcaoBotao1: () => void;
@@ -18,11 +19,11 @@ interface iParametros {
     setSenha: Dispatch<SetStateAction<string>>;
 }
 
-export default function ModalAuth({ handleModal, titulo, textoFooter, textoBotao1, funcaoBotao1, textoBotao2, funcaoBotao2, setEmail, setSenha }: iParametros) {
+export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFooter, textoBotao1, funcaoBotao1, textoBotao2, funcaoBotao2, setEmail, setSenha }: iParametros) {
     return (
         <div className={Styles.main}>
             <div className={Styles.titulo}>
-                <span>{(titulo ?? CONSTS_SISTEMA.NOME_SISTEMA)}</span>
+                <span dangerouslySetInnerHTML={{ __html: (titulo ?? CONSTS_SISTEMA.NOME_SISTEMA) }} />
             </div>
 
             <span className='separadorHorizontal'></span>
@@ -61,6 +62,7 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, textoBotao
             <span
                 className={Styles.footer}
                 dangerouslySetInnerHTML={{ __html: textoFooter }}
+                onClick={() => funcaoFooter()}
             />
         </div>
     )
