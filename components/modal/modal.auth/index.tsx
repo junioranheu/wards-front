@@ -25,6 +25,8 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFoot
     function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
             funcaoBotao2();
+        } else if (event.key === 'Escape') {
+            handleModal(false);
         }
     }
 
