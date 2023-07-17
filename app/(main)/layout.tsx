@@ -1,15 +1,15 @@
 'use client';
 import Head from '@/app/head';
-import Navbar from '@/components/navbar';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
 import { UsuarioProvider } from '@/utils/context/usuarioContext';
 import { CONST_MANROPE } from '@/utils/fonts/fonts';
 import 'animate.css/animate.min.css';
 import 'nprogress/nprogress.css';
-import { ReactNode } from 'react';
+import { ReactNode, lazy } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Styles from './layout.module.scss';
+const Navbar = lazy(() => import('@/components/navbar'));
 
 interface iParametros {
     children: ReactNode;
