@@ -5,10 +5,12 @@ import ModalWrapper from '@/components/modal/_modal.wrapper';
 import ModalAuth from '@/components/modal/modal.auth';
 import CONSTS_USUARIOS from '@/utils/api/consts/usuarios';
 import { Fetch } from '@/utils/api/fetch';
+import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import CONSTS_MODAL from '@/utils/consts/modal.tamanho';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
+import { Aviso } from '@/utils/functions/aviso';
 import iUsuario from '@/utils/types/iUsuario';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
@@ -21,12 +23,19 @@ export default function Navbar() {
     const [senha, setSenha] = useState<string>('');
 
     async function handleLogar() {
-        const resp = await Fetch.postApi(CONSTS_USUARIOS.obter, botDTO) as iUsuario;
-        console.log(resp);
+        const input = {
+            login: email,
+            senha: senha
+        };
 
-        if (resp?.erro) {
+        const resp = await Fetch.postApi(CONSTS_USUARIOS.autenticar, input) as iUsuario;
 
+        if (resp?.mensagens) {
+            Aviso.toast('As credenciais inseridas são inválidas', 5500, CONSTS_EMOJIS.ERRO, true);
+            return false;
         }
+
+        console.log(resp);
     }
 
     return (

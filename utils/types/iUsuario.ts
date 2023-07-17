@@ -1,23 +1,29 @@
-export default interface iUsuario {
+import iErro from './iErro';
+
+export default interface iUsuario extends iErro {
     usuarioId: number;
     nomeCompleto: string;
-    email: string;
     nomeUsuarioSistema: string;
-    token: string | null;
-    usuarioTipoId: number;
-    usuariosTipos: iUsuarioTipo;
-    foto: string | null;
-    dataRegistro: Date | null;
-    dataOnline: Date | null;
+    email: string;
+    chamado: string;
+    foto: string;
     isAtivo: boolean;
-    isPremium: boolean | null;
-    isVerificado: boolean | null;
+    data: Date | string;
+    usuarioRoles: iUsuarioRole[];
+    token: string;
+    refreshToken: string | null;
 }
 
-export interface iUsuarioTipo {
-    usuarioTipoId: number;
+export interface iUsuarioRole {
+    usuarioId: number;
+    roleId: string;
+    roles: iRole;
+}
+
+export interface iRole {
+    roleId: number;
     tipo: string;
-    descricao: string | null;
+    descricao: string;
     isAtivo: boolean;
-    dataRegistro: Date;
+    data: Date | string;
 }
