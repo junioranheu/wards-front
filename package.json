@@ -15,6 +15,7 @@
     "animate.css": "^4.1.1",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
+    "moment-timezone": "^0.5.43",
     "next": "13.4.9",
     "next-videos": "^1.4.1",
     "nprogress": "^0.2.0",

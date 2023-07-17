@@ -1,5 +1,5 @@
 import ImgLogo from '@/assets/images/outros/logo.webp';
-import CONSTS_MODAL from '@/utils/consts/outros/modal.tamanho';
+import CONSTS_MODAL from '@/utils/consts/modal.tamanho';
 import Image, { StaticImageData } from 'next/image';
 import { Dispatch, ReactNode, useEffect, useState } from 'react';
 import BotaoFecharModal from './_botaoFecharModal';

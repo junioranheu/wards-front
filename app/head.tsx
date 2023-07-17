@@ -1,5 +1,5 @@
 'use import';
-import CONSTS_SISTEMA from '@/utils/consts/outros/sistema';
+import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { Fragment } from 'react';
 
 export default function Head() {

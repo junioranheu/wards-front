@@ -1,4 +1,4 @@
-import CONSTS_SISTEMA from '@/utils/consts/outros/sistema';
+import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { useEffect } from 'react';
 
 export default function useTitulo(titulo: string, isUsarSufixoPadrao: boolean) {

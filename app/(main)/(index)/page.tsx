@@ -1,7 +1,7 @@
 'use client';
 import StylesLayout from '@/app/(main)/layout.module.scss';
 import useTitulo from '@/hooks/useTitulo';
-import CONSTS_SISTEMA from '@/utils/consts/outros/sistema';
+import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { lazy } from 'react';
 const Intro = lazy(() => import('./components/intro'));
 

@@ -1,5 +1,5 @@
 import Botao from '@/components/botao';
-import CONSTS_SISTEMA from '@/utils/consts/outros/sistema';
+import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { Dispatch, Fragment } from 'react';
 import Styles from './index.module.scss';
 
