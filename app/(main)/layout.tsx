@@ -3,6 +3,7 @@ import Head from '@/app/head';
 import Navbar from '@/components/navbar';
 import useInstrucoesPadroes from '@/hooks/useInstrucoesPadroes';
 import '@/styles/globals.scss';
+import { UsuarioProvider } from '@/utils/context/usuarioContext';
 import { CONST_MANROPE } from '@/utils/fonts/fonts';
 import 'animate.css/animate.min.css';
 import 'nprogress/nprogress.css';
@@ -22,20 +23,22 @@ export default function LayoutPublic({ children }: iParametros) {
         <html lang='pt-BR'>
             <Head />
 
-            <body
-                className={`${Styles.body} ${CONST_MANROPE.className}`}
-                suppressHydrationWarning={true}
-            >
-                <Toaster containerClassName='toaster' />
+            <UsuarioProvider>
+                <body
+                    className={`${Styles.body} ${CONST_MANROPE.className}`}
+                    suppressHydrationWarning={true}
+                >
+                    <Toaster containerClassName='toaster' />
 
-                <Navbar />
+                    <Navbar />
 
-                <main className={Styles.main}>
-                    {children}
-                </main>
+                    <main className={Styles.main}>
+                        {children}
+                    </main>
 
-                <div id='modalWrapper'></div>
-            </body>
+                    <div id='modalWrapper'></div>
+                </body>
+            </UsuarioProvider>
         </html>
     )
 }
