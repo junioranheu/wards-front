@@ -24,10 +24,7 @@ export default function LayoutPublic({ children }: iParametros) {
             <Head />
 
             <UsuarioProvider>
-                <body
-                    className={`${Styles.body} ${CONST_MANROPE.className}`}
-                    suppressHydrationWarning={true}
-                >
+                <body className={`${Styles.body} ${CONST_MANROPE.className}`}>
                     <Toaster containerClassName='toaster' />
 
                     <Navbar />
