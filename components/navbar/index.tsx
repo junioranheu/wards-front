@@ -2,7 +2,7 @@ import Botao from '@/components/botao';
 import IconeLupa from '@/components/icones/lupa';
 import ModalLayout from '@/components/modal/_modal.layout';
 import ModalWrapper from '@/components/modal/_modal.wrapper';
-import ModalLogin from '@/components/modal/modal.login';
+import ModalAuth from '@/components/modal/modal.auth';
 import CONSTS_MODAL from '@/utils/consts/modal.tamanho';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
@@ -13,13 +13,25 @@ import Styles from './index.module.scss';
 
 export default function Navbar() {
 
-    const [isModalLoginOpen, setIsModalLoginOpen] = useState<boolean>(false);
+    const [isModalAuthOpen, setIsModalAuthOpen] = useState<boolean>(false);
+    const [email, setEmail] = useState<string>('');
+    const [senha, setSenha] = useState<string>('');
+
+    function handleLogar() {
+        // const url = 'https://botanheu.azurewebsites.net/api/Mensagens/enviarMensagem';
+        // const botResponse = await Fetch.postApi(url, botDTO) as iBot;
+        // document.body.style.cursor = 'default';
+
+        // if (botResponse?.erro) {
+        //     return botResponse.mensagemErro.toLocaleLowerCase();
+        // }
+    }
 
     return (
         <Fragment>
-            <ModalWrapper isOpen={isModalLoginOpen}>
+            <ModalWrapper isOpen={isModalAuthOpen}>
                 <ModalLayout
-                    handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
+                    handleModal={() => setIsModalAuthOpen(!isModalAuthOpen)}
                     logo={null}
                     isExibirApenasLogo={true}
                     titulo={null}
@@ -27,22 +39,19 @@ export default function Navbar() {
                     isCentralizado={true}
                     isFecharModalClicandoNoFundo={false}
                 >
-                    <ModalLogin
-                        handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
+                    <ModalAuth
+                        handleModal={() => setIsModalAuthOpen(!isModalAuthOpen)}
                         titulo='Bem-vindo de volta! 🖖'
                         textoFooter='Não tem uma conta?<br/><a>Crie uma agora mesmo</a>'
 
                         textoBotao1='Voltar'
-                        urlBotao1={null}
-                        isNovaAba1={false}
-                        funcaoBotao1={() => setIsModalLoginOpen(false)}
-                        isBtnEnabled1={true}
+                        funcaoBotao1={() => setIsModalAuthOpen(false)}
 
                         textoBotao2='Continuar'
-                        urlBotao2={null}
-                        isNovaAba2={false}
-                        funcaoBotao2={() => null}
-                        isBtnEnabled2={true}
+                        funcaoBotao2={() => handleLogar()}
+
+                        setEmail={setEmail}
+                        setSenha={setSenha}
                     />
                 </ModalLayout>
             </ModalWrapper>
@@ -61,7 +70,7 @@ export default function Navbar() {
                         handleFuncao={() => null}
                     />
 
-                    <a onClick={() => setIsModalLoginOpen(true)}>Entrar</a>
+                    <a onClick={() => setIsModalAuthOpen(true)}>Entrar</a>
 
                     <Botao
                         texto='Criar conta'
