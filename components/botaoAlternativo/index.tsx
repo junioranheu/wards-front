@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import { Dispatch, Ref, SetStateAction } from 'react';
+import { Dispatch, KeyboardEvent, Ref, SetStateAction } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
@@ -32,6 +32,14 @@ export default function BotaoAlternativo({ valorInput, setValorInput, placeholde
         }
     }
 
+    function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
+        if (handleFuncao) {
+            if (event.key === 'Enter') {
+                handleFuncao();
+            }
+        }
+    }
+
     return (
         <section className={Styles.form}>
             <input
@@ -40,6 +48,7 @@ export default function BotaoAlternativo({ valorInput, setValorInput, placeholde
                 disabled={!isEnabled}
                 value={valorInput}
                 onChange={(e) => setValorInput(e.target.value)}
+                onKeyDown={(e) => handleKeyPress(e)}
             />
 
             <button
