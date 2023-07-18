@@ -1,6 +1,8 @@
 import BotaoAlternativo from '@/components/botaoAlternativo';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
+import CONSTS_NEWS_LETTERS from '@/utils/api/consts/newsletterCadastro';
+import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
@@ -13,7 +15,8 @@ export default function Intro() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
 
-    const [emailCadastroPost, setEmailCadastroPost] = useState<string>(Auth.get()?.email ?? '');
+    const [emailCadastroNewsletter, setEmailCadastroNewsletter] = useState<string>(Auth.get()?.email ?? '');
+    const [isBtnCadastroNewsletterAtivo, setIsBtnCadastroNewsletterAtivo] = useState<boolean>(true);
 
     const refDivMain = useRef<HTMLDivElement>(null);
     const refDivInfo = useRef<HTMLDivElement>(null);
@@ -21,13 +24,25 @@ export default function Intro() {
 
     useElementoAcompanhaScroll(refDivMain, refDivInfo, mediaQueryLimite);
 
-    function handleCadastrarParaReceberPosts() {
-        if (!emailCadastroPost || !validarEmail(emailCadastroPost)) {
+    async function handleCadastrarParaReceberPosts() {
+        if (!emailCadastroNewsletter || !validarEmail(emailCadastroNewsletter)) {
             Aviso.toast('Preencha o campo com um e-mail válido antes de prosseguir', 5500, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
-        alert(emailCadastroPost);
+        const input = {
+            email: emailCadastroNewsletter
+        };
+
+        const resp = await Fetch.postApi(CONSTS_NEWS_LETTERS.criar, input);
+
+        if (resp?.mensagens || !resp) {
+            Aviso.toast(resp.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+            return false;
+        }
+
+        Aviso.toast('Obrigado! Seu e-mail foi cadastrado com sucesso em nossa newsletter', 5500, CONSTS_EMOJIS.SUCESSO, true);
+        setIsBtnCadastroNewsletterAtivo(false);
     }
 
     return (
@@ -54,15 +69,15 @@ export default function Intro() {
                 <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
 
                 <BotaoAlternativo
-                    valorInput={emailCadastroPost}
-                    setValorInput={setEmailCadastroPost}
+                    valorInput={emailCadastroNewsletter}
+                    setValorInput={setEmailCadastroNewsletter}
                     placeholderInput='Seu melhor e-mail'
                     placeholderBotao='Inscrever'
                     url={null}
                     isNovaAba={false}
                     handleFuncao={() => handleCadastrarParaReceberPosts()}
                     refBtn={null}
-                    isEnabled={true}
+                    isEnabled={isBtnCadastroNewsletterAtivo}
                 />
             </div>
         </section>
