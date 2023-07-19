@@ -1,6 +1,5 @@
 import ModalLayout from '@/components/modal/_modal.layout';
 import ModalWrapper from '@/components/modal/_modal.wrapper';
-import ModalAuth from '@/components/modal/modal.auth';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useWindowSize from '@/hooks/useWindowSize';
 import CONSTS_USUARIOS from '@/utils/api/consts/usuarios';
@@ -13,9 +12,10 @@ import { Aviso } from '@/utils/functions/aviso';
 import gerarStringAleatoria from '@/utils/functions/gerar.stringAleatoria';
 import iUsuario from '@/utils/types/iUsuario';
 import iUsuarioContext from '@/utils/types/iUsuario.context';
-import { Fragment, useState } from 'react';
-import NavbarFull from './navbar-full';
-import NavbarSmall from './navbar-small';
+import { Fragment, lazy, useState } from 'react';
+const ModalAuth = lazy(() => import('@/components/modal/modal.auth'));
+const NavbarFull = lazy(() => import('./navbar-full'));
+const NavbarSmall = lazy(() => import('./navbar-small'));
 
 export default function Navbar() {
 
