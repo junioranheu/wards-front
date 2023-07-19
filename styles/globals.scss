@@ -91,10 +91,6 @@ svg {
     &:hover {
         cursor: pointer;
         transition: .3s;
-        transform: translate(0, -0.25rem);
-    }
-
-    &:hover:not(.svgSemEfeito) {
         stroke: var(--principal);
 
         path {
