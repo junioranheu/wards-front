@@ -1,7 +1,8 @@
 import ImgLogo from '@/assets/images/outros/logo.webp';
+import useEsconderScroll from '@/hooks/useEsconderScroll';
 import CONSTS_MODAL from '@/utils/consts/modal.tamanho';
 import Image, { StaticImageData } from 'next/image';
-import { Dispatch, ReactNode, useEffect, useState } from 'react';
+import { Dispatch, ReactNode, useState } from 'react';
 import BotaoFecharModal from './_botaoFecharModal';
 import Styles from './_modal.module.scss';
 
@@ -17,15 +18,9 @@ interface iParametros {
 }
 
 export default function ModalLayout({ handleModal, logo, isExibirApenasLogo, titulo, children, tamanho, isCentralizado, isFecharModalClicandoNoFundo }: iParametros) {
+
+    useEsconderScroll();
     const [animarDiv, setAnimarDiv] = useState<string>('');
-
-    useEffect(() => {
-        document.querySelector('html')!.style.overflow = 'hidden';
-
-        return () => {
-            document.querySelector('html')!.style.overflow = 'auto';
-        };
-    }, []);
 
     return (
         <section
