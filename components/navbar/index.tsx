@@ -20,8 +20,10 @@ const NavbarSmall = lazy(() => import('./navbar-small'));
 export default function Navbar() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
+
     const windowSize = useWindowSize();
     const mediaQueryLimite = 1025;
+    const [isNavbarSmallOpen, setIsNavbarSmallOpen] = useState<boolean>(false);
 
     const [isModalLoginOpen, setIsModalLoginOpen] = useState<boolean>(false);
     const [isModalCriarContaOpen, setIsModalCriarContaOpen] = useState<boolean>(false);
@@ -160,6 +162,8 @@ export default function Navbar() {
             {
                 windowSize.width <= mediaQueryLimite ? (
                     <NavbarSmall
+                        isNavbarSmallOpen={isNavbarSmallOpen}
+                        setIsNavbarSmallOpen={setIsNavbarSmallOpen}
                         isAuth={isAuth}
                         setIsModalLoginOpen={setIsModalLoginOpen}
                         setIsModalCriarContaOpen={setIsModalCriarContaOpen}
