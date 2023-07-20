@@ -25,6 +25,8 @@ export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, i
             {
                 isNavbarSmallOpen && (
                     <ConteudoNavbarSmall
+                        isNavbarSmallOpen={isNavbarSmallOpen}
+                        setIsNavbarSmallOpen={setIsNavbarSmallOpen}
                         isAuth={isAuth}
                         setIsModalLoginOpen={setIsModalLoginOpen}
                         setIsModalCriarContaOpen={setIsModalCriarContaOpen}
@@ -58,24 +60,50 @@ export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, i
 }
 
 interface iParametrosConteudoNavbarSmall {
+    isNavbarSmallOpen: boolean;
+    setIsNavbarSmallOpen: Dispatch<SetStateAction<boolean>>;
     isAuth: boolean;
     setIsModalLoginOpen: Dispatch<SetStateAction<boolean>>;
     setIsModalCriarContaOpen: Dispatch<SetStateAction<boolean>>;
     handleLogoff: () => void;
 }
 
-function ConteudoNavbarSmall({ isAuth, setIsModalLoginOpen, setIsModalCriarContaOpen, handleLogoff }: iParametrosConteudoNavbarSmall) {
+function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, setIsModalLoginOpen, setIsModalCriarContaOpen, handleLogoff }: iParametrosConteudoNavbarSmall) {
 
     useEsconderScroll();
 
     return (
         <section className={StylesNavbarSmall.navbarSmall}>
-            <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
+            <div className={StylesNavbarSmall.icones}>
+                <IconeLupa
+                    escala={0.75}
+                    url={null}
+                    isNovaAba={false}
+                    handleFuncao={() => null}
+                />
+
+                <IconeHamburguer
+                    isOpen={isNavbarSmallOpen}
+                    setIsOpen={setIsNavbarSmallOpen}
+                    escala={0.8}
+                />
+            </div>
+
+            <Botao
+                texto='Sobre'
+                url={CONSTS_TELAS.SOBRE}
+                isNovaAba={false}
+                handleFuncao={() => null}
+                Svg={null}
+                refBtn={null}
+                isEnabled={true}
+                isPequeno={true}
+            />
 
             {
                 !isAuth ? (
                     <Fragment>
-                        <a onClick={() => setIsModalLoginOpen(true)}>Entrar</a>
+                        <span className='separadorHorizontal'></span>
 
                         <Botao
                             texto='Criar conta'
@@ -87,9 +115,29 @@ function ConteudoNavbarSmall({ isAuth, setIsModalLoginOpen, setIsModalCriarConta
                             isEnabled={true}
                             isPequeno={true}
                         />
+
+                        <Botao
+                            texto='Entrar'
+                            url={null}
+                            isNovaAba={true}
+                            handleFuncao={() => setIsModalLoginOpen(true)}
+                            Svg={null}
+                            refBtn={null}
+                            isEnabled={true}
+                            isPequeno={true}
+                        />
                     </Fragment>
                 ) : (
-                    <a onClick={() => handleLogoff()}>Sair</a>
+                    <Botao
+                        texto='Sair'
+                        url={null}
+                        isNovaAba={true}
+                        handleFuncao={() => handleLogoff()}
+                        Svg={null}
+                        refBtn={null}
+                        isEnabled={true}
+                        isPequeno={true}
+                    />
                 )
             }
         </section>
