@@ -8,7 +8,7 @@ const Wards = lazy(() => import('./components/wards'));
 
 export default function Page() {
 
-    useTitulo(CONSTS_SISTEMA.NOME_SISTEMA, false);
+    useTitulo(`${CONSTS_SISTEMA.NOME_SISTEMA} • ${CONSTS_SISTEMA.DESCRICAO_SISTEMA}`, false);
 
     return (
         <section className={StylesLayout.session}>

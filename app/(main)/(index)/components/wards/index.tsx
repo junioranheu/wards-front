@@ -1,8 +1,10 @@
+import ImgRohee from '@/assets/images/outros/jinmiran.webp';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Aviso } from '@/utils/functions/aviso';
 import iWard from '@/utils/types/iWard';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Styles from './index.module.scss';
 
@@ -29,9 +31,16 @@ export default function Wards() {
         <section className={Styles.wards}>
             {
                 listaWards?.map((w: iWard, i: number) => (
-                    <h1 key={i}>
-                        {w.titulo}
-                    </h1>
+                    <div className={Styles.card} key={i}>
+                        <div className={Styles.esquerda}>
+                            <span className={Styles.titulo}>{w.titulo}</span>
+                            <span className={Styles.infos}>{w.data.toString()} · #{w.wardId}</span>
+                        </div>
+
+                        <div className={Styles.direita}>
+                            <Image src={ImgRohee} alt='' />
+                        </div>
+                    </div>
                 ))
             }
         </section>
