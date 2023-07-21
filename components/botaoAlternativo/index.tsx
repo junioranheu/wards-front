@@ -55,7 +55,7 @@ export default function BotaoAlternativo({ valorInput, setValorInput, placeholde
                 className='botao'
                 onClick={() => handleClick()}
                 ref={refBtn}
-                disabled={!isEnabled}
+                disabled={false}
             >
                 {placeholderBotao}
             </button>

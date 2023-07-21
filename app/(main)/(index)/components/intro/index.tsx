@@ -41,7 +41,7 @@ export default function Intro() {
             return false;
         }
 
-        Aviso.toast('Obrigado! Seu e-mail foi cadastrado com sucesso em nossa newsletter', 5500, CONSTS_EMOJIS.SUCESSO, true);
+        Aviso.toast('Obrigado! Seu e-mail foi cadastrado com sucesso em nossa newsletter', 6000, CONSTS_EMOJIS.SUCESSO, true);
         setIsBtnCadastroNewsletterAtivo(false);
     }
 

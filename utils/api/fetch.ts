@@ -1,10 +1,13 @@
 import CONSTS_VERBOS_HTTP from '@/utils/consts/verbosHTTP';
 import gerarHorarioBrasilia from '@/utils/functions/gerar.horarioBrasilia';
+import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import NProgress from 'nprogress';
 
 export const Fetch = {
     async getApi(url: string) {
         NProgress.start();
+        setDesabilitarBotoes(true);
+
         let respostaJson;
         let headers = {
             'Accept': 'application/json',
@@ -29,6 +32,7 @@ export const Fetch = {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
                 NProgress.done();
+                setDesabilitarBotoes(false);
             }
         } catch (erro: any) {
             const e = {
@@ -39,10 +43,13 @@ export const Fetch = {
 
             console.table(e);
             NProgress.done();
+            setDesabilitarBotoes(false);
             // Aviso.error('Houve uma falha na requisição GET ao servidor!', 5000);
         }
 
         NProgress.done();
+        setDesabilitarBotoes(false);
+
         return respostaJson;
     },
 
@@ -63,6 +70,8 @@ export const Fetch = {
 
     async conteudoPostPutDelete(verboHTTP: string, url: string, body: string | any | null) {
         NProgress.start();
+        setDesabilitarBotoes(true);
+
         let respostaJson;
         let headers = {
             'Accept': 'application/json',
@@ -86,6 +95,7 @@ export const Fetch = {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
                 NProgress.done();
+                setDesabilitarBotoes(false);
             }
         } catch (erro: any) {
             const e = {
@@ -97,15 +107,20 @@ export const Fetch = {
 
             console.table(e);
             NProgress.done();
+            setDesabilitarBotoes(false);
             // Aviso.error('Houve uma falha na requisição POST ao servidor!', 5000);
         }
 
         NProgress.done();
+        setDesabilitarBotoes(false);
+
         return respostaJson;
     },
 
     async getApiCorsExterno(url: string) {
         NProgress.start();
+        setDesabilitarBotoes(true);
+
         let respostaJson;
         let headers = {
             'Accept': 'application/json',
@@ -130,6 +145,7 @@ export const Fetch = {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
                 NProgress.done();
+                setDesabilitarBotoes(false);
             }
         } catch (erro: any) {
             const e = {
@@ -140,10 +156,13 @@ export const Fetch = {
 
             console.table(e);
             NProgress.done();
+            setDesabilitarBotoes(false);
             // Aviso.error('Houve uma falha na requisição GET ao servidor!', 5000);
         }
 
         NProgress.done();
+        setDesabilitarBotoes(false);
+
         return respostaJson;
     }
 }
