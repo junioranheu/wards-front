@@ -49,9 +49,7 @@ export default function Intro() {
     return (
         <section className={Styles.intro} ref={refDivMain}>
             <div className={Styles.conteudo}>
-                <video autoPlay loop muted playsInline disablePictureInPicture controls={false}>
-                    <VideoSource />
-                </video>
+                <VideoSource />
             </div>
 
             <div className={Styles.infos} ref={refDivInfo}>
