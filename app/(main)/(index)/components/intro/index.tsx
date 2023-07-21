@@ -8,8 +8,9 @@ import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import validarEmail from '@/utils/functions/validar.email';
-import { useRef, useState } from 'react';
+import { lazy, useRef, useState } from 'react';
 import Styles from './index.module.scss';
+const VideoSource = lazy(() => import('@/app/(main)/(index)/components/video.source'));
 
 export default function Intro() {
 
@@ -49,7 +50,7 @@ export default function Intro() {
         <section className={Styles.intro} ref={refDivMain}>
             <div className={Styles.conteudo}>
                 <video autoPlay loop muted playsInline disablePictureInPicture controls={false}>
-                    <source src={(require('@/assets/videos/coding2.mp4'))} type='video/mp4' />
+                    <VideoSource />
                 </video>
             </div>
 
