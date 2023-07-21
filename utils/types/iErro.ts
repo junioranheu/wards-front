@@ -3,6 +3,7 @@ export default interface iErro {
         value: string;
         hasValue: boolean;
     };
+
     codigo: number;
     data: Date | string;
     mensagens: string[] | null;

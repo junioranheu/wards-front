@@ -4,6 +4,7 @@ import useTitulo from '@/hooks/useTitulo';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { lazy } from 'react';
 const Intro = lazy(() => import('./components/intro'));
+const Wards = lazy(() => import('./components/wards'));
 
 export default function Page() {
 
@@ -12,91 +13,7 @@ export default function Page() {
     return (
         <section className={StylesLayout.session}>
             <Intro />
-
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
-            <h1>a</h1><br />
+            <Wards />
         </section>
     )
 }
