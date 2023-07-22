@@ -1,7 +1,7 @@
 import ImgRohee from '@/assets/images/outros/jinmiran.webp';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
-import filtroPaginacaoInput from '@/utils/api/filters/PaginacaoInput';
+import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Aviso } from '@/utils/functions/aviso';
 import iWard from '@/utils/types/iWard';

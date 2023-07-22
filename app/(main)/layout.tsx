@@ -11,6 +11,7 @@ import { ReactNode, lazy } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Styles from './layout.module.scss';
 const Navbar = lazy(() => import('@/components/navbar'));
+const Footer = lazy(() => import('@/components/footer'));
 
 interface iParametros {
     children: ReactNode;
@@ -36,6 +37,8 @@ export default function LayoutPublic({ children }: iParametros) {
                     <main className={Styles.main}>
                         {children}
                     </main>
+
+                    <Footer />
 
                     <div id='modalWrapper'></div>
                 </body>

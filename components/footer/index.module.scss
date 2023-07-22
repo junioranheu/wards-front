@@ -1,0 +1,159 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    background-color: var(--branco-alt);
+
+    /* Fixar footer sempre embaixo */
+    margin-top: auto;
+    border-top: var(--border);
+
+    .principal {
+        display: flex;
+        justify-content: center;
+        width: 70vw;
+        margin-top: 2.5vw;
+        margin-bottom: 2vw;
+
+        .sessao {
+            /* background-color: pink; */
+            text-align: center;
+            width: 100vw;
+            color: var(--preto);
+
+            .tituloSessao {
+                // background-color: orange;
+                font-weight: 800;
+                line-height: 1;
+            }
+
+            a {
+                // background-color: orange;
+                display: block;
+                font-size: 0.95rem;
+                font-weight: 500;
+                margin-top: 1rem !important;
+                opacity: 0.75;
+                transition: opacity .2s;
+
+                width: fit-content;
+                margin: auto;
+
+                &:hover {
+                    opacity: 0.5;
+                    transition: opacity .2s;
+                }
+            }
+        }
+    }
+
+    .secundaria {
+        border-top: var(--border);
+        width: 70vw;
+        font-weight: 400;
+        font-size: 14px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        color: var(--preto);
+
+        span {
+            &:nth-child(n+2) {
+                margin-left: 10px;
+            }
+        }
+
+        .direita {
+            display: flex;
+
+            .icones {
+                /* background-color: rebeccapurple; */
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    &:nth-child(n+2) {
+                        /* background-color: red; */
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .footer {
+
+        .principal {
+            /* background-color: blue; */
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 90vw;
+
+            .sessao {
+                /* background-color: pink; */
+                flex: 0 0 29%;
+            }
+        }
+
+        .secundaria {
+            // background-color: pink !important; 
+            width: 90vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 18px;
+            padding-top: 21px;
+            margin-top: 3vw;
+            text-align: center;
+
+            .direita {
+                .icones {
+                    span {
+                        &:nth-child(n+2) {
+                            // background-color: red !important;
+                            margin-left: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:739px) {
+    .footer {
+        .principal {
+            /* background-color: blue; */
+            justify-content: center;
+            margin-top: 1.5rem;
+            width: 100vw;
+        }
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+@media (max-width:500px) {
+    .footer {
+        .principal {
+            //  background-color: blue; 
+            width: 95vw;
+
+            .sessao {
+                /* background-color: pink; */
+                flex: 0 0 25%;
+            }
+        }
+    }
+}
