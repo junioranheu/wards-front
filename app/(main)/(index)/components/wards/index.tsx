@@ -1,6 +1,7 @@
 import ImgRohee from '@/assets/images/outros/jinmiran.webp';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
+import filtroPaginacaoInput from '@/utils/api/filters/PaginacaoInput';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Aviso } from '@/utils/functions/aviso';
 import iWard from '@/utils/types/iWard';
@@ -14,7 +15,7 @@ export default function Wards() {
 
     useEffect(() => {
         async function handleListarWards() {
-            const resp = await Fetch.getApi(CONSTS_WARDS.listar) as iWard[];
+            const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(0, 1, false)}`) as iWard[];
 
             if (resp[0]?.mensagens || !resp) {
                 Aviso.toast(resp[0].mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
