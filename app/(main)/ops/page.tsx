@@ -7,8 +7,8 @@ export default function Ops() {
     return (
         <section className={Styles.main}>
             <div>
-                <h1>Parece que deu ruim</h1>
-                <h1> <span className={Styles.ascii}>(╯°□°）╯︵ ┻━┻</span></h1>
+                <span>Parece que deu ruim</span>
+                <span>&#40;╯°□°&#41;╯︵ ┻━┻</span>
             </div>
 
             <div>
