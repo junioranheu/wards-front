@@ -32,6 +32,15 @@
                 line-height: 3.5rem;
                 font-weight: 800;
                 width: fit-content;
+                transition: .2s ease-in-out;
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--principal) !important;
+                    fill: var(--principal) !important;
+                    opacity: 1 !important;
+                    transition: .2s ease-in-out;
+                }
             }
 
             .infos {
@@ -56,3 +65,53 @@
         }
     }
 }
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res + */
+@media (max-width:1536px) {}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+    .infiniteScroll {
+        gap: 5rem;
+
+        .card {
+            // background-color: purple;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            min-height: fit-content;
+            max-height: fit-content;
+
+            .esquerda {
+                // background-color: aquamarine;
+                width: 100%;
+            }
+
+            .direita {
+                // background-color: antiquewhite;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    max-height: 20rem;
+                }
+            }
+        }
+    }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

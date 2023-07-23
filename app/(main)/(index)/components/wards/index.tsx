@@ -1,13 +1,17 @@
+'use client';
 import ImgPadrao from '@/assets/images/outros/coding.webp';
 import ImgLoading from '@/assets/images/outros/loading.webp';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
+import CONSTS_TELAS from '@/utils/consts/telas';
 import formatarData from '@/utils/functions/formatar.data';
+import normalizarURL from '@/utils/functions/normalizar.URL';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
+import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Styles from './index.module.scss';
@@ -48,7 +52,10 @@ export default function Wards() {
             {
                 listaWards?.map((w: iWard, i: number) => (
                     <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
-                        <div className={Styles.esquerda}>
+                        <div
+                            className={Styles.esquerda}
+                            onClick={() => Router.push(`${CONSTS_TELAS.WARD}/${w.wardId}/${normalizarURL(w.titulo)}`)}
+                        >
                             <span className={Styles.titulo}>{w.titulo}</span>
                             <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
                         </div>

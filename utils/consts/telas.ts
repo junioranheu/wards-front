@@ -1,6 +1,7 @@
 const CONSTS_TELAS = {
     INDEX: '/',
-    SOBRE: '/sobre'
+    SOBRE: '/sobre',
+    WARD: '/ward'
 };
 
 export default CONSTS_TELAS;

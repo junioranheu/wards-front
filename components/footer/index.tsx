@@ -12,6 +12,7 @@ export default function Footer() {
 
                     <Link href={CONSTS_TELAS.INDEX}>Início</Link>
                     <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
+                    <Link href={CONSTS_TELAS.SOBRE}>Estou com sorte</Link>
                 </div>
 
                 <div className={Styles.sessao}>
