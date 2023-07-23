@@ -30,7 +30,7 @@ export default function Wards() {
         const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
 
         // @ts-ignore;
-        if (resp.mensagens || !resp) {
+        if (resp?.mensagens || !resp) {
             setHasMore(false);
             return false;
         }
@@ -56,11 +56,14 @@ export default function Wards() {
                 {
                     listaWards?.map((w: iWard, i: number) => (
                         <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
-                            <div
-                                className={Styles.esquerda}
-                                onClick={() => handleRedirecionar(w)}
-                            >
-                                <span className={Styles.titulo}>{w.titulo}</span>
+                            <div className={Styles.esquerda}>
+                                <span
+                                    className={Styles.titulo}
+                                    onClick={() => handleRedirecionar(w)}
+                                >
+                                    {w.titulo}
+                                </span>
+
                                 <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
                             </div>
 

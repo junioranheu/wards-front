@@ -38,7 +38,7 @@ export default function Intro() {
         const resp = await Fetch.postApi(CONSTS_NEWS_LETTERS.criar, input);
 
         if (resp?.mensagens || !resp) {
-            Aviso.toast(resp.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+            Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 

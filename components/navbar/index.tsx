@@ -45,7 +45,7 @@ export default function Navbar() {
         const resp = await Fetch.postApi(CONSTS_USUARIOS.autenticar, input) as iUsuario;
 
         if (resp?.mensagens || !resp) {
-            Aviso.toast(resp.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+            Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
@@ -83,7 +83,7 @@ export default function Navbar() {
         const resp = await Fetch.postApi(CONSTS_USUARIOS.criar, input) as iUsuario;
 
         if (resp?.mensagens || !resp) {
-            Aviso.toast(resp.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+            Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
