@@ -18,7 +18,8 @@ export default function Wards() {
     const [hasMore, setHasMore] = useState<boolean>(true);
 
     async function handleListarWards() {
-        const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, 1, false)}`) as iWard[];
+        const qtdRegistrosPorRequest = 2;
+        const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
 
         // @ts-ignore;
         if (resp.mensagens || !resp) {
