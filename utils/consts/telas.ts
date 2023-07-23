@@ -3,7 +3,7 @@ const CONSTS_TELAS = {
     SOBRE: '/sobre',
     BUSCAR: '/buscar',
     WARD: '/ward',
-    ERRO: '/404'
+    ERRO: '/ops'
 };
 
 export default CONSTS_TELAS;

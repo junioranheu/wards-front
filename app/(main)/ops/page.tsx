@@ -3,7 +3,7 @@ import Botao from '@/components/botao';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import Styles from './index.module.scss';
 
-export default function Erro404() {
+export default function Ops() {
     return (
         <section className={Styles.main}>
             <div>

@@ -33,7 +33,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
         }
 
         handleObterWard();
-    }, []);
+    }, [router, params.id]);
 
     return (
         <section className={StylesLayout.session}>
