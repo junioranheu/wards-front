@@ -1,13 +1,13 @@
 'use client';
-import StylesLayout from '@/app/(main)/layout.module.scss';
 import useTitulo from '@/hooks/useTitulo';
+import Styles from './index.module.scss';
 
 export default function Page() {
 
     useTitulo('Sobre', true);
 
     return (
-        <section className={StylesLayout.session}>
+        <section className={Styles.main}>
             <h1>Sobre</h1>
         </section>
     )

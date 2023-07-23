@@ -23,7 +23,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
             // @ts-ignore;
             if (resp?.mensagens || !resp) {
-                Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+                Aviso.toast(`A ward #${params.id} não foi encontrada`, 7500, CONSTS_EMOJIS.ERRO, true);
                 router.push(CONSTS_TELAS.ERRO);
                 return false;
             }
