@@ -1,4 +1,4 @@
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Dispatch, KeyboardEvent, Ref, SetStateAction } from 'react';
 import Styles from './index.module.scss';
 
@@ -16,6 +16,8 @@ interface iParametros {
 
 export default function BotaoAlternativo({ valorInput, setValorInput, placeholderInput, placeholderBotao, url, isNovaAba, handleFuncao, refBtn, isEnabled }: iParametros) {
 
+    const router = useRouter();
+
     function handleClick() {
         if (!url) {
             if (handleFuncao) {
@@ -28,7 +30,7 @@ export default function BotaoAlternativo({ valorInput, setValorInput, placeholde
         if (isNovaAba) {
             window.open(url, '_blank');
         } else {
-            Router.push(url);
+            router.push(url);
         }
     }
 

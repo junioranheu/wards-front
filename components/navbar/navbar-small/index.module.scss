@@ -13,13 +13,26 @@
     height: 100%;
     padding: 2rem;
 
-    .icones {
+    .top {
         // background-color: orange;
-        margin-left: auto;
-
         display: flex;
         flex-direction: row;
-        gap: 1.25rem;
+        justify-content: space-between;
+        gap: 3rem;
+
+        .esquerda {
+
+            // background-color: orange;
+            span {
+                font-weight: 700;
+            }
+        }
+
+        .direita {
+            // background-color: orange;
+            display: flex;
+            gap: 1.25rem;
+        }
     }
 
     a {

@@ -1,4 +1,4 @@
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface iParametros {
     escala: number;
@@ -8,6 +8,8 @@ interface iParametros {
 }
 
 export default function IconeLupa({ escala, url, isNovaAba, handleFuncao }: iParametros) {
+
+    const router = useRouter();
 
     function handleClick() {
         if (!url) {
@@ -21,7 +23,7 @@ export default function IconeLupa({ escala, url, isNovaAba, handleFuncao }: iPar
         if (isNovaAba) {
             window.open(url, '_blank');
         } else {
-            Router.push(url);
+            router.push(url);
         }
     }
 

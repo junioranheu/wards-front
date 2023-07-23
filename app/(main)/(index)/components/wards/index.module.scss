@@ -110,6 +110,14 @@
             .esquerda {
                 // background-color: aquamarine;
                 width: 100%;
+                gap: 0.15rem;
+
+                .titulo {
+                    // background-color: purple;
+                    font-size: 2rem;
+                    line-height: 2.6rem;
+                    font-weight: 700;
+                }
             }
 
             .direita {

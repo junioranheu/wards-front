@@ -1,4 +1,4 @@
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { ReactNode, Ref } from 'react';
 
 interface iParametros {
@@ -14,6 +14,8 @@ interface iParametros {
 
 export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn, isEnabled, isPequeno }: iParametros) {
 
+    const router = useRouter();
+
     function handleClick() {
         if (!url) {
             if (handleFuncao) {
@@ -26,7 +28,7 @@ export default function Botao({ texto, url, isNovaAba, handleFuncao, Svg, refBtn
         if (isNovaAba) {
             window.open(url, '_blank');
         } else {
-            Router.push(url);
+            router.push(url);
         }
     }
 

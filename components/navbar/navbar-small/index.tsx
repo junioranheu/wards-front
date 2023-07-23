@@ -4,7 +4,9 @@ import IconeLupa from '@/components/icones/lupa';
 import useEsconderScroll from '@/hooks/useEsconderScroll';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
+import { Auth } from '@/utils/context/usuarioContext';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
+import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
@@ -74,19 +76,31 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
 
     return (
         <section className={StylesNavbarSmall.navbarSmall}>
-            <div className={StylesNavbarSmall.icones}>
-                <IconeLupa
-                    escala={0.75}
-                    url={null}
-                    isNovaAba={false}
-                    handleFuncao={() => null}
-                />
+            <div className={StylesNavbarSmall.top}>
+                <div className={StylesNavbarSmall.esquerda}>
+                    {
+                        isAuth ? (
+                            <span>Olá, {obterPrimeiraPalavra(Auth.get()?.nomeCompleto ?? 'amigo')}!</span>
+                        ) : (
+                            <span></span>
+                        )
+                    }
+                </div>
 
-                <IconeHamburguer
-                    isOpen={isNavbarSmallOpen}
-                    setIsOpen={setIsNavbarSmallOpen}
-                    escala={0.8}
-                />
+                <div className={StylesNavbarSmall.direita}>
+                    <IconeLupa
+                        escala={0.75}
+                        url={null}
+                        isNovaAba={false}
+                        handleFuncao={() => null}
+                    />
+
+                    <IconeHamburguer
+                        isOpen={isNavbarSmallOpen}
+                        setIsOpen={setIsNavbarSmallOpen}
+                        escala={0.8}
+                    />
+                </div>
             </div>
 
             <Botao
