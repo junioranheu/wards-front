@@ -4,6 +4,7 @@ import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
+import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -51,7 +52,7 @@ export default function Wards() {
                         </div>
 
                         <div className={Styles.direita}>
-                            <Image src={ImgRohee} alt='' />
+                            <Image width={0} height={0} src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgRohee} alt='' />
                         </div>
                     </div>
                 ))
