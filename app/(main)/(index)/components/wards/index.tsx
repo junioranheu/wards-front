@@ -11,12 +11,15 @@ import normalizarURL from '@/utils/functions/normalizar.URL';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Styles from './index.module.scss';
 
 export default function Wards() {
+
+    const router = useRouter();
+
 
     const [listaWards, setListaWards] = useState<iWard[]>([]);
     const [indexBuscaAtual, setIndexBuscaAtual] = useState<number>(0);
@@ -41,7 +44,7 @@ export default function Wards() {
     }, []);
 
     function handleRedirecionar(ward: iWard) {
-        Router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
+        router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
     }
 
     return (
