@@ -113,7 +113,7 @@ export default function Navbar() {
                 >
                     <ModalAuth
                         handleModal={() => setIsModalLoginOpen(!isModalLoginOpen)}
-                        titulo='Bem-vindo de volta! 🖖'
+                        titulo='Bem-vindo de volta!'
                         textoFooter='Não tem uma conta?<br/><a>Crie uma agora mesmo</a>'
                         funcaoFooter={() => { setIsModalLoginOpen(false), setIsModalCriarContaOpen(true) }}
 
@@ -142,7 +142,7 @@ export default function Navbar() {
                 >
                     <ModalAuth
                         handleModal={() => setIsModalCriarContaOpen(!isModalCriarContaOpen)}
-                        titulo={`Bem-vindo ao ${CONSTS_SISTEMA.NOME_SISTEMA}! 🤙<br/>Crie sua conta agora mesmo`}
+                        titulo={`Bem-vindo ao ${CONSTS_SISTEMA.NOME_SISTEMA}!<br/>Crie sua conta agora mesmo`}
                         textoFooter='Já tem uma conta?<br/><a>Entre agora mesmo</a>'
                         funcaoFooter={() => { setIsModalCriarContaOpen(false), setIsModalLoginOpen(true) }}
 

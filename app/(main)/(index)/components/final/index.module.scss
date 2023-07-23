@@ -1,4 +1,18 @@
 .final {
-    background-color: var(--principal);
-    margin-top: 2rem;
+    // background-color: orange;
+    margin-top: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    span:nth-of-type(1) {
+        font-weight: 700;
+    }
+
+    span:nth-of-type(2) {
+        font-weight: 400;
+    }
 }
