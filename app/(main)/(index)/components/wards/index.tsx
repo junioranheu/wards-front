@@ -20,7 +20,6 @@ export default function Wards() {
 
     const router = useRouter();
 
-
     const [listaWards, setListaWards] = useState<iWard[]>([]);
     const [indexBuscaAtual, setIndexBuscaAtual] = useState<number>(0);
     const [hasMore, setHasMore] = useState<boolean>(true);
