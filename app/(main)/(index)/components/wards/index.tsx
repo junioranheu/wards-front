@@ -1,9 +1,10 @@
-import ImgRohee from '@/assets/images/outros/jinmiran.webp';
+import ImgPadrao from '@/assets/images/outros/coding.webp';
 import ImgLoading from '@/assets/images/outros/loading.webp';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
+import formatarData from '@/utils/functions/formatar.data';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
@@ -48,12 +49,12 @@ export default function Wards() {
                 listaWards?.map((w: iWard, i: number) => (
                     <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
                         <div className={Styles.esquerda}>
-                            <span className={Styles.titulo}>{w.titulo} · #{w.wardId}</span>
-                            <span className={Styles.infos}>{w.data.toString()} · #{w.wardId}</span>
+                            <span className={Styles.titulo}>{w.titulo}</span>
+                            <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
                         </div>
 
                         <div className={Styles.direita}>
-                            <Image width={0} height={0} src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgRohee} alt='' />
+                            <Image width={0} height={0} src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgPadrao} alt='' />
                         </div>
                     </div>
                 ))

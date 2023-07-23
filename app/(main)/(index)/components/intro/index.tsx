@@ -65,7 +65,7 @@ export default function Intro() {
                     <br />Aqui você vai aprender programação! &lt;/&gt;
                 </span>
 
-                <span className='subtitulo'>Inscreva-se abaixo para receber os posts mais recentes diretamente no seu e-mail.</span>
+                <span className='subtitulo'>Inscreva-se abaixo para receber as wards mais recentes diretamente no seu e-mail.</span>
 
                 <BotaoAlternativo
                     valorInput={emailCadastroNewsletter}
