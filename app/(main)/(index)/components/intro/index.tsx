@@ -10,7 +10,7 @@ import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import validarEmail from '@/utils/functions/validar.email';
 import { lazy, useRef, useState } from 'react';
 import Styles from './index.module.scss';
-const VideoSource = lazy(() => import('@/app/(main)/(index)/components/video.source'));
+const VideoSource = lazy(() => import('@/components/video.source'));
 
 export default function Intro() {
 
@@ -49,7 +49,7 @@ export default function Intro() {
     return (
         <section className={Styles.intro} ref={refDivMain}>
             <div className={Styles.conteudo}>
-                <VideoSource />
+                <VideoSource video='coding' />
             </div>
 
             <div className={Styles.infos} ref={refDivInfo}>

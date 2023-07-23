@@ -1,4 +1,8 @@
-export default function VideoSource() {
+interface iParametros {
+    video: string;
+}
+
+export default function VideoSource({ video }: iParametros) {
     return (
         <video
             autoPlay={true}
@@ -8,7 +12,7 @@ export default function VideoSource() {
             disablePictureInPicture={true}
             controls={false}
         >
-            <source src={(require('@/assets/videos/coding2.mp4'))} type='video/mp4' />
+            <source src={(require(`@/assets/videos/${video}.mp4`))} type='video/mp4' />
         </video>
     )
 }

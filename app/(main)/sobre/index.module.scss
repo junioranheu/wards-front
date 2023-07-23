@@ -1,3 +1,63 @@
 .main {
-    background-color: orange;
+    // background-color: orange;
+    width: 35vw;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.5rem;
+
+    margin-top: 5rem;
+
+    .titulo {
+        span {
+            font-size: 3.725rem;
+            font-weight: 700;
+        }
+    }
+
+    .visual {
+        // background-color: purple;
+
+        video {
+            object-fit: cover;
+            width: 100%;
+            height: 50vh;
+            border-radius: 0.75rem;
+        }
+    }
+
+    .sobre {
+        background-color: purple;
+    }
 }
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res + */
+@media (max-width:1536px) {
+    .main {
+        // background-color: purple;
+        width: 55vw;
+    }
+}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+    .main {
+        // background-color: purple;
+        width: 85vw;
+    }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}
