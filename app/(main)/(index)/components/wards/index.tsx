@@ -12,9 +12,10 @@ import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobPar
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Fragment, lazy, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Styles from './index.module.scss';
+const Final = lazy(() => import('../final'));
 
 export default function Wards() {
 
@@ -38,48 +39,51 @@ export default function Wards() {
         setIndexBuscaAtual((x) => x + 1);
     }
 
-    useEffect(() => {
-        handleListarWards();
-    }, []);
-
     function handleRedirecionar(ward: iWard) {
         router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
     }
 
     return (
-        <InfiniteScroll
-            dataLength={listaWards?.length ?? 0}
-            next={handleListarWards}
-            hasMore={hasMore}
-            loader={<Image src={ImgLoading} width={64} height={64} alt='' />}
-            endMessage={null}
-            className={Styles.infiniteScroll}
-        >
-            {
-                listaWards?.map((w: iWard, i: number) => (
-                    <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
-                        <div
-                            className={Styles.esquerda}
-                            onClick={() => handleRedirecionar(w)}
-                        >
-                            <span className={Styles.titulo}>{w.titulo}</span>
-                            <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
-                        </div>
+        <Fragment>
+            <InfiniteScroll
+                dataLength={listaWards?.length ?? 0}
+                next={handleListarWards}
+                hasMore={hasMore}
+                loader={<div className={Styles.loader}><Image src={ImgLoading} width={64} height={64} alt='' /></div>}
+                endMessage={null}
+                className={Styles.infiniteScroll}
+            >
+                {
+                    listaWards?.map((w: iWard, i: number) => (
+                        <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
+                            <div
+                                className={Styles.esquerda}
+                                onClick={() => handleRedirecionar(w)}
+                            >
+                                <span className={Styles.titulo}>{w.titulo}</span>
+                                <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
+                            </div>
 
-                        <div
-                            className={Styles.direita}
-                            onClick={() => handleRedirecionar(w)}
-                        >
-                            <Image
-                                width={0}
-                                height={0}
-                                src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgPadrao}
-                                alt=''
-                            />
+                            <div
+                                className={Styles.direita}
+                                onClick={() => handleRedirecionar(w)}
+                            >
+                                <Image
+                                    width={0}
+                                    height={0}
+                                    src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgPadrao}
+                                    alt=''
+                                />
+                            </div>
                         </div>
-                    </div>
-                ))
+                    ))
+                }
+
+            </InfiniteScroll>
+
+            {
+                !hasMore && <Final />
             }
-        </InfiniteScroll>
+        </Fragment>
     )
 }

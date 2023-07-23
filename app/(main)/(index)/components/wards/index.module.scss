@@ -7,6 +7,13 @@
     flex-direction: column;
     gap: 3rem;
 
+    .loader {
+        // background-color: orange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .card {
         // background-color: purple;
         display: flex;

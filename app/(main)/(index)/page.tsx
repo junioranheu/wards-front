@@ -5,7 +5,6 @@ import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { lazy } from 'react';
 const Intro = lazy(() => import('./components/intro'));
 const Wards = lazy(() => import('./components/wards'));
-const Final = lazy(() => import('./components/final'));
 
 export default function Page() {
 
@@ -15,7 +14,6 @@ export default function Page() {
         <section className={StylesLayout.session}>
             <Intro />
             <Wards />
-            <Final />
         </section>
     )
 }
