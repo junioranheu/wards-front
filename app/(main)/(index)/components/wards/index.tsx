@@ -40,6 +40,10 @@ export default function Wards() {
         handleListarWards();
     }, []);
 
+    function handleRedirecionar(ward: iWard) {
+        Router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
+    }
+
     return (
         <InfiniteScroll
             dataLength={listaWards?.length ?? 0}
@@ -54,14 +58,22 @@ export default function Wards() {
                     <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
                         <div
                             className={Styles.esquerda}
-                            onClick={() => Router.push(`${CONSTS_TELAS.WARD}/${w.wardId}/${normalizarURL(w.titulo)}`)}
+                            onClick={() => handleRedirecionar(w)}
                         >
                             <span className={Styles.titulo}>{w.titulo}</span>
                             <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
                         </div>
 
-                        <div className={Styles.direita}>
-                            <Image width={0} height={0} src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgPadrao} alt='' />
+                        <div
+                            className={Styles.direita}
+                            onClick={() => handleRedirecionar(w)}
+                        >
+                            <Image
+                                width={0}
+                                height={0}
+                                src={w.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(w.imagemPrincipalBlob) : ImgPadrao}
+                                alt=''
+                            />
                         </div>
                     </div>
                 ))
