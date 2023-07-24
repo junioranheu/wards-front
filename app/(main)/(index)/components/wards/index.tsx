@@ -14,6 +14,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Fragment, lazy, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { Tooltip } from 'react-tooltip';
 import Styles from './index.module.scss';
 const Final = lazy(() => import('../final'));
 
@@ -49,7 +50,7 @@ export default function Wards() {
                 dataLength={listaWards?.length ?? 0}
                 next={handleListarWards}
                 hasMore={hasMore}
-                loader={<div className={Styles.loader}><Image src={ImgLoading} width={64} height={64} alt='' /></div>}
+                loader={<GifLoading />}
                 endMessage={null}
                 className={Styles.infiniteScroll}
             >
@@ -87,6 +88,25 @@ export default function Wards() {
             {
                 !hasMore && <Final />
             }
+        </Fragment>
+    )
+}
+
+function GifLoading() {
+
+    const tooltip = 'tooltipLoading';
+
+    return (
+        <Fragment>
+            <Tooltip id={tooltip} place='right' />
+
+            <div
+                className={Styles.loader}
+                data-tooltip-id={tooltip}
+                data-tooltip-html='Carregando a próxima ward'
+            >
+                <Image src={ImgLoading} width={64} height={64} alt='' />
+            </div>
         </Fragment>
     )
 }
