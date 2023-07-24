@@ -110,6 +110,19 @@ svg {
     margin-bottom: 1rem;
 }
 
+code {
+    display: block;
+    background-color: #282c34;
+    color: #abb2bf;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 1rem;
+    line-height: 1.6;
+    border-radius: 5px;
+
+    text-align: left;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */
 input[type=text],
 input[type=email],

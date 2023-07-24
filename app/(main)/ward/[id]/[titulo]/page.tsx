@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Styles from './index.module.scss';
 
+
 export default function Ward({ params }: { params: { id: string, titulo: string } }) {
 
     const router = useRouter();

@@ -38,7 +38,7 @@
         min-width: 100%;
         font-size: 1.225rem;
         line-height: 2.125rem;
-        font-weight: 500;
+        font-weight: 400;
         text-align: left;
 
         display: flex;
@@ -48,6 +48,13 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+@media (max-width:1920px) {
+    .main {
+        // background-color: purple;
+        width: 45vw;
+    }
+}
+
 /* hi-res + */
 @media (max-width:1536px) {
     .main {
