@@ -1,5 +1,6 @@
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
+import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
 import Link from 'next/link';
 import Styles from './index.module.scss';
 
@@ -13,6 +14,7 @@ export default function Footer() {
                     <Link href={CONSTS_TELAS.INDEX}>Início</Link>
                     <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
                     <Link href={CONSTS_TELAS.BUSCAR}>Buscar</Link>
+                    <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte</a>
                 </div>
 
                 <div className={Styles.sessao}>

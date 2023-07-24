@@ -7,6 +7,7 @@ import CONSTS_TELAS from '@/utils/consts/telas';
 import { Auth } from '@/utils/context/usuarioContext';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
+import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Dispatch, Fragment, SetStateAction } from 'react';
@@ -86,6 +87,11 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
         setIsNavbarSmallOpen(false);
     }
 
+    function handleEstouComSorte() {
+        redirecionarWardAleatoria();
+        setIsNavbarSmallOpen(false);
+    }
+
     return (
         <section className={StylesNavbarSmall.navbarSmall}>
             <div className={StylesNavbarSmall.top}>
@@ -120,6 +126,17 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                 url={null}
                 isNovaAba={false}
                 handleFuncao={() => handleClick(CONSTS_TELAS.SOBRE)}
+                Svg={null}
+                refBtn={null}
+                isEnabled={true}
+                isPequeno={true}
+            />
+
+            <Botao
+                texto='Estou com sorte'
+                url={null}
+                isNovaAba={false}
+                handleFuncao={() => handleEstouComSorte()}
                 Svg={null}
                 refBtn={null}
                 isEnabled={true}

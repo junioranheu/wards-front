@@ -3,6 +3,7 @@ import IconeLupa from '@/components/icones/lupa';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
+import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
 import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
@@ -20,6 +21,7 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
             <div className={Styles.esquerda}>
                 <Link className={`${CONST_NANUM.className} ${Styles.logo} wavy`} href={CONSTS_TELAS.INDEX}>{CONSTS_SISTEMA.NOME_SISTEMA}</Link>
                 <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
+                <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte</a>
             </div>
 
             <div className={Styles.direita}>
