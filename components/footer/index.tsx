@@ -18,7 +18,7 @@ export default function Footer() {
                 <div className={Styles.sessao}>
                     <span className={Styles.tituloSessao}>Outros projetos</span>
 
-                    <Link href='https://junioranheu.vercel.app/' target='_blank'>Portfólio</Link>
+                    <Link href={CONSTS_SISTEMA.URL_PORTFOLIO} target='_blank'>Portfólio</Link>
                     <Link href='https://anheu.vercel.app/' target='_blank'>AnheuOS</Link>
                 </div>
 

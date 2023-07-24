@@ -9,6 +9,7 @@
     gap: 3.5rem;
 
     margin-top: 5rem;
+    margin-bottom: 5rem;
 
     .titulo {
         span {
@@ -29,9 +30,16 @@
     }
 
     .sobre {
-        background-color: purple;
-
+        // background-color: purple;
         min-width: 100%;
+        font-size: 1.225rem;
+        line-height: 2.125rem;
+        font-weight: 500;
+        text-align: left;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
 }
 
@@ -56,7 +64,12 @@
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (max-width:801px) {}
+@media (max-width:801px) {
+    .main {
+        // background-color: purple;
+        text-align: center;
+    }
+}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {}
