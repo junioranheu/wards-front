@@ -89,6 +89,7 @@ svg {
     width: 1.5rem;
     height: 1.5rem;
     fill: none;
+    outline: none !important;
     stroke-width: 2;
     stroke: var(--preto);
     vertical-align: middle;
