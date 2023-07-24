@@ -45,12 +45,7 @@ export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, i
                 </div>
 
                 <div className={Styles.direita}>
-                    <IconeLupa
-                        escala={0.75}
-                        url={null}
-                        isNovaAba={false}
-                        handleFuncao={() => null}
-                    />
+                    <IconeLupa escala={0.75} url={null} isNovaAba={false} handleFuncao={() => null} placeholder='Buscar' />
 
                     <IconeHamburguer
                         isOpen={isNavbarSmallOpen}
@@ -106,13 +101,6 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                 </div>
 
                 <div className={StylesNavbarSmall.direita}>
-                    <IconeLupa
-                        escala={0.75}
-                        url={null}
-                        isNovaAba={false}
-                        handleFuncao={() => null}
-                    />
-
                     <IconeHamburguer
                         isOpen={isNavbarSmallOpen}
                         setIsOpen={setIsNavbarSmallOpen}
@@ -137,6 +125,17 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                 url={null}
                 isNovaAba={false}
                 handleFuncao={() => handleEstouComSorte()}
+                Svg={null}
+                refBtn={null}
+                isEnabled={true}
+                isPequeno={true}
+            />
+
+            <Botao
+                texto='Buscar'
+                url={null}
+                isNovaAba={false}
+                handleFuncao={() => null}
                 Svg={null}
                 refBtn={null}
                 isEnabled={true}

@@ -55,6 +55,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                     height={0}
                     src={ward?.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(ward.imagemPrincipalBlob) : ImgPadrao}
                     alt=''
+                    priority={true}
                 />
             </div>
 

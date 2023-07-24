@@ -1,5 +1,8 @@
 import Botao from '@/components/botao';
+import IconeEntrar from '@/components/icones/entrar';
+import IconeInfo from '@/components/icones/info';
 import IconeLupa from '@/components/icones/lupa';
+import IconeSorte from '@/components/icones/sorte';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
@@ -20,22 +23,17 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
         <nav className={Styles.navbar}>
             <div className={Styles.esquerda}>
                 <Link className={`${CONST_NANUM.className} ${Styles.logo} wavy`} href={CONSTS_TELAS.INDEX}>{CONSTS_SISTEMA.NOME_SISTEMA}</Link>
-                <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
-                <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte</a>
+                <IconeInfo escala={0.65} url={CONSTS_TELAS.SOBRE} isNovaAba={false} handleFuncao={() => null} placeholder='Sobre' />
+                <IconeSorte escala={0.75} url={null} isNovaAba={false} handleFuncao={() => redirecionarWardAleatoria()} placeholder='Estou com sorte' />
             </div>
 
             <div className={Styles.direita}>
-                <IconeLupa
-                    escala={0.75}
-                    url={null}
-                    isNovaAba={false}
-                    handleFuncao={() => null}
-                />
+                <IconeLupa escala={0.75} url={null} isNovaAba={false} handleFuncao={() => null} placeholder='Buscar' />
 
                 {
                     !isAuth ? (
                         <Fragment>
-                            <a onClick={() => setIsModalLoginOpen(true)}>Entrar</a>
+                            <IconeEntrar escala={0.75} url={null} isNovaAba={false} handleFuncao={() => setIsModalLoginOpen(true)} placeholder='Entrar' />
 
                             <Botao
                                 texto='Criar conta'

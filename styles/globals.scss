@@ -70,6 +70,10 @@ a {
         fill: var(--principal-escuro) !important;
         opacity: 1 !important;
         transition: .2s ease-in-out;
+
+        svg {
+            fill: var(--principal-escuro) !important;
+        }
     }
 }
 
@@ -287,6 +291,8 @@ textarea {
 .react-tooltip {
     font-size: 0.9rem !important;
     background-color: var(--principal) !important;
+    color: var(--branco-alt) !important;
+    font-weight: 800 !important;
     z-index: 999999999 !important;
 }
 
