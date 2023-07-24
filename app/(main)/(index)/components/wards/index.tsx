@@ -56,7 +56,7 @@ export default function Wards() {
             >
                 {
                     listaWards?.map((w: iWard, i: number) => (
-                        <div className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
+                        <section className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
                             <div className={Styles.esquerda}>
                                 <span
                                     className={Styles.titulo}
@@ -79,7 +79,7 @@ export default function Wards() {
                                     alt=''
                                 />
                             </div>
-                        </div>
+                        </section>
                     ))
                 }
 
