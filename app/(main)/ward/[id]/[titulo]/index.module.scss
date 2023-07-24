@@ -65,6 +65,8 @@
                 flex-direction: column;
                 gap: 0rem;
 
+                user-select: text !important;
+
                 strong,
                 b {
                     font-size: 1.725rem;
