@@ -1,14 +1,17 @@
 'use client';
-import StylesLayout from '@/app/(main)/layout.module.scss';
+import ImgPadrao from '@/assets/images/outros/coding.webp';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { Aviso } from '@/utils/functions/aviso';
+import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
 import iWard from '@/utils/types/iWard';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Styles from './index.module.scss';
 
 export default function Ward({ params }: { params: { id: string, titulo: string } }) {
 
@@ -28,16 +31,36 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                 return false;
             }
 
-            console.log(resp);
+            // console.log(resp);
             setWard(resp);
         }
 
         handleObterWard();
     }, [router, params.id]);
 
+    if (!ward) {
+        return false;
+    }
+
     return (
-        <section className={StylesLayout.session}>
-            <h1>{ward?.titulo} #{ward?.wardId}</h1>
+        <section className={Styles.main}>
+            <div className={Styles.titulo}>
+                <span>{ward?.titulo}</span>
+            </div>
+
+            <div className={Styles.visual}>
+                <Image
+                    width={0}
+                    height={0}
+                    src={ward?.imagemPrincipalBlob ? normalizarBlobParaImagemBase64(ward.imagemPrincipalBlob) : ImgPadrao}
+                    alt=''
+                />
+            </div>
+
+            <div
+                className={Styles.conteudo}
+                dangerouslySetInnerHTML={{ __html: ward?.conteudo }}
+            />
         </section>
     )
 }
