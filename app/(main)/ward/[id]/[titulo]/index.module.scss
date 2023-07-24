@@ -31,7 +31,7 @@
             object-fit: cover;
             width: 100%;
             height: auto;
-            max-height: 50vh;
+            max-height: 75vh;
             border-radius: 1rem;
         }
     }
@@ -99,6 +99,20 @@
     .main {
         // background-color: purple;
         width: 85vw;
+
+        .visual {
+            // background-color: purple;
+            // margin: auto;
+            width: 100%;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+                max-height: 50vh;
+                border-radius: 1rem;
+            }
+        }
     }
 }
 
