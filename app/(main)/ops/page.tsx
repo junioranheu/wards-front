@@ -13,7 +13,7 @@ export default function Ops() {
 
             <div>
                 <Botao
-                    texto='Voltar ao ínicio'
+                    texto='Voltar ao início'
                     url={CONSTS_TELAS.INDEX}
                     isNovaAba={false}
                     handleFuncao={() => null}
