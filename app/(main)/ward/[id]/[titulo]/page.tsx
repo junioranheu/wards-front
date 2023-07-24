@@ -58,10 +58,18 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                 />
             </div>
 
-            <div
-                className={Styles.conteudo}
-                dangerouslySetInnerHTML={{ __html: ward?.conteudo }}
-            />
+            <div className={Styles.ward}>
+                <div className={Styles.esquerda}>
+                    <span>Junior</span>
+                </div>
+
+                <div className={Styles.direita}>
+                    <section
+                        className={Styles.conteudo}
+                        dangerouslySetInnerHTML={{ __html: ward?.conteudo }}
+                    />
+                </div>
+            </div>
         </section>
     )
 }

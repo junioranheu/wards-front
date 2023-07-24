@@ -1,6 +1,6 @@
 .main {
     // background-color: orange;
-    width: 40vw;
+    width: 60vw;
 
     display: flex;
     flex-direction: column;
@@ -12,63 +12,80 @@
 
     .titulo {
         // background-color: purple;
-        margin: auto;
-        text-align: center;
+        text-align: left;
+        width: 65%;
 
         span {
-            font-size: 3.725rem;
-            font-weight: 700;
+            font-size: 4.125rem;
+            line-height: 4.5rem;
+            font-weight: 800;
         }
     }
 
     .visual {
         // background-color: purple;
-        margin: auto;
+        // margin: auto;
+        width: 100%;
 
         img {
             object-fit: cover;
             width: 100%;
             height: auto;
             max-height: 50vh;
-            border-radius: 0.75rem;
+            border-radius: 0.5rem;
         }
     }
 
-    .conteudo {
-        // background-color: purple;
-        min-width: 100%;
-        font-size: 1.15rem;
-        line-height: 2rem;
-        font-weight: 400;
-        text-align: left;
-
+    .ward {
+        background-color: orange;
         display: flex;
-        flex-direction: column;
-        gap: 0rem;
+        flex-direction: row;
 
-        strong,
-        b {
-            font-size: 1.725rem;
-            font-weight: 700;
+        width: 100%;
+
+        .esquerda {
+            background-color: purple;
+            width: fit-content;
+        }
+
+        .direita {
+            width: auto;
+
+            .conteudo {
+                // background-color: purple;
+                min-width: 100%;
+                font-size: 1.15rem;
+                line-height: 2rem;
+                font-weight: 400;
+                text-align: left;
+
+                display: flex;
+                flex-direction: column;
+                gap: 0rem;
+
+                strong,
+                b {
+                    font-size: 1.725rem;
+                    font-weight: 700;
+                }
+            }
         }
     }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 /* hi-res ++ */
-@media (max-width:1920px) {
-    .main {
-        // background-color: purple;
-        width: 65vw;
-    }
-}
-
+@media (max-width:1920px) {}
 
 /* hi-res + */
 @media (max-width:1536px) {
     .main {
         // background-color: purple;
-        width: 75vw;
+
+        .titulo {
+            // background-color: purple;
+            width: 100%;
+        }
     }
 }
 
@@ -87,11 +104,13 @@
 @media (max-width:801px) {
     .main {
         // background-color: purple;
-        text-align: center;
+        gap: 2rem;
 
         .titulo {
             span {
-                font-size: 2.725rem;
+                font-size: 2.5rem;
+                line-height: 3rem;
+                font-weight: 800;
             }
         }
     }
