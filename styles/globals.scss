@@ -59,14 +59,15 @@ a {
 .cor-principal {
     color: var(--principal) !important;
     fill: var(--principal) !important;
+    font-weight: bold;
 }
 
 .cor-principal-hover {
     transition: .2s ease-in-out;
 
     &:hover {
-        color: var(--principal) !important;
-        fill: var(--principal) !important;
+        color: var(--principal-escuro) !important;
+        fill: var(--principal-escuro) !important;
         opacity: 1 !important;
         transition: .2s ease-in-out;
     }

@@ -103,7 +103,7 @@ function GifLoading() {
             <div
                 className={Styles.loader}
                 data-tooltip-id={tooltip}
-                data-tooltip-html='Carregando a próxima ward'
+                data-tooltip-html='Carregando a próxima ward. Aguarde, por favor'
             >
                 <Image src={ImgLoading} width={64} height={64} alt='' />
             </div>
