@@ -8,6 +8,7 @@ import { Auth } from '@/utils/context/usuarioContext';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
 import StylesNavbarSmall from './index.module.scss';
@@ -72,7 +73,18 @@ interface iParametrosConteudoNavbarSmall {
 
 function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, setIsModalLoginOpen, setIsModalCriarContaOpen, handleLogoff }: iParametrosConteudoNavbarSmall) {
 
+    const router = useRouter();
     useEsconderScroll();
+
+    function handleClick(url: string) {
+        router.push(url);
+        setIsNavbarSmallOpen(false);
+    }
+
+    function handleSair() {
+        handleLogoff();
+        setIsNavbarSmallOpen(false);
+    }
 
     return (
         <section className={StylesNavbarSmall.navbarSmall}>
@@ -105,9 +117,9 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
 
             <Botao
                 texto='Sobre'
-                url={CONSTS_TELAS.SOBRE}
+                url={null}
                 isNovaAba={false}
-                handleFuncao={() => null}
+                handleFuncao={() => handleClick(CONSTS_TELAS.SOBRE)}
                 Svg={null}
                 refBtn={null}
                 isEnabled={true}
@@ -146,7 +158,7 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                         texto='Sair'
                         url={null}
                         isNovaAba={true}
-                        handleFuncao={() => handleLogoff()}
+                        handleFuncao={() => handleSair()}
                         Svg={null}
                         refBtn={null}
                         isEnabled={true}
