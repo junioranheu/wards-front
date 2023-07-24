@@ -56,7 +56,7 @@ export default function Page() {
 
                 <span>
                     Fun fact: eu inicialmente havia criado apenas um <Link href='https://github.com/junioranheu/wards-api' target='_blank'><span className='cor-principal'>repositório de back-end</span></Link>, com todo o tipo de código em C#, que, de alguma forma, poderia vir me ajudar.
-                    E então, para facilitar a experiência em buscar esses códigos, surgiu essas telinhas aqui ✨
+                    E então, para facilitar a experiência em buscar esses códigos, voilà... surgiram essas telinhas aqui ✨
                 </span>
             </div>
         </section>
