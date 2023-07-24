@@ -42,10 +42,12 @@
         flex-direction: row;
 
         width: 100%;
+        gap: 3rem;
 
         .esquerda {
             background-color: purple;
             width: fit-content;
+            padding: 2rem;
         }
 
         .direita {
