@@ -1,4 +1,4 @@
-import removerHTML from '@/utils/functions/remover.html';
+import removerHTML from '@/utils/functions/remover.HTML';
 import iBusca from '@/utils/types/iBusca';
 import Styles from './index.module.scss';
 
