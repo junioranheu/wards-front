@@ -1,7 +1,7 @@
 const CONSTS_TELAS = {
     INDEX: '/',
     SOBRE: '/sobre',
-    BUSCAR: '/buscar',
+    BUSCA: '/busca',
     WARD: '/ward',
     ERRO: '/ops'
 };

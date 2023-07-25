@@ -11,9 +11,9 @@ export default function Footer() {
                 <div className={Styles.sessao}>
                     <span className={Styles.tituloSessao}>{CONSTS_SISTEMA.NOME_SISTEMA}</span>
 
-                    <Link href={CONSTS_TELAS.INDEX}>Início</Link>
-                    <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
-                    <Link href={CONSTS_TELAS.BUSCAR}>Buscar</Link>
+                    <Link href={CONSTS_TELAS.INDEX}>Voltar ao início</Link>
+                    <Link href={CONSTS_TELAS.SOBRE}>Sobre o projeto</Link>
+                    <Link href={CONSTS_TELAS.BUSCA}>Buscar alguma ward</Link>
                     <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte</a>
                 </div>
 

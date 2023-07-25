@@ -43,7 +43,7 @@ export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, i
                 </div>
 
                 <div className={Styles.direita}>
-                    <IconeLupa escala={0.75} url={null} isNovaAba={false} handleFuncao={() => null} placeholder='Buscar' />
+                    <IconeLupa escala={0.75} url={CONSTS_TELAS.BUSCA} isNovaAba={false} handleFuncao={() => null} placeholder='Buscar' />
 
                     <IconeHamburguer
                         isOpen={isNavbarSmallOpen}

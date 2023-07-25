@@ -295,6 +295,26 @@ textarea {
     color: var(--branco-alt) !important;
     font-weight: 800 !important;
     z-index: 999999999 !important;
+
+    &.react-tooltip__place-right {
+        // background-color: orange !important;
+        margin-left: 0.333rem;
+    }
+
+    &.react-tooltip__place-bottom {
+        // background-color: orange !important;
+        margin-top: 0.333rem;
+    }
+
+    &.react-tooltip__place-left {
+        // background-color: orange !important;
+        margin-right: 0.333rem;
+    }
+
+    &.react-tooltip__place-top {
+        // background-color: orange !important;
+        margin-bottom: 0.333rem;
+    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= nProgress =-=-=-=-=-=-=-=-=-=-= */
