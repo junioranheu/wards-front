@@ -10,7 +10,7 @@ interface iParametros {
 export default function BuscaListaItens({ listaHashtags, hashtag }: iParametros) {
 
     function handleClick(item: iBusca) {
-        alert(item);
+        alert(item.hashtag);
     }
 
     return (
@@ -29,7 +29,7 @@ export default function BuscaListaItens({ listaHashtags, hashtag }: iParametros)
                     ))
                 ) : (
                     <div>
-                        <span>Eita... pra onde foram os itens?</span>
+                        <span>Eita... pra onde foram as wards?</span>
                     </div>
                 )
             }

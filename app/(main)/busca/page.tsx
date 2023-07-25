@@ -15,14 +15,12 @@ export default function Page() {
     useTitulo('Busca', true);
 
     const listaHashtags = [
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) },
-        { hashtag: 'Cachorros', qtdWards: useNumeroAleatorio(500, 1500) }
+        { hashtag: 'C#', qtdWards: useNumeroAleatorio(500, 1500) },
+        { hashtag: 'React.js', qtdWards: useNumeroAleatorio(500, 1500) },
+        { hashtag: 'Angular', qtdWards: useNumeroAleatorio(500, 1500) },
+        { hashtag: 'MySQL', qtdWards: useNumeroAleatorio(500, 1500) },
+        { hashtag: 'MVC', qtdWards: useNumeroAleatorio(500, 1500) },
+        { hashtag: 'Next.js', qtdWards: useNumeroAleatorio(500, 1500) }
     ] as iBusca[];
 
     const [hashtag, setHashtag] = useState<string>('');

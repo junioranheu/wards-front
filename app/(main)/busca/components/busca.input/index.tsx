@@ -1,6 +1,6 @@
-import LupaAlt from '@/components/icones/lupa.alt';
+import IconeLupa from '@/components/icones/lupa';
 import { Dispatch } from 'react';
-import Styles from '../../index.module.scss';
+import Styles from './index.module.scss';
 
 interface iParametros {
     hashtag: string | null;
@@ -9,9 +9,9 @@ interface iParametros {
 
 export default function BuscaInput({ hashtag, setHashtag }: iParametros) {
     return (
-        <div className={Styles.divPesquisa}>
+        <div className={Styles.main}>
             <input
-                className={Styles.inputPesquisaNavbar}
+                className={Styles.input}
                 type='text'
                 placeholder='Procure por uma hashtag como "xxx" ou "yyyy", por exemplo'
                 onChange={(e) => setHashtag(e.target.value)}
@@ -19,7 +19,7 @@ export default function BuscaInput({ hashtag, setHashtag }: iParametros) {
             />
 
             <div className={Styles.lupa}>
-                <LupaAlt width={20} url={null} title={null} isCorPrincipal={true} />
+                <IconeLupa escala={1} url={null} isNovaAba={false} handleFuncao={() => null} placeholder={hashtag && `Buscar por ${hashtag}`} />
             </div>
         </div>
     )
