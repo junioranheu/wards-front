@@ -170,16 +170,20 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                         />
                     </Fragment>
                 ) : (
-                    <Botao
-                        texto='Sair'
-                        url={null}
-                        isNovaAba={true}
-                        handleFuncao={() => handleSair()}
-                        Svg={null}
-                        refBtn={null}
-                        isEnabled={true}
-                        isPequeno={true}
-                    />
+                    <Fragment>
+                        <span className='separadorHorizontal'></span>
+
+                        <Botao
+                            texto='Sair'
+                            url={null}
+                            isNovaAba={true}
+                            handleFuncao={() => handleSair()}
+                            Svg={null}
+                            refBtn={null}
+                            isEnabled={true}
+                            isPequeno={true}
+                        />
+                    </Fragment>
                 )
             }
         </section>

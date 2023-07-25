@@ -1,6 +1,7 @@
 import Botao from '@/components/botao';
 import IconeEntrar from '@/components/icones/entrar';
 import IconeLupa from '@/components/icones/lupa';
+import IconeSair from '@/components/icones/sair';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { CONST_NANUM } from '@/utils/fonts/fonts';
@@ -23,9 +24,7 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
                 <Link className={`${CONST_NANUM.className} ${Styles.logo} wavy`} href={CONSTS_TELAS.INDEX}>{CONSTS_SISTEMA.NOME_SISTEMA}</Link>
 
                 <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
-                <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte</a>
-                {/* <IconeInfo escala={0.65} url={CONSTS_TELAS.SOBRE} isNovaAba={false} handleFuncao={() => null} placeholder='Sobre' />
-                <IconeSorte escala={0.75} url={null} isNovaAba={false} handleFuncao={() => redirecionarWardAleatoria()} placeholder='Estou com sorte' /> */}
+                <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte ✨</a>
             </div>
 
             <div className={Styles.direita}>
@@ -48,7 +47,7 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
                             />
                         </Fragment>
                     ) : (
-                        <a onClick={() => handleLogoff()}>Sair</a>
+                        <IconeSair escala={0.85} url={null} isNovaAba={false} handleFuncao={() => handleLogoff()} placeholder='Finalizar sessão' />
                     )
                 }
             </div>
