@@ -7,6 +7,8 @@ const CONSTS_SISTEMA = {
     VERSAO_SISTEMA: 'Beta 1.0',
 
     ANIMATE: 'animate__animated animate__fadeIn',
+    ANIMATE_INFINITO: 'animate__animated animate__pulse animate__slower animate__infinite',
+
     URl_LINKEDIN: 'https://www.linkedin.com/in/junioranheu/',
     URL_GITHUB: 'https://github.com/junioranheu',
     URL_PORTFOLIO: 'https://junioranheu.vercel.app/'

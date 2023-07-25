@@ -13,7 +13,7 @@ export default function BuscaInput({ hashtag, setHashtag }: iParametros) {
             <input
                 className={Styles.input}
                 type='text'
-                placeholder='Procure por uma hashtag como "xxx" ou "yyyy", por exemplo'
+                placeholder='Procure por uma hashtag como ".NET" ou "React.js", por exemplo'
                 onChange={(e) => setHashtag(e.target.value)}
                 value={hashtag ?? ''}
             />

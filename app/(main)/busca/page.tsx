@@ -28,10 +28,10 @@ export default function Page() {
     return (
         <section className={Styles.main}>
             <div className={Styles.divTitulo}>
-                <span>{CONSTS_SISTEMA.NOME_SISTEMA}</span>
+                <span>Era essa ward<br />que você queria?</span>
 
-                <div className='animate__animated animate__pulse animate__slower animate__infinite'>
-                    <Image src={ImgEmojiMedicacao} alt='' width={50} height={63} />
+                <div className={CONSTS_SISTEMA.ANIMATE_INFINITO}>
+                    <Image src={ImgEmojiMedicacao} alt='' />
                 </div>
             </div>
 
