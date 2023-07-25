@@ -2,13 +2,12 @@ import Botao from '@/components/botao';
 import IconeEntrar from '@/components/icones/entrar';
 import IconeLupa from '@/components/icones/lupa';
 import IconeSair from '@/components/icones/sair';
-import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
-import { CONST_NANUM } from '@/utils/fonts/fonts';
 import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
 import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
+import Logo from '../logo';
 
 interface iParametros {
     isAuth: boolean;
@@ -21,7 +20,7 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
     return (
         <nav className={Styles.navbar}>
             <div className={Styles.esquerda}>
-                <Link className={`${CONST_NANUM.className} ${Styles.logo} wavy`} href={CONSTS_TELAS.INDEX}>{CONSTS_SISTEMA.NOME_SISTEMA}</Link>
+                <Logo />
 
                 <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
                 <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte ✨</a>

@@ -23,9 +23,16 @@
 
     .logo {
         // background-color: orange;
-        font-size: 2rem;
-        font-weight: bolder !important;
-        transform: rotate(0deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        img {
+            width: 2rem;
+            height: auto;
+        }
     }
 }
 

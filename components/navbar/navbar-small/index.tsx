@@ -2,16 +2,14 @@ import Botao from '@/components/botao';
 import IconeHamburguer from '@/components/icones/hamburguer';
 import IconeLupa from '@/components/icones/lupa';
 import useEsconderScroll from '@/hooks/useEsconderScroll';
-import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { Auth } from '@/utils/context/usuarioContext';
-import { CONST_NANUM } from '@/utils/fonts/fonts';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
+import Logo from '../logo';
 import StylesNavbarSmall from './index.module.scss';
 
 interface iParametros {
@@ -41,7 +39,7 @@ export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, i
 
             <nav className={Styles.navbar}>
                 <div className={Styles.esquerda}>
-                    <Link className={`${CONST_NANUM.className} ${Styles.logo} wavy`} href={CONSTS_TELAS.INDEX}>{CONSTS_SISTEMA.NOME_SISTEMA}</Link>
+                    <Logo />
                 </div>
 
                 <div className={Styles.direita}>
