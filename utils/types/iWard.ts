@@ -16,4 +16,7 @@ export default interface iWard extends iErro {
     dataMod: Date | string;
 
     isAtivo: boolean;
+
+    // Propriedades extras;
+    listaHashtags?: string[];
 }
