@@ -133,7 +133,7 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                 texto='Buscar'
                 url={null}
                 isNovaAba={false}
-                handleFuncao={() => null}
+                handleFuncao={() => handleClick(CONSTS_TELAS.BUSCA)}
                 Svg={null}
                 refBtn={null}
                 isEnabled={true}
