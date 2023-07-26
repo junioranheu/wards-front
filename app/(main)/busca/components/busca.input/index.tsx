@@ -3,23 +3,23 @@ import { Dispatch } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
-    hashtag: string | null;
-    setHashtag: Dispatch<string>;
+    hashtagBuscada: string | null;
+    setHashtagBuscada: Dispatch<string>;
 }
 
-export default function BuscaInput({ hashtag, setHashtag }: iParametros) {
+export default function BuscaInput({ hashtagBuscada, setHashtagBuscada }: iParametros) {
     return (
         <div className={Styles.main}>
             <input
                 className={Styles.input}
                 type='text'
-                placeholder='Procure por uma hashtag como ".NET" ou "React.js", por exemplo'
-                onChange={(e) => setHashtag(e.target.value)}
-                value={hashtag ?? ''}
+                placeholder='Procure por uma hashtag como "#dotnet" ou "#reactjs", por exemplo'
+                onChange={(e) => setHashtagBuscada(e.target.value)}
+                value={hashtagBuscada ?? ''}
             />
 
             <div className={Styles.lupa}>
-                <IconeLupa escala={1} url={null} isNovaAba={false} handleFuncao={() => null} placeholder={hashtag && `Buscar por ${hashtag}`} />
+                <IconeLupa escala={1} url={null} isNovaAba={false} handleFuncao={() => null} placeholder={hashtagBuscada && `Buscar por ${hashtagBuscada}`} />
             </div>
         </div>
     )

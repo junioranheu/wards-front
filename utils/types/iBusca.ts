@@ -1,4 +1,6 @@
-export default interface iBusca {
-    hashtag: string;
-    qtdWards: number;
+import iErro from './iErro';
+
+export default interface iHashtagQtd extends iErro {
+    tag: string;
+    quantidade: number;
 }
