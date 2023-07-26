@@ -22,9 +22,6 @@ interface iParametros {
 }
 
 export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, setIsModalLoginOpen, setIsModalCriarContaOpen, handleLogoff }: iParametros) {
-
-    useEsconderScroll();
-
     return (
         <Fragment>
             {
