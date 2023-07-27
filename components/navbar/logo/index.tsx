@@ -6,7 +6,11 @@ import { Fragment } from 'react';
 import { Tooltip } from 'react-tooltip';
 import Styles from '../index.module.scss';
 
-export default function Logo() {
+interface iParametros {
+    placeholder: string;
+}
+
+export default function Logo({ placeholder }: iParametros) {
 
     const router = useRouter();
     const tooltip = 'tooltipLogo';
@@ -17,9 +21,10 @@ export default function Logo() {
 
             <div
                 className={Styles.logo}
+                style={{ cursor: (placeholder ? 'pointer' : 'auto') }}
                 onClick={() => router.push(CONSTS_TELAS.INDEX)}
                 data-tooltip-id={tooltip}
-                data-tooltip-html='Voltar ao início'
+                data-tooltip-html={placeholder ?? ''}
             >
                 <Image src={ImgLogo} alt='' />
             </div>

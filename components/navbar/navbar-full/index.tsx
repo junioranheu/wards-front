@@ -20,7 +20,7 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
     return (
         <nav className={Styles.navbar}>
             <div className={Styles.esquerda}>
-                <Logo />
+                <Logo placeholder='Voltar ao início' />
 
                 <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
                 <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte ✨</a>

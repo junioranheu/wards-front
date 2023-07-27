@@ -3,8 +3,6 @@ import IconeHamburguer from '@/components/icones/hamburguer';
 import IconeLupa from '@/components/icones/lupa';
 import useEsconderScroll from '@/hooks/useEsconderScroll';
 import CONSTS_TELAS from '@/utils/consts/telas';
-import { Auth } from '@/utils/context/usuarioContext';
-import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
 import { useRouter } from 'next/navigation';
 import { Dispatch, Fragment, SetStateAction } from 'react';
@@ -39,7 +37,7 @@ export default function NavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, i
 
             <nav className={Styles.navbar}>
                 <div className={Styles.esquerda}>
-                    <Logo />
+                    <Logo placeholder='Voltar ao início' />
                 </div>
 
                 <div className={Styles.direita}>
@@ -89,13 +87,7 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
         <section className={StylesNavbarSmall.navbarSmall}>
             <div className={StylesNavbarSmall.top}>
                 <div className={StylesNavbarSmall.esquerda}>
-                    {
-                        isAuth ? (
-                            <span>Olá, {obterPrimeiraPalavra(Auth.get()?.nomeCompleto ?? 'amigo')}!</span>
-                        ) : (
-                            <span></span>
-                        )
-                    }
+                    <Logo placeholder='' />
                 </div>
 
                 <div className={StylesNavbarSmall.direita}>
