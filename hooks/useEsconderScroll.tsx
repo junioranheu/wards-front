@@ -1,14 +1,15 @@
+import verificarIsAndroid from '@/utils/functions/verificar.isAndroid';
+import verificarIsIphone from '@/utils/functions/verificar.isIphone';
 import { useEffect } from 'react';
 
 export default function useEsconderScroll() {
+
     useEffect(() => {
         document.querySelector('html')!.style.overflow = 'hidden';
 
-        const isIphone = /iPhone|iPod/.test(navigator.userAgent);
-        const isAndroid = /Android/.test(navigator.userAgent);
         const preventScrollMobile = (event: any) => event.preventDefault();
 
-        if (isIphone || isAndroid) {
+        if (verificarIsIphone() || verificarIsAndroid()) {
             document.body.addEventListener('touchmove', preventScrollMobile, { passive: false });
         }
 
