@@ -1,6 +1,7 @@
 .main {
     // background-color: orange;
-    width: 60%;
+    width: 79%;
+
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -49,7 +50,12 @@
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
-@media (max-width:1281px) {}
+@media (max-width:1281px) {
+    .main {
+        // background-color: orange;
+        width: 100%;
+    }
+}
 
 /* big landscape tablets, laptops, and desktops */
 @media (max-width:1025px) {}

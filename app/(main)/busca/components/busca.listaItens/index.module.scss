@@ -1,12 +1,12 @@
 .main {
     // background-color: purple;
+    width: 100%;
+
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.25rem;
     row-gap: 1.25rem;
-
-    width: 80%;
 
     .topico {
         // background-color: blue;
@@ -73,6 +73,7 @@
 @media (max-width:801px) {
     .main {
         // background-color: coral;
+        width: 90%;
 
         .topico {
             // background-color: blue;
