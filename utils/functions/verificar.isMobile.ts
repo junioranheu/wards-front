@@ -1,3 +1,7 @@
 export default function verificarIsMobile() {
-    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    try {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    } catch (error: unknown) {
+        return false;
+    }
 }
