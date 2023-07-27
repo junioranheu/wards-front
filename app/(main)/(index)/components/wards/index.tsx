@@ -9,6 +9,7 @@ import CONSTS_TELAS from '@/utils/consts/telas';
 import formatarData from '@/utils/functions/formatar.data';
 import normalizarURL from '@/utils/functions/normalizar.URL';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
+import verificarIsMobile from '@/utils/functions/verificar.isMobile';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -31,13 +32,13 @@ export default function Wards() {
         const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
 
         // @ts-ignore;
-        if (resp?.mensagens || !resp) {
-            setHasMore(false);
-            return false;
-        }
+        // if (resp?.mensagens || !resp) {
+        //     setHasMore(false);
+        //     return false;
+        // }
 
-        setListaWards((x) => [...x as iWard[], ...resp]);
-        setIndexBuscaAtual((x) => x + 1);
+        // setListaWards((x) => [...x as iWard[], ...resp]);
+        // setIndexBuscaAtual((x) => x + 1);
     }
 
     function handleRedirecionar(ward: iWard) {
@@ -103,7 +104,7 @@ function GifLoading() {
             <div
                 className={Styles.loader}
                 data-tooltip-id={tooltip}
-                data-tooltip-html='Carregando a próxima ward. Aguarde, por favor'
+                data-tooltip-html={verificarIsMobile() ? 'Carregando...' : 'Carregando a próxima ward...<br/>Aguarde, por favor'}
             >
                 <Image src={ImgLoading} width={64} height={64} alt='' />
             </div>
