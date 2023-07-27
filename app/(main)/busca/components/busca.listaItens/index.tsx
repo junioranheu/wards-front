@@ -1,3 +1,4 @@
+import GifLoading from '@/components/gif.loading';
 import removerHTML from '@/utils/functions/remover.HTML';
 import { default as iBusca, default as iHashtagQtd } from '@/utils/types/iBusca';
 import Styles from './index.module.scss';
@@ -29,7 +30,7 @@ export default function BuscaListaItens({ listaHashtags, hashtagBuscada }: iPara
                     ))
                 ) : (
                     <div>
-                        <span>Eita... pra onde foram as wards?</span>
+                        <GifLoading />
                     </div>
                 )
             }
