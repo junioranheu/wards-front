@@ -87,7 +87,9 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
         <section className={StylesNavbarSmall.navbarSmall}>
             <div className={StylesNavbarSmall.top}>
                 <div className={StylesNavbarSmall.esquerda}>
-                    <Logo placeholder='' />
+                    <div onClick={() => setIsNavbarSmallOpen(false)}>
+                        <Logo placeholder='' />
+                    </div>
                 </div>
 
                 <div className={StylesNavbarSmall.direita}>

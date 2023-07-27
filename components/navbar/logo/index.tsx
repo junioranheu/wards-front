@@ -21,7 +21,6 @@ export default function Logo({ placeholder }: iParametros) {
 
             <div
                 className={Styles.logo}
-                style={{ cursor: (placeholder ? 'pointer' : 'auto') }}
                 onClick={() => router.push(CONSTS_TELAS.INDEX)}
                 data-tooltip-id={tooltip}
                 data-tooltip-html={placeholder ?? ''}
