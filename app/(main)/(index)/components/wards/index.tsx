@@ -39,7 +39,6 @@ export default function Wards() {
 
         // @ts-ignore;
         if (resp?.mensagens) {
-            console.log(resp);
             setHasMore(false);
             return false;
         }
