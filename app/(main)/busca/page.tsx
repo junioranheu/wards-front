@@ -25,7 +25,7 @@ export default function Page() {
 
     useEffect(() => {
         async function handleListarHashtagsQtd() {
-            const resp = await Fetch.getApi(CONSTS_WARDS_HASHTAGS.listarHashtagQtd) as iHashtagQtd[];
+            const resp = await Fetch.getApi(`${CONSTS_WARDS_HASHTAGS.listarHashtagQtd}?max=6`) as iHashtagQtd[];
 
             // @ts-ignore;
             if (resp?.mensagens || !resp) {

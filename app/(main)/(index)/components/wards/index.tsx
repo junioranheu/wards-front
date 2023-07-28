@@ -4,8 +4,10 @@ import GifLoading from '@/components/gif.loading';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
+import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
+import { Aviso } from '@/utils/functions/aviso';
 import formatarData from '@/utils/functions/formatar.data';
 import normalizarURL from '@/utils/functions/normalizar.URL';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
@@ -29,8 +31,15 @@ export default function Wards() {
         const qtdRegistrosPorRequest = 2;
         const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
 
+        if (!resp) {
+            Aviso.toast('Nenhuma ward foi encontrada no momento. Tente novamente mais tarde!', 7500, CONSTS_EMOJIS.ERRO, true);
+            router.push(CONSTS_TELAS.ERRO);
+            return false;
+        }
+
         // @ts-ignore;
-        if (resp?.mensagens || !resp) {
+        if (resp?.mensagens) {
+            console.log(resp);
             setHasMore(false);
             return false;
         }
