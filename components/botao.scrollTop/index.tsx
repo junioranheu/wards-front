@@ -6,9 +6,10 @@ import Styles from './index.module.scss';
 
 interface iParametros {
     isExibirTexto: boolean;
+    marginTop: number;
 }
 
-export default function BotaoScrolltop({ isExibirTexto }: iParametros) {
+export default function BotaoScrolltop({ isExibirTexto, marginTop }: iParametros) {
 
     const tooltip = 'tooltipFinal';
 
@@ -16,7 +17,10 @@ export default function BotaoScrolltop({ isExibirTexto }: iParametros) {
         <Fragment>
             <Tooltip id={tooltip} place='right' />
 
-            <section className={`${Styles.botaoScrollTop} ${CONSTS_SISTEMA.ANIMATE}`}>
+            <section
+                className={`${Styles.botaoScrollTop} ${CONSTS_SISTEMA.ANIMATE}`}
+                style={{ marginTop: `${marginTop ?? 0}rem` }}
+            >
                 {
                     isExibirTexto && (
                         <Fragment>

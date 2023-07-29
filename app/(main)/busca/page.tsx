@@ -62,6 +62,7 @@ export default function Page() {
                     <div className={Styles.centralizarElemento}>
                         <BotaoScrolltop
                             isExibirTexto={false}
+                            marginTop={0}
                         />
                     </div>
                 ) : (

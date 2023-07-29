@@ -93,7 +93,7 @@ export default function Wards() {
             </InfiniteScroll>
 
             {
-                !hasMore && <BotaoScrolltop isExibirTexto={true} />
+                !hasMore && <BotaoScrolltop isExibirTexto={true} marginTop={5} />
             }
         </Fragment>
     )
