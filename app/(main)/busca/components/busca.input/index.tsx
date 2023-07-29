@@ -19,7 +19,7 @@ export default function BuscaInput({ hashtagBuscada, setHashtagBuscada }: iParam
             />
 
             <div className={Styles.lupa}>
-                <IconeLupa escala={1} url={null} isNovaAba={false} handleFuncao={() => null} placeholder={hashtagBuscada && `Buscar por ${hashtagBuscada}`} />
+                <IconeLupa escala={1} url={null} isNovaAba={false} handleFuncao={() => null} placeholder={null} />
             </div>
         </div>
     )

@@ -1,6 +1,5 @@
 'use client';
 import ImgPadrao from '@/assets/images/outros/coding.webp';
-import GifLoading from '@/components/gif.loading';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
@@ -17,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { Fragment, lazy, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Styles from './index.module.scss';
+const GifLoading = lazy(() => import('@/components/gif.loading'));
 const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 
 export default function Wards() {

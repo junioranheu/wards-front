@@ -11,8 +11,9 @@ import removerHTML from '@/utils/functions/remover.HTML';
 import iWard from '@/utils/types/iWard';
 import { useRouter } from 'next/navigation';
 import nProgress from 'nprogress';
-import { Fragment, lazy, useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import Styles from './index.module.scss';
+const GifLoading = lazy(() => import('@/components/gif.loading'));
 const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 
 interface iParametros {
@@ -55,6 +56,16 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
         router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
     }
 
+    const [isExibirElemento, setIsExibirElemento] = useState<boolean>(false);
+
+    useEffect(() => {
+        const handleDelayDebounce = setTimeout(() => {
+            setIsExibirElemento(true);
+        }, 2500);
+
+        return () => clearTimeout(handleDelayDebounce);
+    }, [hashtagBuscada]);
+
     return (
         <div className={Styles.main}>
             {
@@ -79,13 +90,19 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
 
             {
                 listaWards?.length ? (
-                    <div className={Styles.botaoScrollTop}>
+                    <div className={Styles.centralizarElemento}>
                         <BotaoScrolltop
                             isExibirTexto={false}
                         />
                     </div>
                 ) : (
-                    <Fragment></Fragment>
+                    isExibirElemento ? (
+                        <div className={Styles.centralizarElemento}>
+                            <span>Nenhuma ward foi encontrada 🥺</span>
+                        </div>
+                    ) : (
+                        <GifLoading />
+                    )
                 )
             }
         </div>
