@@ -138,14 +138,6 @@
             justify-content: center;
             margin-top: 1.5rem;
             width: 100vw;
-
-
-            .sessao {
-                &:nth-child(n+3) {
-                    // background-color: orange;
-                    display: none;
-                }
-            }
         }
     }
 }
@@ -156,13 +148,13 @@
 @media (max-width:500px) {
     .footer {
         .principal {
-            //  background-color: blue; 
+            // background-color: orange;
             width: 95vw;
             gap: 3rem;
 
             .sessao {
-                /* background-color: pink; */
-                flex: 0 0 25%;
+                // background-color: purple;
+                flex: 0 0 100%;
             }
         }
     }
