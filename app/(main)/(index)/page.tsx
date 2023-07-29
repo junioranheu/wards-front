@@ -37,7 +37,9 @@ export default function Page() {
 
     return (
         <Fragment>
-            <Splash isSplash={isSplash} />
+            {
+                isSplash && <Splash />
+            }
 
             <section className={StylesLayout.session}>
                 <Intro />
