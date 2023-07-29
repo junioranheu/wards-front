@@ -12,20 +12,18 @@ import setSliceString from '@/utils/functions/set.sliceString';
 import iWard from '@/utils/types/iWard';
 import { useRouter } from 'next/navigation';
 import nProgress from 'nprogress';
-import { lazy, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import Styles from './index.module.scss';
-const GifLoading = lazy(() => import('@/components/gif.loading'));
-const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 
 interface iParametros {
     hashtagBuscada: string | null;
+    listaWards: iWard[];
+    setListaWards: Dispatch<SetStateAction<iWard[]>>;
 }
 
-export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
+export default function BuscaListaWards({ hashtagBuscada, listaWards, setListaWards }: iParametros) {
 
     const router = useRouter();
-
-    const [listaWards, setListaWards] = useState<iWard[]>([]);
 
     useEffect(() => {
         async function handleListarWards() {
@@ -51,21 +49,11 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
         setListaWards([]);
 
         return () => clearTimeout(handleDelayDebounce);
-    }, [hashtagBuscada]);
+    }, [hashtagBuscada, setListaWards]);
 
     function handleRedirecionar(ward: iWard) {
         router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
     }
-
-    const [isExibirElemento, setIsExibirElemento] = useState<boolean>(false);
-
-    useEffect(() => {
-        const handleDelayDebounce = setTimeout(() => {
-            setIsExibirElemento(true);
-        }, 2500);
-
-        return () => clearTimeout(handleDelayDebounce);
-    }, [hashtagBuscada]);
 
     return (
         <div className={Styles.main}>
@@ -87,24 +75,6 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
                         </div>
                     </section>
                 ))
-            }
-
-            {
-                listaWards?.length ? (
-                    <div className={Styles.centralizarElemento}>
-                        <BotaoScrolltop
-                            isExibirTexto={false}
-                        />
-                    </div>
-                ) : (
-                    isExibirElemento ? (
-                        <div className={Styles.centralizarElemento}>
-                            <span>Nenhuma ward foi encontrada 🥺</span>
-                        </div>
-                    ) : (
-                        <GifLoading />
-                    )
-                )
             }
         </div>
     )

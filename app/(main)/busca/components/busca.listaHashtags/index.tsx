@@ -1,52 +1,49 @@
-import CONSTS_WARDS_HASHTAGS from '@/utils/api/consts/wardsHashtags';
-import { Fetch } from '@/utils/api/fetch';
-import CONSTS_EMOJIS from '@/utils/consts/emojis';
-import CONSTS_TELAS from '@/utils/consts/telas';
-import { Aviso } from '@/utils/functions/aviso';
 import removerHTML from '@/utils/functions/remover.HTML';
-import { default as iBusca, default as iHashtagQtd } from '@/utils/types/iBusca';
-import { useRouter } from 'next/navigation';
+import setArrayAgrupar from '@/utils/functions/set.array.agrupar';
+import iWard from '@/utils/types/iWard';
 import { Fragment, useEffect, useState } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
     hashtagBuscada: string | null;
+    listaWards: iWard[];
 }
 
-export default function BuscaListaHashtags({ hashtagBuscada }: iParametros) {
+export default function BuscaListaHashtags({ hashtagBuscada, listaWards }: iParametros) {
 
-    const router = useRouter();
-
-    const [listaHashtags, setListaHashtags] = useState<iHashtagQtd[]>([]);
+    const [listaAgrupadaHashtags, setAgrupadaListaHashtags] = useState<[string, number][]>([]);
 
     useEffect(() => {
-        async function handleListarHashtagsQtd() {
-            const resp = await Fetch.getApi(`${CONSTS_WARDS_HASHTAGS.listarHashtagQtd}?max=6`) as iHashtagQtd[];
+        function handleAgruparListaHashtags() {
+            setAgrupadaListaHashtags([]);
+            const listaHashtagsInterna: string[] = [];
 
-            // @ts-ignore;
-            if (resp?.mensagens || !resp) {
-                Aviso.toast('Nenhuma hashtag foi encontrada no momento. Tente novamente mais tarde!', 7500, CONSTS_EMOJIS.ERRO, true);
-                router.push(CONSTS_TELAS.ERRO);
+            listaWards?.forEach((ward: iWard) => {
+                if (ward.listaHashtags) {
+                    listaHashtagsInterna.push(...ward.listaHashtags);
+                }
+            });
+
+            if (!listaHashtagsInterna.length) {
                 return false;
             }
 
-            // console.log(resp);
-            setListaHashtags(resp);
+            setAgrupadaListaHashtags(setArrayAgrupar(listaHashtagsInterna));
         }
 
-        handleListarHashtagsQtd();
-    }, [router]);
+        handleAgruparListaHashtags();
+    }, [hashtagBuscada, listaWards]);
 
     return (
         <Fragment>
             {
-                listaHashtags && listaHashtags?.length > 0 && (
+                listaAgrupadaHashtags && listaAgrupadaHashtags?.length > 0 && (
                     <div className={Styles.main}>
                         {
-                            listaHashtags?.filter(x => x.tag.toLowerCase().includes(hashtagBuscada?.toLocaleLowerCase() ?? '')).map((item: iBusca, i: number) => (
+                            listaAgrupadaHashtags?.map((item: [string, number], i: number) => (
                                 <div key={i} className={Styles.topico}>
-                                    <div className={Styles.titulo} title={removerHTML(item?.tag)} dangerouslySetInnerHTML={{ __html: item?.tag }} />
-                                    <span className={Styles.subtitulo}>{item?.quantidade} {(item?.quantidade === 1 ? 'ward' : 'wards')}</span>
+                                    <div className={Styles.titulo} title={removerHTML(item?.[0])} dangerouslySetInnerHTML={{ __html: item?.[0] }} />
+                                    <span className={Styles.subtitulo}>{item?.[1]} {(item?.[1] === 1 ? 'ward' : 'wards')}</span>
                                 </div>
                             ))
                         }
