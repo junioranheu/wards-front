@@ -13,7 +13,7 @@ export default function BuscaInput({ hashtagBuscada, setHashtagBuscada }: iParam
             <input
                 className={Styles.input}
                 type='text'
-                placeholder='Procure por uma hashtag como "#dotnet" ou "#react", por exemplo'
+                placeholder='Procure por um termo como "dotnet" ou "react", por exemplo'
                 onChange={(e) => setHashtagBuscada(e.target.value)}
                 value={hashtagBuscada ?? ''}
             />
