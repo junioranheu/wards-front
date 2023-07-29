@@ -8,6 +8,7 @@ import { Aviso } from '@/utils/functions/aviso';
 import formatarData from '@/utils/functions/formatar.data';
 import normalizarURL from '@/utils/functions/normalizar.URL';
 import removerHTML from '@/utils/functions/remover.HTML';
+import setSliceString from '@/utils/functions/set.sliceString';
 import iWard from '@/utils/types/iWard';
 import { useRouter } from 'next/navigation';
 import nProgress from 'nprogress';
@@ -81,7 +82,7 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
                         </span>
 
                         <div className={Styles.infos}>
-                            <span>{removerHTML(w.conteudo)}</span>
+                            <span>{setSliceString(removerHTML(w.conteudo), 300, true)}</span>
                             <span>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
                         </div>
                     </section>
