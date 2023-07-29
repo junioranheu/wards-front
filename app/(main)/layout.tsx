@@ -12,6 +12,7 @@ import { getSessionStorage, setSessionStorage } from '@/utils/session/sessionSto
 import 'animate.css/animate.min.css';
 import 'nprogress/nprogress.css';
 import { ReactNode, lazy, useEffect } from 'react';
+import { CookieWidget } from 'react-cookie-gpdr';
 import { Toaster } from 'react-hot-toast';
 import Styles from './layout.module.scss';
 const Navbar = lazy(() => import('@/components/navbar'));
@@ -54,6 +55,22 @@ export default function LayoutPublic({ children }: iParametros) {
                     <div id='modalWrapper'></div>
                 </body>
             </UsuarioProvider>
+
+            <CookieWidget
+                location='right'
+                color='var(--principal)'
+                policyLink=''
+                policyLinkText=''
+                title={`${CONSTS_SISTEMA.NOME_SISTEMA} 🍪`}
+                subtitle={CONSTS_SISTEMA.DESCRICAO_SISTEMA}
+                text={`O ${CONSTS_SISTEMA.NOME_SISTEMA} usa cookies para oferecer uma experiência melhor. Ao continuar navegando, você concorda com o uso de cookies.`}
+                cookieSecurity={true}
+                hideOnScrollDown={false}
+                rejectButtonText='Rejeitar'
+                acceptButtonText='Aceitar'
+                onAccept={() => null}
+                onReject={() => null}
+            />
         </html>
     )
 }
