@@ -27,7 +27,7 @@ export default function Page() {
 
             const handleDelayDebounce = setTimeout(() => {
                 setIsSplash(false);
-            }, gerarNumeroAleatorio(1750, 2500));
+            }, gerarNumeroAleatorio(2250, 3000));
 
             return () => clearTimeout(handleDelayDebounce);
         }
