@@ -1,4 +1,0 @@
-https://www.flavienbonvin.com/
-
-- Criar aviso de API free;
-- Colocar um loading caso seja a primeira vez que o usuário entra ou então algo do tipo;

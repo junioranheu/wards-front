@@ -26,9 +26,9 @@ export default function LayoutPublic({ children }: iParametros) {
     useInstrucoesPadroes();
 
     useEffect(() => {
-        if (!getSessionStorage(CONSTS_SESSION_STORAGE.AVISO_API)) {
+        if (!getSessionStorage(CONSTS_SESSION_STORAGE.AVISO_API_FREE)) {
             Aviso.toast('A API está publicada na Azure com uma subscrição free, portanto a primeira requisição pode demorar uns instantes', 7500, CONSTS_EMOJIS.INFO, true);
-            setSessionStorage('session_storage_aviso_api', { isAvisoApiExibido: true });
+            setSessionStorage(CONSTS_SESSION_STORAGE.AVISO_API_FREE, { isAvisoApiExibido: true });
         }
     }, []);
 
