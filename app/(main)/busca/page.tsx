@@ -1,6 +1,7 @@
 'use client';
 import ImgEmojiMedicacao from '@/assets/images/outros/emoji-meditacao.webp';
 import useTitulo from '@/hooks/useTitulo';
+import useWindowSize from '@/hooks/useWindowSize';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
@@ -15,6 +16,9 @@ const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 export default function Page() {
 
     useTitulo('Busca', true);
+
+    const windowSize = useWindowSize();
+    const mediaQueryLimite = 1025;
 
     const [termoBuscado, setTermoBuscado] = useState<string>('');
     const [listaWards, setListaWards] = useState<iWard[]>([]);
@@ -46,10 +50,14 @@ export default function Page() {
                 setTermoBuscado={setTermoBuscado}
             />
 
-            <BuscaListaHashtags
-                termoBuscado={termoBuscado}
-                listaWards={listaWards}
-            />
+            {
+                windowSize.width >= mediaQueryLimite && (
+                    <BuscaListaHashtags
+                        termoBuscado={termoBuscado}
+                        listaWards={listaWards}
+                    />
+                )
+            }
 
             <BuscaListaWards
                 termoBuscado={termoBuscado}

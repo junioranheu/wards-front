@@ -28,7 +28,7 @@ export default function BuscaListaHashtags({ termoBuscado, listaWards }: iParame
                 return false;
             }
 
-            setAgrupadaListaHashtags(setArrayAgrupar(listaHashtagsInterna));
+            setAgrupadaListaHashtags(setArrayAgrupar(listaHashtagsInterna).slice(0, 6));
         }
 
         handleAgruparListaHashtags();

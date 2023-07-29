@@ -13,6 +13,8 @@ export default function setArrayAgrupar<T>(arr: T[]): [T, number][] {
         result.push([item, count]);
     }
 
+    const resultSort = result?.sort((a, b) => b[1] - a[1]);
     // console.log(result);
-    return result;
+
+    return resultSort;
 }
