@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation';
 import { Fragment, lazy, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Styles from './index.module.scss';
-const Final = lazy(() => import('../final'));
+const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 
 export default function Wards() {
 
@@ -93,7 +93,7 @@ export default function Wards() {
             </InfiniteScroll>
 
             {
-                !hasMore && <Final />
+                !hasMore && <BotaoScrolltop isExibirTexto={true} />
             }
         </Fragment>
     )

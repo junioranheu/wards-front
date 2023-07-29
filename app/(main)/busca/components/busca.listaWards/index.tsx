@@ -57,15 +57,19 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
         <div className={Styles.main}>
             {
                 listaWards?.map((w: iWard, i: number) => (
-                    <section className={`${Styles.card} ${CONSTS_SISTEMA.ANIMATE} animate__slow`} key={i}>
-                        <span
-                            className={Styles.titulo}
-                            onClick={() => handleRedirecionar(w)}
-                        >
+                    <section
+                        className={`${Styles.ward}
+                        ${CONSTS_SISTEMA.ANIMATE} animate__slow`}
+                        onClick={() => handleRedirecionar(w)}
+                        key={i}
+                    >
+                        <span className={Styles.titulo}>
                             {w.titulo}
                         </span>
 
-                        <span className={Styles.infos}>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
+                        <span className={Styles.infos}>
+                            <span dangerouslySetInnerHTML={{ __html: w.conteudo }} /><br />{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}
+                        </span>
                     </section>
                 ))
             }

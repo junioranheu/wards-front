@@ -1,4 +1,3 @@
-import GifLoading from '@/components/gif.loading';
 import CONSTS_WARDS_HASHTAGS from '@/utils/api/consts/wardsHashtags';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
@@ -7,7 +6,7 @@ import { Aviso } from '@/utils/functions/aviso';
 import removerHTML from '@/utils/functions/remover.HTML';
 import { default as iBusca, default as iHashtagQtd } from '@/utils/types/iBusca';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
@@ -38,30 +37,22 @@ export default function BuscaListaHashtags({ hashtagBuscada }: iParametros) {
         handleListarHashtagsQtd();
     }, [router]);
 
-    function handleClick(item: iHashtagQtd) {
-        alert(item.tag);
-    }
-
     return (
-        <div className={Styles.main}>
+        <Fragment>
             {
-                listaHashtags && listaHashtags?.length > 0 ? (
-                    listaHashtags?.filter(x => x.tag.toLowerCase().includes(hashtagBuscada?.toLocaleLowerCase() ?? '')).map((item: iBusca, i: number) => (
-                        <div
-                            key={i}
-                            className={Styles.topico}
-                            onClick={() => handleClick(item)}
-                        >
-                            <div className={Styles.titulo} title={removerHTML(item?.tag)} dangerouslySetInnerHTML={{ __html: item?.tag }} />
-                            <span className={Styles.subtitulo}>{item?.quantidade} {(item?.quantidade === 1 ? 'ward' : 'wards')}</span>
-                        </div>
-                    ))
-                ) : (
-                    <div>
-                        <GifLoading />
+                listaHashtags && listaHashtags?.length > 0 && (
+                    <div className={Styles.main}>
+                        {
+                            listaHashtags?.filter(x => x.tag.toLowerCase().includes(hashtagBuscada?.toLocaleLowerCase() ?? '')).map((item: iBusca, i: number) => (
+                                <div key={i} className={Styles.topico}>
+                                    <div className={Styles.titulo} title={removerHTML(item?.tag)} dangerouslySetInnerHTML={{ __html: item?.tag }} />
+                                    <span className={Styles.subtitulo}>{item?.quantidade} {(item?.quantidade === 1 ? 'ward' : 'wards')}</span>
+                                </div>
+                            ))
+                        }
                     </div>
                 )
             }
-        </div>
+        </Fragment>
     )
 }

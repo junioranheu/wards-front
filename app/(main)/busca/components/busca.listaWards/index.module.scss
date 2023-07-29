@@ -1,12 +1,54 @@
 .main {
-    background-color: purple;
+    // background-color: purple;
     width: 100%;
 
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    row-gap: 1.25rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.5rem;
+
+    .ward {
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        width: 100%;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:nth-child(odd) {
+            background-color: rgba(244, 242, 240, 0.5);
+            transition: 0.3s;
+        }
+
+        &:hover {
+            // background-color: var(--bege);
+            transition: 0.3s;
+
+            .titulo {
+                // background-color: aquamarine;
+                color: var(--principal-escuro);
+                transition: 0.3s;
+            }
+        }
+
+        .titulo {
+            // background-color: aquamarine;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .infos {
+            // background-color: purple;
+            color: #555555;
+            font-size: 0.85rem;
+        }
+    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

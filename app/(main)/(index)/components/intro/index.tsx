@@ -1,4 +1,4 @@
-import BotaoAlternativo from '@/components/botaoAlternativo';
+import BotaoAlternativo from '@/components/botao.alternativo';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useElementoAcompanhaScroll from '@/hooks/useElementoAcompanhaScroll';
 import CONSTS_NEWS_LETTERS from '@/utils/api/consts/newsletterCadastro';
