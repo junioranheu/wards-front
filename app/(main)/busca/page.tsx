@@ -8,7 +8,6 @@ import Styles from './index.module.scss';
 const BuscaInput = lazy(() => import('./components/busca.input'));
 const BuscaListaHashtags = lazy(() => import('./components/busca.listaHashtags'));
 const BuscaListaWards = lazy(() => import('./components/busca.listaWards'));
-const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 
 export default function Page() {
 
@@ -31,16 +30,12 @@ export default function Page() {
                 setHashtagBuscada={setHashtagBuscada}
             />
 
-            <BuscaListaWards
-                hashtagBuscada={hashtagBuscada}
-            />
-
             <BuscaListaHashtags
                 hashtagBuscada={hashtagBuscada}
             />
 
-            <BotaoScrolltop
-                isExibirTexto={true}
+            <BuscaListaWards
+                hashtagBuscada={hashtagBuscada}
             />
         </section>
     )

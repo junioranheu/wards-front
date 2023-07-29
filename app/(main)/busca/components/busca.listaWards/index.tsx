@@ -7,11 +7,13 @@ import CONSTS_TELAS from '@/utils/consts/telas';
 import { Aviso } from '@/utils/functions/aviso';
 import formatarData from '@/utils/functions/formatar.data';
 import normalizarURL from '@/utils/functions/normalizar.URL';
+import removerHTML from '@/utils/functions/remover.HTML';
 import iWard from '@/utils/types/iWard';
 import { useRouter } from 'next/navigation';
 import nProgress from 'nprogress';
-import { useEffect, useState } from 'react';
+import { Fragment, lazy, useEffect, useState } from 'react';
 import Styles from './index.module.scss';
+const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 
 interface iParametros {
     hashtagBuscada: string | null;
@@ -67,11 +69,24 @@ export default function BuscaListaWards({ hashtagBuscada }: iParametros) {
                             {w.titulo}
                         </span>
 
-                        <span className={Styles.infos}>
-                            <span dangerouslySetInnerHTML={{ __html: w.conteudo }} /><br />{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}
-                        </span>
+                        <div className={Styles.infos}>
+                            <span>{removerHTML(w.conteudo)}</span>
+                            <span>{formatarData(w.dataMod ?? w.data, 2)} · ward #{w.wardId}</span>
+                        </div>
                     </section>
                 ))
+            }
+
+            {
+                listaWards?.length ? (
+                    <div className={Styles.botaoScrollTop}>
+                        <BotaoScrolltop
+                            isExibirTexto={false}
+                        />
+                    </div>
+                ) : (
+                    <Fragment></Fragment>
+                )
             }
         </div>
     )
