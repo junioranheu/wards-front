@@ -17,18 +17,22 @@ export default function Page() {
     const [isSplash, setIsSplash] = useState<boolean>(true);
 
     useEffect(() => {
-        if (getSessionStorage(CONSTS_SESSION_STORAGE.SPLASH)) {
-            setIsSplash(false);
-        } else {
+        function handleSplash() {
+            if (getSessionStorage(CONSTS_SESSION_STORAGE.SPLASH)) {
+                setIsSplash(false);
+                return false;
+            }
+
             setSessionStorage(CONSTS_SESSION_STORAGE.SPLASH, { isSplashExibido: true });
+
+            const handleDelayDebounce = setTimeout(() => {
+                setIsSplash(false);
+            }, gerarNumeroAleatorio(1750, 2500));
+
+            return () => clearTimeout(handleDelayDebounce);
         }
 
-        const handleDelayDebounce = setTimeout(() => {
-            setIsSplash(false);
-            // }, process.env.NODE_ENV === 'production' ? gerarNumeroAleatorio(1750, 2500) : 0);
-        }, gerarNumeroAleatorio(1750, 2500));
-
-        return () => clearTimeout(handleDelayDebounce);
+        handleSplash();
     }, []);
 
     return (
