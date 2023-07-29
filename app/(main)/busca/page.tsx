@@ -26,6 +26,8 @@ export default function Page() {
             setIsExibirElemento(true);
         }, 2500);
 
+        setIsExibirElemento(false);
+
         return () => clearTimeout(handleDelayDebounce);
     }, [hashtagBuscada]);
 
