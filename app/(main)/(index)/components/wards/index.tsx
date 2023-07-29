@@ -28,7 +28,7 @@ export default function Wards() {
     const [hasMore, setHasMore] = useState<boolean>(true);
 
     async function handleListarWards() {
-        const qtdRegistrosPorRequest = 2;
+        const qtdRegistrosPorRequest = 3;
         const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
 
         if (!resp) {
@@ -89,7 +89,6 @@ export default function Wards() {
                         </section>
                     ))
                 }
-
             </InfiniteScroll>
 
             {
