@@ -5,11 +5,11 @@ import { Fragment, useEffect, useState } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
-    hashtagBuscada: string | null;
+    termoBuscado: string | null;
     listaWards: iWard[];
 }
 
-export default function BuscaListaHashtags({ hashtagBuscada, listaWards }: iParametros) {
+export default function BuscaListaHashtags({ termoBuscado, listaWards }: iParametros) {
 
     const [listaAgrupadaHashtags, setAgrupadaListaHashtags] = useState<[string, number][]>([]);
 
@@ -32,7 +32,7 @@ export default function BuscaListaHashtags({ hashtagBuscada, listaWards }: iPara
         }
 
         handleAgruparListaHashtags();
-    }, [hashtagBuscada, listaWards]);
+    }, [termoBuscado, listaWards]);
 
     return (
         <Fragment>

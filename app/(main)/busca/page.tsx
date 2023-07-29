@@ -16,7 +16,7 @@ export default function Page() {
 
     useTitulo('Busca', true);
 
-    const [hashtagBuscada, setHashtagBuscada] = useState<string>('');
+    const [termoBuscado, setTermoBuscado] = useState<string>('');
     const [listaWards, setListaWards] = useState<iWard[]>([]);
 
     const [isExibirElemento, setIsExibirElemento] = useState<boolean>(false);
@@ -29,7 +29,7 @@ export default function Page() {
         setIsExibirElemento(false);
 
         return () => clearTimeout(handleDelayDebounce);
-    }, [hashtagBuscada]);
+    }, [termoBuscado]);
 
     return (
         <section className={Styles.main}>
@@ -42,17 +42,17 @@ export default function Page() {
             </div>
 
             <BuscaInput
-                hashtagBuscada={hashtagBuscada}
-                setHashtagBuscada={setHashtagBuscada}
+                termoBuscado={termoBuscado}
+                setTermoBuscado={setTermoBuscado}
             />
 
             <BuscaListaHashtags
-                hashtagBuscada={hashtagBuscada}
+                termoBuscado={termoBuscado}
                 listaWards={listaWards}
             />
 
             <BuscaListaWards
-                hashtagBuscada={hashtagBuscada}
+                termoBuscado={termoBuscado}
                 listaWards={listaWards}
                 setListaWards={setListaWards}
             />

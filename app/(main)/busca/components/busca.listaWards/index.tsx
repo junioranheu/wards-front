@@ -16,23 +16,23 @@ import { Dispatch, SetStateAction, useEffect } from 'react';
 import Styles from './index.module.scss';
 
 interface iParametros {
-    hashtagBuscada: string | null;
+    termoBuscado: string | null;
     listaWards: iWard[];
     setListaWards: Dispatch<SetStateAction<iWard[]>>;
 }
 
-export default function BuscaListaWards({ hashtagBuscada, listaWards, setListaWards }: iParametros) {
+export default function BuscaListaWards({ termoBuscado, listaWards, setListaWards }: iParametros) {
 
     const router = useRouter();
 
     useEffect(() => {
         async function handleListarWards() {
-            const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(0, 50, false)}&keyword=${hashtagBuscada}`) as iWard[];
+            const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(0, 50, false)}&keyword=${termoBuscado}`) as iWard[];
             // console.log(resp, resp.length);
 
             // @ts-ignore;
             if (resp?.mensagens || !resp) {
-                Aviso.toast(`Nenhuma ward foi encontrada com o termo "${hashtagBuscada}"`, 7500, CONSTS_EMOJIS.ERRO, true);
+                Aviso.toast(`Nenhuma ward foi encontrada com o termo "${termoBuscado}"`, 7500, CONSTS_EMOJIS.ERRO, true);
                 setListaWards([]);
                 return false;
             }
@@ -49,7 +49,7 @@ export default function BuscaListaWards({ hashtagBuscada, listaWards, setListaWa
         setListaWards([]);
 
         return () => clearTimeout(handleDelayDebounce);
-    }, [hashtagBuscada, setListaWards]);
+    }, [termoBuscado, setListaWards]);
 
     function handleRedirecionar(ward: iWard) {
         router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
