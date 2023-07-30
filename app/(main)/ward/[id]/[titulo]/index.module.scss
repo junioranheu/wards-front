@@ -45,9 +45,49 @@
         gap: 3rem;
 
         .esquerda {
-            background-color: purple;
+            // background-color: purple;
             width: fit-content;
-            padding: 2rem;
+            padding: 0rem 0.5rem 0rem 0rem;
+            text-align: left;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+
+            .img {
+                // background-color: orange;
+                height: fit-content;
+                width: fit-content;
+
+                img {
+                    width: 4.5rem;
+                    height: 4.5rem;
+                }
+            }
+
+            .infos {
+                // background-color: orange;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0rem;
+
+                white-space: nowrap;
+
+                .nome {
+                    // background-color: orange;
+                    font-size: 1rem;
+                    font-weight: 700;
+                }
+
+                .data {
+                    // background-color: orange;
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    color: rgba(21, 23, 26, 50%);
+                }
+            }
         }
 
         .direita {

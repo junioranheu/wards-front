@@ -1,12 +1,15 @@
 'use client';
 import ImgPadrao from '@/assets/images/outros/coding.webp';
+import ImgJuniorAnheu from '@/assets/images/outros/junioranheu.webp';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import { Aviso } from '@/utils/functions/aviso';
+import formatarData from '@/utils/functions/formatar.data';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
+import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -38,6 +41,18 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
         handleObterWard();
     }, [router, params.id]);
 
+    function handleNormalizarUsuario(ward: iWard) {
+        if (ward.usuarios.nomeCompleto.includes('Adm')) {
+            return 'Junior';
+        }
+
+        return obterPrimeiraPalavra(ward.usuarios.nomeCompleto);
+    }
+
+    function handleNormalizarData(ward: iWard) {
+        return ward.dataMod ? formatarData(ward.dataMod, 2) : formatarData(ward.data, 2);
+    }
+
     if (!ward) {
         return false;
     }
@@ -60,7 +75,14 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
             <div className={Styles.ward}>
                 <div className={Styles.esquerda}>
-                    <span>Junior</span>
+                    <div className={Styles.img}>
+                        <Image src={ImgJuniorAnheu} alt='' />
+                    </div>
+
+                    <div className={Styles.infos}>
+                        <span className={Styles.nome}>{handleNormalizarUsuario(ward)}</span>
+                        <span className={Styles.data}>{handleNormalizarData(ward)}</span>
+                    </div>
                 </div>
 
                 <div className={Styles.direita}>
