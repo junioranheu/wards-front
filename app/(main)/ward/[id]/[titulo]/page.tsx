@@ -75,7 +75,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
             <div className={Styles.ward}>
                 <div className={Styles.esquerda}>
-                    <div className={Styles.img}>
+                    <div className={Styles.img} title={handleNormalizarUsuario(ward)}>
                         <Image src={ImgJuniorAnheu} alt='' />
                     </div>
 
