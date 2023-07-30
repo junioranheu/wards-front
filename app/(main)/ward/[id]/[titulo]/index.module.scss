@@ -37,7 +37,7 @@
     }
 
     .ward {
-        background-color: orange;
+        // background-color: orange;
         display: flex;
         flex-direction: row;
 
@@ -71,6 +71,13 @@
                 b {
                     font-size: 1.725rem;
                     font-weight: 700;
+                }
+
+                code {
+                    // background-color: purple;
+                    display: block;
+                    text-align: left;
+                    white-space: pre-wrap;
                 }
             }
         }
