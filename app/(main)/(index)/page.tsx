@@ -1,6 +1,9 @@
 'use client';
 import StylesLayout from '@/app/(main)/layout.module.scss';
 import useTitulo from '@/hooks/useTitulo';
+import CONSTS_AUXILIARES from '@/utils/api/consts/auxiliares';
+import { Fetch } from '@/utils/api/fetch';
+import filtroPaginacaoInput from '@/utils/api/filters/paginacaoInput';
 import CONSTS_SESSION_STORAGE from '@/utils/consts/sessionStorage';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import gerarNumeroAleatorio from '@/utils/functions/gerar.numeroAleatorio';
@@ -17,12 +20,18 @@ export default function Page() {
     const [isSplash, setIsSplash] = useState<boolean>(true);
 
     useEffect(() => {
+        async function handleTesteAtivarAPI() {
+            const resp = await Fetch.getApi(`${CONSTS_AUXILIARES.listarEstado}?${filtroPaginacaoInput(0, 1, false)}`) as unknown;
+            console.log(resp);
+        }
+
         function handleSplash() {
             if (getSessionStorage(CONSTS_SESSION_STORAGE.SPLASH)) {
                 setIsSplash(false);
                 return false;
             }
 
+            handleTesteAtivarAPI();
             setSessionStorage(CONSTS_SESSION_STORAGE.SPLASH, { isSplashExibido: true });
 
             const handleDelayDebounce = setTimeout(() => {
