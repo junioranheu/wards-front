@@ -13,7 +13,7 @@ export default interface iWard extends iErro {
 
     usuarioModId: boolean;
     usuariosMods: iUsuario | null;
-    dataMod: Date | string;
+    dataMod: Date | string | null;
 
     isAtivo: boolean;
 

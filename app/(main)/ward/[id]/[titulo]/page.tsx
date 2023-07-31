@@ -41,16 +41,21 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
         handleObterWard();
     }, [router, params.id]);
 
-    function handleNormalizarUsuario(ward: iWard) {
-        if (ward.usuarios.nomeCompleto.includes('Adm')) {
-            return 'Junior';
+    function handleNormalizarUsuario(nome: string) {
+        if (nome.includes('Adm')) {
+            return 'Junior Souza';
         }
 
-        return obterPrimeiraPalavra(ward.usuarios.nomeCompleto);
+        return obterPrimeiraPalavra(nome);
     }
 
-    function handleNormalizarData(ward: iWard) {
-        return ward.dataMod ? formatarData(ward.dataMod, 2) : formatarData(ward.data, 2);
+    function handleNormalizarData(data: string | Date, dataMod: string | Date | null) {
+        return dataMod ? formatarData(dataMod, 4) : formatarData(data, 4);
+    }
+
+    function handleNormalizarConteudo(conteudo: string) {
+        console.log(conteudo);
+        return conteudo.replaceAll('aaaaa', 'aea');
     }
 
     if (!ward) {
@@ -75,20 +80,20 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
             <div className={Styles.ward}>
                 <div className={Styles.esquerda}>
-                    <div className={Styles.img} title={handleNormalizarUsuario(ward)}>
+                    <div className={Styles.img} title={handleNormalizarUsuario(ward.usuarios.nomeCompleto)}>
                         <Image src={ImgJuniorAnheu} alt='' />
                     </div>
 
                     <div className={Styles.infos}>
-                        <span className={Styles.nome}>{handleNormalizarUsuario(ward)}</span>
-                        <span className={Styles.data}>{handleNormalizarData(ward)}</span>
+                        <span className={Styles.nome}>{handleNormalizarUsuario(ward.usuarios.nomeCompleto)}</span>
+                        <span className={Styles.data}>{handleNormalizarData(ward.data, ward?.dataMod)}</span>
                     </div>
                 </div>
 
                 <div className={Styles.direita}>
                     <section
                         className={Styles.conteudo}
-                        dangerouslySetInnerHTML={{ __html: ward?.conteudo }}
+                        dangerouslySetInnerHTML={{ __html: handleNormalizarConteudo(ward?.conteudo) }}
                     />
                 </div>
             </div>
