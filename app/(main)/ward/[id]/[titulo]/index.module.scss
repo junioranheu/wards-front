@@ -37,7 +37,7 @@
     }
 
     .ward {
-        // background-color: orange;
+        // background-color: palegreen;
         display: flex;
         flex-direction: row;
 
@@ -132,22 +132,31 @@
 @media (max-width:1536px) {
     .main {
         // background-color: purple;
+        width: 70vw;
 
         .titulo {
             // background-color: purple;
-            width: 100%;
+            width: 85%;
         }
     }
 }
 
 /* hi-res laptops and desktops */
-@media (max-width:1281px) {}
-
-/* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {
+@media (max-width:1281px) {
     .main {
         // background-color: purple;
         width: 85vw;
+
+        .titulo {
+            // background-color: purple;
+            width: 100%;
+
+            span {
+                font-size: 3rem;
+                line-height: 3.5rem;
+                font-weight: 800;
+            }
+        }
 
         .visual {
             // background-color: purple;
@@ -180,6 +189,9 @@
     }
 }
 
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {
     .main {
@@ -187,9 +199,11 @@
         gap: 2rem;
 
         .titulo {
+            // background-color: orange;
+
             span {
-                font-size: 2.5rem;
-                line-height: 3rem;
+                font-size: 1.85rem;
+                line-height: 2.5rem;
                 font-weight: 800;
             }
         }
