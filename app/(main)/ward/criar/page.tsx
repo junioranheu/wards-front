@@ -2,16 +2,18 @@
 import Botao from '@/components/botao';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useTitulo from '@/hooks/useTitulo';
+import CONSTS_HASHTAGS from '@/utils/api/consts/hashtags';
+import { Fetch } from '@/utils/api/fetch';
+import CONSTS_EMOJIS from '@/utils/consts/emojis';
+import { Aviso } from '@/utils/functions/aviso';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import Styles from './index.module.scss';
 
 interface iFormData {
-    nomeCompleto: string;
-    email: string;
-    nomeUsuarioSistema: string;
-    senha: string;
-    confirmarSenha: string;
+    titulo: string;
+    conteudo: string;
+    listaHashtags: string[];
 }
 
 export default function Page() {
@@ -20,19 +22,23 @@ export default function Page() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
 
+    const [hashtags, setHashtags] = useState<string[]>([]);
+
     useEffect(() => {
+        async function handleListarHashtags() {
+            const resp = await Fetch.getApi(CONSTS_HASHTAGS.listar) as string[];
+            setHashtags(resp);
+        }
+
         verificarAcesso([1]);
+        handleListarHashtags();
     }, [isAuth]);
 
     const refBtn = useRef<HTMLButtonElement>(null);
 
-    const [formData, setFormData] = useState<iFormData>({ nomeCompleto: '', email: '', nomeUsuarioSistema: '', senha: '', confirmarSenha: '' });
+    const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '', listaHashtags: [] });
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
-
-    function handleKeyPressNaoPermitirEspaco(e: ChangeEvent<HTMLInputElement>) {
-        e.target.value = e.target.value.replace(' ', '');
     }
 
     function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
@@ -42,8 +48,12 @@ export default function Page() {
     }
 
     async function handleSubmit() {
-        // nProgress.start();
-        // refBtn.current.disabled = true;
+        if (!formData.titulo || !formData.conteudo || !formData.listaHashtags) {
+            Aviso.toast('Preencha todos os campos para criar uma nova ward', 5000, CONSTS_EMOJIS.ERRO, true);
+            return false;
+        }
+
+        // [FromForm] WardInputAlt input, IFormFile? formFileImagemPrincipal
 
         // // Verificações;
         // const isTrocouSenha = true;
@@ -98,30 +108,17 @@ export default function Page() {
             </div>
 
             <div className={Styles.form}>
-                <input className='input margem1' type='text' placeholder='Nome completo'
-                    name='nomeCompleto' onChange={handleChange} onKeyDown={handleKeyPress}
-                />
+                <input className='input margem1' type='text' placeholder='Título da ward' name='titulo'
+                    onChange={handleChange} onKeyDown={handleKeyPress} />
 
-                <input className='input margem1' type='text' placeholder='Seu melhor e-mail'
-                    name='email' onChange={handleChange} onKeyDown={handleKeyPress}
-                />
+                <input className='input margem1' type='text' placeholder='Conteúdo' name='conteudo'
+                    onChange={handleChange} onKeyDown={handleKeyPress} />
 
-                <input className='input margem1' type='text' placeholder='Nome de usuário'
-                    name='nomeUsuarioSistema'
-                    onChange={(e) => (handleChange(e), handleKeyPressNaoPermitirEspaco(e))}
-                    onKeyDown={handleKeyPress}
-                />
-
-                <input className='input margem1' type='password' placeholder='Senha'
-                    name='senha' onChange={handleChange} onKeyDown={handleKeyPress}
-                />
-
-                <input className='input margem1' type='password' placeholder='Confirme sua senha'
-                    name='confirmarSenha' onChange={handleChange} onKeyDown={handleKeyPress}
-                />
+                <input className='input margem1' type='text' placeholder='Lista de hashtags' name='listaHashtags'
+                    onChange={handleChange} onKeyDown={handleKeyPress} />
 
                 <Botao
-                    texto='Voltar ao início'
+                    texto='Criar'
                     url={null}
                     isNovaAba={false}
                     handleFuncao={() => handleSubmit()}
