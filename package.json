@@ -24,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-select": "^5.7.4",
     "react-tooltip": "^5.18.1",
     "sass": "^1.63.6",
     "sharp": "^0.32.2",
