@@ -69,13 +69,13 @@ export default function Page() {
             <h1>{selectedOption}</h1>
 
             <div className={Styles.form}>
-                <input className='input margem1' type='text' placeholder='Título da ward' name='titulo'
+                <input type='text' placeholder='Título da ward' name='titulo'
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
-                <input className='input margem1' type='text' placeholder='Conteúdo' name='conteudo'
+                <input type='text' placeholder='Conteúdo' name='conteudo'
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
-                <input className='input margem1' type='text' placeholder='Lista de hashtags' name='listaHashtags'
+                <input type='text' placeholder='Lista de hashtags' name='listaHashtags'
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
                 <Select
