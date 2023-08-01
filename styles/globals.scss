@@ -284,9 +284,15 @@ textarea {
 
 /* =-=-=-=-=-=-=-=-=-=-= react-hot-toast =-=-=-=-=-=-=-=-=-=-= */
 .toaster {
-    font-size: 0.9rem !important;
     position: fixed !important;
     z-index: 999999999 !important;
+
+    span {
+        // color: red !important;
+        color: var(--branco-alt) !important;
+        font-size: 0.9rem !important;
+        line-height: 1.35rem !important;
+    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= react-tooltip =-=-=-=-=-=-=-=-=-=-= */
