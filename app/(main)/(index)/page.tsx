@@ -21,8 +21,7 @@ export default function Page() {
 
     useEffect(() => {
         async function handleTesteAtivarAPI() {
-            const resp = await Fetch.getApi(`${CONSTS_AUXILIARES.listarEstado}?${filtroPaginacaoInput(0, 1, false)}`) as unknown;
-            console.log(resp);
+            await Fetch.getApi(`${CONSTS_AUXILIARES.listarEstado}?${filtroPaginacaoInput(0, 1, false)}`) as unknown;
         }
 
         function handleSplash() {

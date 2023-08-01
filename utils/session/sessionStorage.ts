@@ -16,7 +16,7 @@ export function getSessionStorage<T>(key: string): T | null {
             // console.log(`${key} obtido em session storage:`, data);
             return data;
         } else {
-            console.log(`Nenhum dado foi encontrado com a chave ${key}`);
+            // console.log(`Nenhum dado foi encontrado com a chave ${key}`);
             return null;
         }
     } catch (error) {
