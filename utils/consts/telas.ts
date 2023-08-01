@@ -3,6 +3,7 @@ const CONSTS_TELAS = {
     SOBRE: '/sobre',
     BUSCA: '/busca',
     WARD: '/ward',
+    CRIAR: '/ward/criar',
     ERRO: '/ops'
 };
 

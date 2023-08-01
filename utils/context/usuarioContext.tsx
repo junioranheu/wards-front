@@ -28,6 +28,7 @@ export const Auth = {
             nomeCompleto: data.nomeCompleto,
             email: data.email,
             foto: data.foto,
+            usuarioRoles: data.usuarioRoles,
             isAuth: data.isAuth
         } as iUsuarioContext;
 

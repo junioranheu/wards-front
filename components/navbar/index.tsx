@@ -53,6 +53,7 @@ export default function Navbar() {
             nomeCompleto: resp.nomeCompleto,
             email: resp.email,
             foto: null,
+            usuarioRoles: resp.usuarioRoles,
             isAuth: true
         } as iUsuarioContext;
 
@@ -91,6 +92,7 @@ export default function Navbar() {
             nomeCompleto: resp.nomeCompleto,
             email: resp.email,
             foto: null,
+            usuarioRoles: resp.usuarioRoles,
             isAuth: true
         } as iUsuarioContext;
 

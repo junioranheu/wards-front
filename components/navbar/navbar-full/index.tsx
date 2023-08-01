@@ -3,7 +3,9 @@ import IconeEntrar from '@/components/icones/entrar';
 import IconeLupa from '@/components/icones/lupa';
 import IconeSair from '@/components/icones/sair';
 import CONSTS_TELAS from '@/utils/consts/telas';
+import CONSTS_USUARIO_ROLES from '@/utils/consts/usuario.roles';
 import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
+import verificarAcessoIsExibirElemento from '@/utils/functions/verificar.acesso.isExibirElemento';
 import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
@@ -24,6 +26,10 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
 
                 <Link href={CONSTS_TELAS.SOBRE}>Sobre</Link>
                 <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte ✨</a>
+
+                {
+                    verificarAcessoIsExibirElemento([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]) && <Link href={CONSTS_TELAS.CRIAR}>Criar ward</Link>
+                }
             </div>
 
             <div className={Styles.direita}>

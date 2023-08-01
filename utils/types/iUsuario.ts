@@ -9,7 +9,7 @@ export default interface iUsuario extends iErro {
     foto: string;
     isAtivo: boolean;
     data: Date | string;
-    usuarioRoles: iUsuarioRole[];
+    usuarioRoles?: iUsuarioRole[];
     token: string;
     refreshToken: string | null;
 }
