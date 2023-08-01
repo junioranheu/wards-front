@@ -9,6 +9,7 @@ import CONSTS_TELAS from '@/utils/consts/telas';
 import { Aviso } from '@/utils/functions/aviso';
 import formatarData from '@/utils/functions/formatar.data';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
+import normalizarCodigo from '@/utils/functions/normalizar.codigo';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
@@ -53,11 +54,6 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
         return dataMod ? formatarData(dataMod, 4) : formatarData(data, 4);
     }
 
-    function handleNormalizarConteudo(conteudo: string) {
-        console.log(conteudo);
-        return conteudo.replaceAll('aaaaa', 'aea');
-    }
-
     if (!ward) {
         return false;
     }
@@ -93,7 +89,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                 <div className={Styles.direita}>
                     <section
                         className={Styles.conteudo}
-                        dangerouslySetInnerHTML={{ __html: handleNormalizarConteudo(ward?.conteudo) }}
+                        dangerouslySetInnerHTML={{ __html: normalizarCodigo(ward?.conteudo, 'code') }}
                     />
                 </div>
             </div>
