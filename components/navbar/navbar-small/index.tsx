@@ -3,7 +3,9 @@ import IconeHamburguer from '@/components/icones/hamburguer';
 import IconeLupa from '@/components/icones/lupa';
 import useEsconderScroll from '@/hooks/useEsconderScroll';
 import CONSTS_TELAS from '@/utils/consts/telas';
+import CONSTS_USUARIO_ROLES from '@/utils/consts/usuario.roles';
 import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
+import verificarAcessoIsExibirElemento from '@/utils/functions/verificar.acesso.isExibirElemento';
 import { useRouter } from 'next/navigation';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import Styles from '../index.module.scss';
@@ -133,6 +135,21 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                 isEnabled={true}
                 isPequeno={true}
             />
+
+            {
+                verificarAcessoIsExibirElemento([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]) && (
+                    <Botao
+                        texto='Criar ward'
+                        url={null}
+                        isNovaAba={false}
+                        handleFuncao={() => handleClick(CONSTS_TELAS.CRIAR)}
+                        Svg={null}
+                        refBtn={null}
+                        isEnabled={true}
+                        isPequeno={true}
+                    />
+                )
+            }
 
             {
                 !isAuth ? (
