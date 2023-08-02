@@ -40,7 +40,7 @@ export default function Page() {
     const refBtn = useRef<HTMLButtonElement>(null);
 
     const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
-    const [selectedOption, setSelectedOption] = useState<string>('');
+    const [formHashtag, setFormHashtag] = useState<string>('');
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -60,13 +60,33 @@ export default function Page() {
         // [FromForm] WardInputAlt input, IFormFile? formFileImagemPrincipal;
     }
 
+    const selectStyles = {
+        control: (base: any) => ({
+            ...base,
+            fontSize: '0.9rem',
+            fontWeight: 'normal',
+            borderRadius: '0.5rem',
+            padding: '6px 5px',
+            border: 'var(--border) !important',
+            boxShadow: 'none',
+            '&:focus': {
+                border: '0 !important',
+            },
+        }),
+        multiValue: (base: any) => ({
+            ...base,
+            backgroundColor: 'blue',
+            color: 'white',
+        }),
+    }
+
     return (
-        <section className={Styles.main}>
+        <section className={Styles.main} >
             <div className={Styles.titulo}>
                 <span>Criar nova ward</span>
             </div>
 
-            <h1>{selectedOption}</h1>
+            <h1>{formHashtag}</h1>
 
             <div className={Styles.form}>
                 <input type='text' placeholder='Título da ward' name='titulo'
@@ -80,8 +100,14 @@ export default function Page() {
 
                 <Select
                     defaultValue={null}
-                    onChange={(e) => setSelectedOption(e?.label)}
+                    onChange={(e) => setFormHashtag(e?.label)}
                     options={listaHashtags}
+                    isDisabled={false}
+                    isSearchable={true}
+                    isMulti={false}
+                    styles={selectStyles}
+                    placeholder='Hashtags'
+                    noOptionsMessage={() => 'Nenhuma opção encontrada'}
                 />
 
                 <Botao
@@ -95,6 +121,6 @@ export default function Page() {
                     isPequeno={true}
                 />
             </div>
-        </section>
+        </section >
     )
 }
