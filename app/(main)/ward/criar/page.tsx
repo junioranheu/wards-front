@@ -114,9 +114,7 @@ export default function Page() {
                 />
 
                 {/* =-=-=-=-=-=-= EXEMPLO DE COMO USAR UM REACT-SELECT PARA SETAR UM VALOR ÚNICO (NÃO UM ARRAY) =-=-=-=-=-=-= */}
-                {
-                    false && (
-                        <Select
+                {/* <Select
                             instanceId={useId()}
                             defaultValue={null}
                             onChange={(e) => setExemploReactSelectUnico(e?.label)}
@@ -127,9 +125,7 @@ export default function Page() {
                             styles={styleReactSelect}
                             placeholder='Hashtags'
                             noOptionsMessage={() => 'Nenhuma opção encontrada'}
-                        />
-                    )
-                }
+                        /> */}
 
                 <Botao
                     texto='Criar'
