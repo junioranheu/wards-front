@@ -41,12 +41,18 @@ export default function Page() {
     const refBtn = useRef<HTMLButtonElement>(null);
 
     const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
-    const [formHashtag, setFormHashtag] = useState<string>('');
+    const [formHashtags, setFormHashtags] = useState<string[]>([]);
+    const [exemploReactSelectUnico, setExemploReactSelectUnico] = useState<string>('');
+
+    function handleHashtagsChangeMulti(item: any) {
+        setFormHashtags(item.map((x: iSelect) => x.label));
+    };
+
     function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    function handleKeyPress(e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLTextAreaElement>) {
+    function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
             refBtn.current && refBtn.current.click();
         }
@@ -67,29 +73,44 @@ export default function Page() {
                 <span>Criar nova ward</span>
             </div>
 
-            <h1>{formHashtag}</h1>
-
             <div className={Styles.form}>
                 <input type='text' placeholder='Título da ward' name='titulo'
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
                 <textarea placeholder='Conteúdo' name='conteudo' rows={5}
-                    onChange={handleChange} onKeyDown={handleKeyPress} />
+                    onChange={handleChange} />
 
                 <input type='text' placeholder='Lista de hashtags' name='listaHashtags'
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
                 <Select
                     defaultValue={null}
-                    onChange={(e) => setFormHashtag(e?.label)}
+                    onChange={handleHashtagsChangeMulti}
                     options={listaHashtags}
                     isDisabled={false}
                     isSearchable={true}
-                    isMulti={false}
+                    isMulti={true}
                     styles={styleReactSelect}
                     placeholder='Hashtags'
                     noOptionsMessage={() => 'Nenhuma opção encontrada'}
                 />
+
+                {/* =-=-=-=-=-=-= EXEMPLO DE COMO USAR UM REACT-SELECT PARA SETAR UM VALOR ÚNICO (NÃO UM ARRAY) =-=-=-=-=-=-= */}
+                {
+                    false && (
+                        <Select
+                            defaultValue={null}
+                            onChange={(e) => setExemploReactSelectUnico(e?.label)}
+                            options={listaHashtags}
+                            isDisabled={false}
+                            isSearchable={true}
+                            isMulti={false}
+                            styles={styleReactSelect}
+                            placeholder='Hashtags'
+                            noOptionsMessage={() => 'Nenhuma opção encontrada'}
+                        />
+                    )
+                }
 
                 <Botao
                     texto='Criar'

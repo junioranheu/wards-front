@@ -9,16 +9,21 @@ const styleReactSelect = {
         boxShadow: 'none',
         '&:focus': {
             border: '0 !important',
-        },
+        }
     }),
     option: (provided: any, state: any) => ({
         ...provided,
         backgroundColor: state.isSelected ? 'var(--principal)' : 'transparent',
-        '&:hover': { backgroundColor: state.isSelected ? 'var(--principal-escuro)' : 'rgb(222, 235, 255)' }
+        '&:hover': {
+            backgroundColor: state.isSelected ? 'var(--principal-escuro)' : 'rgb(222, 235, 255)'
+        }
     }),
     multiValue: (base: any) => ({
         ...base,
-        backgroundColor: 'var(--principal)'
+        backgroundColor: 'rgb(222, 235, 255)',
+        borderRadius: '0.25rem',
+        padding: '3px 2.5px',
+        color: 'var(--preto)'
     })
 }
 
