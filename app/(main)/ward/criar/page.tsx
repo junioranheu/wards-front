@@ -3,6 +3,7 @@ import Botao from '@/components/botao';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_HASHTAGS from '@/utils/api/consts/hashtags';
+import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import styleReactSelect from '@/utils/consts/style.react-select';
@@ -11,7 +12,7 @@ import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSel
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
 import iSelect from '@/utils/types/iSelect';
-import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useEffect, useId, useRef, useState } from 'react';
 import Select from 'react-select';
 import Styles from './index.module.scss';
 
@@ -25,7 +26,6 @@ export default function Page() {
     useTitulo('Criar nova ward', true);
 
     const [isAuth, setIsAuth] = useUsuarioContext();
-
     const [listaHashtags, setListaHashtags] = useState<iSelect[]>([]);
 
     useEffect(() => {
@@ -46,7 +46,7 @@ export default function Page() {
 
     function handleHashtagsChangeMulti(item: any) {
         setFormHashtags(item.map((x: iSelect) => x.label));
-    };
+    }
 
     function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,16 +59,36 @@ export default function Page() {
     }
 
     async function handleSubmit() {
-        if (!formData.titulo || !formData.conteudo) {// || !formData.listaHashtags) {
+        if (!formData.titulo || !formData.conteudo || !formHashtags.length) {
             Aviso.toast('Preencha todos os campos para criar uma nova ward', 5000, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
-        // [FromForm] WardInputAlt input, IFormFile? formFileImagemPrincipal;
+        const input = {
+            input: {
+                titulo: formData.titulo,
+                conteudo: formData.conteudo,
+                listaHashtags: formHashtags
+            },
+            formFileImagemPrincipal: null
+        };
+
+        console.log(input);
+
+        const resp = await Fetch.postApi(CONSTS_WARDS.criar, input);
+
+        console.log(resp);
+
+        if (resp?.mensagens || !resp) {
+            Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+            return false;
+        }
+
+        alert('refreshhhhhhhhhhhhhh :)');
     }
 
     return (
-        <section className={Styles.main} >
+        <section className={Styles.main}>
             <div className={Styles.titulo}>
                 <span>Criar nova ward</span>
             </div>
@@ -80,10 +100,8 @@ export default function Page() {
                 <textarea placeholder='Conteúdo' name='conteudo' rows={5}
                     onChange={handleChange} />
 
-                <input type='text' placeholder='Lista de hashtags' name='listaHashtags'
-                    onChange={handleChange} onKeyDown={handleKeyPress} />
-
                 <Select
+                    instanceId={useId()}
                     defaultValue={null}
                     onChange={handleHashtagsChangeMulti}
                     options={listaHashtags}
@@ -99,6 +117,7 @@ export default function Page() {
                 {
                     false && (
                         <Select
+                            instanceId={useId()}
                             defaultValue={null}
                             onChange={(e) => setExemploReactSelectUnico(e?.label)}
                             options={listaHashtags}
@@ -123,6 +142,6 @@ export default function Page() {
                     isPequeno={true}
                 />
             </div>
-        </section >
+        </section>
     )
 }
