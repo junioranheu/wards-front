@@ -5,6 +5,7 @@ import useTitulo from '@/hooks/useTitulo';
 import CONSTS_HASHTAGS from '@/utils/api/consts/hashtags';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
+import styleReactSelect from '@/utils/consts/style.react-select';
 import { Aviso } from '@/utils/functions/aviso';
 import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSelect';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
@@ -60,26 +61,6 @@ export default function Page() {
         // [FromForm] WardInputAlt input, IFormFile? formFileImagemPrincipal;
     }
 
-    const selectStyles = {
-        control: (base: any) => ({
-            ...base,
-            fontSize: '0.9rem',
-            fontWeight: 'normal',
-            borderRadius: '0.5rem',
-            padding: '6px 5px',
-            border: 'var(--border) !important',
-            boxShadow: 'none',
-            '&:focus': {
-                border: '0 !important',
-            },
-        }),
-        multiValue: (base: any) => ({
-            ...base,
-            backgroundColor: 'blue',
-            color: 'white',
-        }),
-    }
-
     return (
         <section className={Styles.main} >
             <div className={Styles.titulo}>
@@ -105,7 +86,7 @@ export default function Page() {
                     isDisabled={false}
                     isSearchable={true}
                     isMulti={false}
-                    styles={selectStyles}
+                    styles={styleReactSelect}
                     placeholder='Hashtags'
                     noOptionsMessage={() => 'Nenhuma opção encontrada'}
                 />
