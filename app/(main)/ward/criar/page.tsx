@@ -42,11 +42,11 @@ export default function Page() {
 
     const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
     const [formHashtag, setFormHashtag] = useState<string>('');
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
+    function handleKeyPress(e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLTextAreaElement>) {
         if (e.key === 'Enter') {
             refBtn.current && refBtn.current.click();
         }
@@ -73,7 +73,7 @@ export default function Page() {
                 <input type='text' placeholder='Título da ward' name='titulo'
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
-                <input type='text' placeholder='Conteúdo' name='conteudo'
+                <textarea placeholder='Conteúdo' name='conteudo' rows={5}
                     onChange={handleChange} onKeyDown={handleKeyPress} />
 
                 <input type='text' placeholder='Lista de hashtags' name='listaHashtags'
