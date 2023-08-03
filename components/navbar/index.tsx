@@ -54,7 +54,8 @@ export default function Navbar() {
             email: resp.email,
             foto: null,
             usuarioRoles: resp.usuarioRoles,
-            isAuth: true
+            isAuth: true,
+            token: resp.token
         } as iUsuarioContext;
 
         Auth.set(auth);
@@ -93,7 +94,8 @@ export default function Navbar() {
             email: resp.email,
             foto: null,
             usuarioRoles: resp.usuarioRoles,
-            isAuth: true
+            isAuth: true,
+            token: resp.token
         } as iUsuarioContext;
 
         Auth.set(auth);

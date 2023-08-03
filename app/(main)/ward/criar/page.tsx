@@ -41,11 +41,11 @@ export default function Page() {
     const refBtn = useRef<HTMLButtonElement>(null);
 
     const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
-    const [formHashtags, setFormHashtags] = useState<string[]>([]);
+    const [formHashtags, setFormHashtags] = useState<number[]>([]);
     const [exemploReactSelectUnico, setExemploReactSelectUnico] = useState<string>('');
 
     function handleHashtagsChangeMulti(item: any) {
-        setFormHashtags(item.map((x: iSelect) => x.label));
+        setFormHashtags(item.map((x: iSelect) => x.value));
     }
 
     function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
@@ -64,27 +64,44 @@ export default function Page() {
             return false;
         }
 
+        // const input = {
+        //     input: {
+        //         titulo: formData.titulo,
+        //         conteudo: formData.conteudo,
+        //         listaHashtags: formHashtags
+        //     },
+        //     formFileImagemPrincipal: null
+        // };
+
         const input = {
-            input: {
-                titulo: formData.titulo,
-                conteudo: formData.conteudo,
-                listaHashtags: formHashtags
-            },
-            formFileImagemPrincipal: null
-        };
+            titulo: formData.titulo,
+            conteudo: formData.conteudo,
+            listaHashtags: formHashtags
+        }
 
-        console.log(input);
+        const formFileImagemPrincipal = createEmptyFile("empty-file.txt", "text/plain");
 
-        const resp = await Fetch.postApi(CONSTS_WARDS.criar, input);
+        const formDataInput: FormData = new FormData();
+        formDataInput.append('input.titulo', formData.titulo);
+        formDataInput.append('input.conteudo', formData.conteudo);
+        formDataInput.append('input.listaHashtags', JSON.stringify(formHashtags));
+        formDataInput.append('formFileImagemPrincipal', formFileImagemPrincipal);
+
+        const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, formDataInput);
 
         console.log(resp);
 
-        if (resp?.mensagens || !resp) {
-            Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
-            return false;
-        }
+        // if (resp?.mensagens || !resp) {
+        //     Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+        //     return false;
+        // }
 
-        alert('refreshhhhhhhhhhhhhh :)');
+        // alert('refreshhhhhhhhhhhhhh :)');
+    }
+
+    function createEmptyFile(fileName: string, contentType: string): File {
+        const blob = new Blob([], { type: contentType });
+        return new File([blob], fileName, { type: contentType });
     }
 
     return (

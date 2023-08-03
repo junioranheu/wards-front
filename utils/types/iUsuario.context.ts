@@ -7,4 +7,5 @@ export default interface iUsuarioContext {
     foto: StaticImageData | null;
     usuarioRoles?: iUsuarioRole[];
     isAuth: boolean;
+    token: string;
 }
