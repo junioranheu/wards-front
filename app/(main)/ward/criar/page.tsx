@@ -135,12 +135,10 @@ export default function Page() {
 
                 <DivUpload
                     imagem={arquivoUpload ?? ''}
-                    apiPasta='XXXXXXXXXXX'
-                    titulo='Capa da playlist'
-                    infoAleatoriaUm={`Escolhe uma imagem da hora aí`}
-                    infoAleatoriaDois={`Peso máximo: ${UPLOAD_SETTINGS.LIMITE_MB} MB`}
-                    textoBotaoDireita='Alterar capa'
-                    limitarAspectRatio={null}
+                    titulo='Imagem principal da ward'
+                    infoAleatoriaUm=':)'
+                    infoAleatoriaDois={`Tamanho máximo: ${UPLOAD_SETTINGS.LIMITE_MB} MBs`}
+                    textoBotaoDireita='Alterar imagem'
                     arquivoUpload={arquivoUpload}
                     setArquivoUpload={setArquivoUpload}
                 />

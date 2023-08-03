@@ -7,7 +7,7 @@ import { Aviso } from '@/utils/functions/aviso';
 import converterDataUrlParaFile from '@/utils/functions/converter.dataUrlParaFile';
 import gerarUUID from '@/utils/functions/gerar.UUID';
 import nProgress from 'nprogress';
-import { Dispatch, Fragment, useEffect, useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import ModalUploadConteudo from './components/modal.upload.conteudo';
 import StylesUpload from './index.module.scss';
 
@@ -15,16 +15,16 @@ interface iParametros {
     isBase64: boolean; // true = base64, false = file;
     handleModal: Dispatch<boolean>;
     setArquivoUpload: Dispatch<File> | any;
-    limitarAspectRatio: number | null;
 }
 
-export default function ModalUpload({ isBase64, handleModal, setArquivoUpload, limitarAspectRatio }: iParametros) {
+export default function ModalUpload({ isBase64, handleModal, setArquivoUpload }: iParametros) {
 
     const [nomeElementoInput] = useState<string>('inputUpload_modalUpload');
     const [arquivo, setArquivo] = useState<any>(null);
     const [arquivoBlob, setArquivoBlob] = useState<string>('');
     const [arquivoCrop, setArquivoCrop] = useState<string>('');
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
+
     useEffect(() => {
         if (arquivo) {
             const arquivoBlob = URL.createObjectURL(arquivo);
@@ -91,8 +91,8 @@ export default function ModalUpload({ isBase64, handleModal, setArquivoUpload, l
     }
 
     return (
-        <Fragment>
-            <div className={StylesUpload.divUpload}>
+        <section className={StylesUpload.main}>
+            <div className={StylesUpload.dragDropFile}>
                 <DragDropFile
                     nomeElemento={nomeElementoInput}
                     tipoArquivos={UPLOAD_SETTINGS.TIPOS_IMAGEM}
@@ -101,25 +101,27 @@ export default function ModalUpload({ isBase64, handleModal, setArquivoUpload, l
                     texto='Clique aqui ou arraste uma imagem: '
                     maxSizeMBs={UPLOAD_SETTINGS.LIMITE_MB}
                     isDisabled={isDisabled}
-                    conteudo={<ModalUploadConteudo arquivoBlob={arquivoBlob} setArquivoCrop={setArquivoCrop} limitarAspectRatio={limitarAspectRatio} />}
+                    conteudo={<ModalUploadConteudo arquivoBlob={arquivoBlob} setArquivoCrop={setArquivoCrop} />}
                 />
             </div>
 
-            <div className='margem1'>
-                <Botao
-                    texto='Confirmar foto'
-                    url={null}
-                    isNovaAba={false}
-                    handleFuncao={() => handleConfirmarUpload()}
-                    Svg={null}
-                    refBtn={null}
-                    isEnabled={true}
-                    isPequeno={false}
-                />
-            </div>
+            <Botao
+                texto='Confirmar foto'
+                url={null}
+                isNovaAba={false}
+                handleFuncao={() => handleConfirmarUpload()}
+                Svg={null}
+                refBtn={null}
+                isEnabled={true}
+                isPequeno={false}
+            />
 
-            <span className='margem1 cor-principal pointer' onClick={() => handleClicarInputUpload()}>Escolher outra imagem</span>
-            <div className='margem0_5'></div>
-        </Fragment>
+            <span
+                className='cor-principal pointer'
+                onClick={() => handleClicarInputUpload()}
+            >
+                Escolher outra imagem
+            </span>
+        </section>
     )
 }

@@ -1,29 +1,37 @@
-/* =-=-=-=-=-=-=-=-=-=-= CSS referente ao conteúdo principal do modal de upload =-=-=-=-=-=-=-=-=-=-= */
-.divUpload {
-    // background-color: #474747C7;
-    background-color: transparent;
-    width: 100vw;
+.main {
+    // background-color: purple;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    gap: 1rem;
 
-    .divAvisoUpload {
-        height: 300px;
+    .dragDropFile {
+        // background-color: orange !important;
+        background-color: transparent;
+        width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
+        flex-direction: column;
 
-        h1 {
-            color: var(--branco-alt);
-            line-height: 2rem;
-            cursor: pointer;
-            transition: 0.4s;
+        .divAvisoUpload {
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
 
-            &:hover {
+            h1 {
+                color: var(--preto);
+                line-height: 2rem;
+                cursor: pointer;
                 transition: 0.4s;
-                color: var(--principal);
+
+                &:hover {
+                    transition: 0.4s;
+                    color: var(--principal);
+                }
             }
         }
     }

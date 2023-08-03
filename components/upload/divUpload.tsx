@@ -11,26 +11,22 @@ import Styles from './divUpload.module.scss';
 
 interface iParametros {
     imagem: string | null;
-    apiPasta: string | null;
     titulo: string;
     infoAleatoriaUm: string;
     infoAleatoriaDois: string | null;
     textoBotaoDireita: string | null;
-    limitarAspectRatio: number | null;
 
     arquivoUpload: string | null;
     setArquivoUpload: Dispatch<string>;
 }
 
-export default function DivUpload({ imagem, apiPasta, titulo, infoAleatoriaUm, infoAleatoriaDois, textoBotaoDireita, limitarAspectRatio, arquivoUpload, setArquivoUpload }: iParametros) {
+export default function DivUpload({ imagem, titulo, infoAleatoriaUm, infoAleatoriaDois, textoBotaoDireita, arquivoUpload, setArquivoUpload }: iParametros) {
 
-    const [isModalUploadFotoPerfilOpen, setIsModalUploadFotoPerfilOpen] = useState<boolean>(false);
+    const [isModalUploadOpen, setIsModalUploadOpen] = useState<boolean>(false);
 
     useEffect(() => {
         if (imagem) {
-            const img = `${apiPasta}/${imagem}`;
-
-            converterSrcImagemParaBase64(img)
+            converterSrcImagemParaBase64(imagem)
                 .then((base64: any) => {
                     // console.log(apiPasta, '-', imagem, '-', base64);
 
@@ -39,7 +35,7 @@ export default function DivUpload({ imagem, apiPasta, titulo, infoAleatoriaUm, i
                     }
                 });
         }
-    }, [imagem, apiPasta, setArquivoUpload]);
+    }, [imagem, setArquivoUpload]);
 
     function handleRemoverFoto() {
         setArquivoUpload('');
@@ -47,20 +43,18 @@ export default function DivUpload({ imagem, apiPasta, titulo, infoAleatoriaUm, i
 
     return (
         <Fragment>
-            {/* Modal */}
-            <ModalWrapper isOpen={isModalUploadFotoPerfilOpen}>
-                <ModalLayout handleModal={() => setIsModalUploadFotoPerfilOpen(!isModalUploadFotoPerfilOpen)} logo={null} isExibirApenasLogo={true} titulo={null} tamanho={CONSTS_MODAL.NULL} isCentralizado={true} isFecharModalClicandoNoFundo={false}>
+            <ModalWrapper isOpen={isModalUploadOpen}>
+                <ModalLayout handleModal={() => setIsModalUploadOpen(!isModalUploadOpen)} logo={null} isExibirApenasLogo={true} titulo={null} tamanho={CONSTS_MODAL.NULL} isCentralizado={true} isFecharModalClicandoNoFundo={false}>
                     <ModalUpload
                         isBase64={true}
-                        handleModal={() => setIsModalUploadFotoPerfilOpen(!isModalUploadFotoPerfilOpen)}
+                        handleModal={() => setIsModalUploadOpen(!isModalUploadOpen)}
                         setArquivoUpload={setArquivoUpload}
-                        limitarAspectRatio={limitarAspectRatio}
                     />
                 </ModalLayout>
             </ModalWrapper>
 
             <div className={Styles.main}>
-                <div className={(limitarAspectRatio ? Styles.imgCapaLojinha : Styles.imgFotoPerfil)}>
+                <div className={Styles.imagem}>
                     <Image src={(arquivoUpload ? arquivoUpload : ImgCinza)} width={100} height={100} alt='' />
                 </div>
 
@@ -68,8 +62,9 @@ export default function DivUpload({ imagem, apiPasta, titulo, infoAleatoriaUm, i
                     <span className={Styles.titulo}>{titulo}</span>
                     <span className={Styles.texto}>{infoAleatoriaUm}</span>
                     <span className={Styles.texto}>{infoAleatoriaDois && infoAleatoriaDois}</span>
+
                     {
-                        (arquivoUpload) && (
+                        arquivoUpload && (
                             <span className={`${Styles.texto} cor-principal pointer`} onClick={() => handleRemoverFoto()}>Remover</span>
                         )
                     }
@@ -77,20 +72,16 @@ export default function DivUpload({ imagem, apiPasta, titulo, infoAleatoriaUm, i
 
                 {
                     textoBotaoDireita && (
-                        <div className={Styles.divBotao}>
-                            <span className='separador'></span>
-
-                            <Botao
-                                texto={textoBotaoDireita}
-                                url={null}
-                                isNovaAba={false}
-                                handleFuncao={() => setIsModalUploadFotoPerfilOpen(true)}
-                                Svg={null}
-                                refBtn={null}
-                                isEnabled={true}
-                                isPequeno={false}
-                            />
-                        </div>
+                        <Botao
+                            texto={textoBotaoDireita}
+                            url={null}
+                            isNovaAba={false}
+                            handleFuncao={() => setIsModalUploadOpen(true)}
+                            Svg={null}
+                            refBtn={null}
+                            isEnabled={true}
+                            isPequeno={false}
+                        />
                     )
                 }
             </div>

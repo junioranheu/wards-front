@@ -22,7 +22,7 @@ export default function DragDropFile({ nomeElemento, tipoArquivos, isMultiple, s
 
     return (
         <FileUploader
-            handleChange={(handleChange)}
+            handleChange={handleChange}
             name={nomeElemento}
             types={tipoArquivos}
             multiple={isMultiple}
