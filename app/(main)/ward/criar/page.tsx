@@ -1,7 +1,6 @@
 'use client';
 import Botao from '@/components/botao';
 import SeparadorHorizontal from '@/components/separador/separador.horizontal';
-import DivUpload from '@/components/upload/divUpload';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_HASHTAGS from '@/utils/api/consts/hashtags';
@@ -15,9 +14,10 @@ import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSel
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
 import iSelect from '@/utils/types/iSelect';
-import { ChangeEvent, KeyboardEvent, useEffect, useId, useRef, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, lazy, useEffect, useId, useRef, useState } from 'react';
 import Select from 'react-select';
 import Styles from './index.module.scss';
+const DivUpload = lazy(() => import('@/components/upload/divUpload'));
 
 interface iFormData {
     titulo: string;
