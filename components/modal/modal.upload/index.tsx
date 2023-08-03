@@ -117,7 +117,7 @@ export default function ModalUpload({ isBase64, handleModal, setArquivoUpload }:
             />
 
             <span
-                className='cor-principal pointer'
+                className={StylesUpload.textoFooter}
                 onClick={() => handleClicarInputUpload()}
             >
                 Escolher outra imagem

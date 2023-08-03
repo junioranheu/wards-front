@@ -15,12 +15,12 @@ const styleReactSelect = {
         ...provided,
         backgroundColor: state.isSelected ? 'var(--principal)' : 'transparent',
         '&:hover': {
-            backgroundColor: state.isSelected ? 'var(--principal-escuro)' : 'rgb(222, 235, 255)'
+            backgroundColor: state.isSelected ? 'var(--principal-escuro)' : 'var(--misc)'
         }
     }),
     multiValue: (base: any) => ({
         ...base,
-        backgroundColor: 'rgb(222, 235, 255)',
+        backgroundColor: 'var(--misc)',
         borderRadius: '0.25rem',
         padding: '3px 2.5px',
         color: 'var(--preto)'

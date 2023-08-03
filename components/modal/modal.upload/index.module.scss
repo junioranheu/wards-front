@@ -4,11 +4,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 
     .dragDropFile {
         // background-color: orange !important;
-        background-color: transparent;
+        background-color: var(--misc);
         width: 100vw;
         display: flex;
         justify-content: center;
@@ -32,6 +32,25 @@
                     transition: 0.4s;
                     color: var(--principal);
                 }
+            }
+        }
+    }
+
+    .textoFooter {
+        // background-color: orange;
+        font-weight: 400;
+        font-size: 0.8rem;
+        transition: .2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--principal-escuro) !important;
+            fill: var(--principal-escuro) !important;
+            opacity: 1 !important;
+            transition: .2s ease-in-out;
+
+            svg {
+                fill: var(--principal-escuro) !important;
             }
         }
     }
