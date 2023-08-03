@@ -98,7 +98,6 @@ export default function ModalUpload({ isBase64, handleModal, setArquivoUpload }:
                     tipoArquivos={UPLOAD_SETTINGS.TIPOS_IMAGEM}
                     isMultiple={false}
                     setArquivo={setArquivo}
-                    texto='Clique aqui ou arraste uma imagem: '
                     maxSizeMBs={UPLOAD_SETTINGS.LIMITE_MB}
                     isDisabled={isDisabled}
                     conteudo={<ModalUploadConteudo arquivoBlob={arquivoBlob} setArquivoCrop={setArquivoCrop} />}

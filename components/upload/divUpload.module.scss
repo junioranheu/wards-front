@@ -6,39 +6,45 @@
     gap: 2rem;
     width: 100%;
 
-    .imagem {
-        // background-color: purple;
-
-        img {
-            border-radius: 0.5rem !important;
-            width: 10rem !important;
-            height: auto !important;
-        }
-    }
-
-    .infos {
-        // background-color: pink;
+    .imagem_e_infos {
+        // background-color: orange;
         display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0.25rem;
-        width: fit-content;
-        text-align: left;
+        gap: 2rem;
 
-        .titulo {
-            color: var(--preto);
-            font-size: 0.8rem;
-            font-weight: 700;
-            line-height: 1.5rem;
+        .imagem {
+            // background-color: purple;
+
+            img {
+                border-radius: 0.5rem !important;
+                width: 10rem !important;
+                height: auto !important;
+            }
         }
 
-        .texto {
-            // background-color: blue;
-            color: var(--preto);
-            font-weight: 400;
-            font-size: 0.7rem;
-            line-height: 1rem;
+        .infos {
+            // background-color: pink;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.25rem;
             width: fit-content;
+            text-align: left;
+
+            .titulo {
+                color: var(--preto);
+                font-size: 0.8rem;
+                font-weight: 700;
+                line-height: 1.5rem;
+            }
+
+            .texto {
+                // background-color: blue;
+                color: var(--preto);
+                font-weight: 400;
+                font-size: 0.7rem;
+                line-height: 1rem;
+                width: fit-content;
+            }
         }
     }
 }
@@ -62,6 +68,13 @@
         border: 1px solid var(--principal);
         border-radius: 0.5rem;
         padding: 2rem;
+
+        .imagem_e_infos {
+            // background-color: orange;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
     }
 }
 

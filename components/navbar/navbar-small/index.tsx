@@ -1,6 +1,7 @@
 import Botao from '@/components/botao';
 import IconeHamburguer from '@/components/icones/hamburguer';
 import IconeLupa from '@/components/icones/lupa';
+import SeparadorHorizontal from '@/components/separador/separador.horizontal';
 import useEsconderScroll from '@/hooks/useEsconderScroll';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import CONSTS_USUARIO_ROLES from '@/utils/consts/usuario.roles';
@@ -154,7 +155,7 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
             {
                 !isAuth ? (
                     <Fragment>
-                        <span className='separadorHorizontal'></span>
+                        <SeparadorHorizontal />
 
                         <Botao
                             texto='Criar conta'
@@ -180,7 +181,7 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
                     </Fragment>
                 ) : (
                     <Fragment>
-                        <span className='separadorHorizontal'></span>
+                        <SeparadorHorizontal />
 
                         <Botao
                             texto='Sair'

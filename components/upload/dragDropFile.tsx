@@ -8,13 +8,12 @@ interface iParametros {
     tipoArquivos: string[];
     isMultiple: boolean;
     setArquivo: Dispatch<File> | any;
-    texto: string;
     maxSizeMBs: number;
     isDisabled: boolean;
     conteudo: ReactNode;
 }
 
-export default function DragDropFile({ nomeElemento, tipoArquivos, isMultiple, setArquivo, texto, maxSizeMBs, isDisabled, conteudo }: iParametros) {
+export default function DragDropFile({ nomeElemento, tipoArquivos, isMultiple, setArquivo, maxSizeMBs, isDisabled, conteudo }: iParametros) {
 
     function handleChange(arquivo: any) {
         setArquivo(arquivo);
@@ -26,7 +25,7 @@ export default function DragDropFile({ nomeElemento, tipoArquivos, isMultiple, s
             name={nomeElemento}
             types={tipoArquivos}
             multiple={isMultiple}
-            label={texto}
+            label='Clique aqui ou arraste uma imagem'
             maxSize={maxSizeMBs}
             disabled={isDisabled}
             hoverTitle={' '}

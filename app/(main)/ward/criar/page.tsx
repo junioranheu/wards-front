@@ -1,5 +1,6 @@
 'use client';
 import Botao from '@/components/botao';
+import SeparadorHorizontal from '@/components/separador/separador.horizontal';
 import DivUpload from '@/components/upload/divUpload';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useTitulo from '@/hooks/useTitulo';
@@ -133,6 +134,8 @@ export default function Page() {
                     noOptionsMessage={() => 'Nenhuma opção encontrada'}
                 />
 
+                <SeparadorHorizontal />
+
                 <DivUpload
                     imagem={arquivoUpload ?? ''}
                     titulo='Imagem principal da ward'
@@ -156,6 +159,8 @@ export default function Page() {
                             placeholder='Hashtags'
                             noOptionsMessage={() => 'Nenhuma opção encontrada'}
                         /> */}
+
+                <SeparadorHorizontal />
 
                 <Botao
                     texto='Criar'

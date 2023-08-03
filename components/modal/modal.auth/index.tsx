@@ -1,4 +1,5 @@
 import Botao from '@/components/botao';
+import SeparadorHorizontal from '@/components/separador/separador.horizontal';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { Dispatch, KeyboardEvent, SetStateAction } from 'react';
 import Styles from './index.module.scss';
@@ -36,7 +37,7 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFoot
                 <span dangerouslySetInnerHTML={{ __html: (titulo ?? CONSTS_SISTEMA.NOME_SISTEMA) }} />
             </div>
 
-            <span className='separadorHorizontal'></span>
+            <SeparadorHorizontal />
 
             <div className={Styles.input}>
                 {
@@ -47,7 +48,8 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFoot
                 <input className='inputAlt' type='password' placeholder='Senha' onChange={(e) => setSenha(e.target.value)} onKeyDown={(e) => handleKeyPress(e)} />
             </div>
 
-            <span className='separadorHorizontal'></span>
+            <SeparadorHorizontal />
+
             <div className={Styles.botoes}>
                 <Botao
                     texto={textoBotao1}
@@ -72,7 +74,8 @@ export default function ModalAuth({ handleModal, titulo, textoFooter, funcaoFoot
                 />
             </div>
 
-            <span className='separadorHorizontal'></span>
+            <SeparadorHorizontal />
+
             <span
                 className={Styles.footer}
                 dangerouslySetInnerHTML={{ __html: textoFooter }}

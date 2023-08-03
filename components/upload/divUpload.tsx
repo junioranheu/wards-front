@@ -54,20 +54,27 @@ export default function DivUpload({ imagem, titulo, infoAleatoriaUm, infoAleator
             </ModalWrapper>
 
             <div className={Styles.main}>
-                <div className={Styles.imagem}>
-                    <Image src={(arquivoUpload ? arquivoUpload : ImgCinza)} width={100} height={100} alt='' />
-                </div>
+                <div className={Styles.imagem_e_infos}>
+                    <div className={Styles.imagem}>
+                        <Image src={(arquivoUpload ? arquivoUpload : ImgCinza)} width={100} height={100} alt='' />
+                    </div>
 
-                <div className={Styles.infos}>
-                    <span className={Styles.titulo}>{titulo}</span>
-                    <span className={Styles.texto}>{infoAleatoriaUm}</span>
-                    <span className={Styles.texto}>{infoAleatoriaDois && infoAleatoriaDois}</span>
+                    <div className={Styles.infos}>
+                        <span className={Styles.titulo}>{titulo}</span>
+                        <span className={Styles.texto}>{infoAleatoriaUm}</span>
+                        <span className={Styles.texto}>{infoAleatoriaDois && infoAleatoriaDois}</span>
 
-                    {
-                        arquivoUpload && (
-                            <span className={`${Styles.texto} cor-principal pointer`} onClick={() => handleRemoverFoto()}>Remover</span>
-                        )
-                    }
+                        {
+                            arquivoUpload && (
+                                <span
+                                    className={`${Styles.texto} cor-principal pointer`}
+                                    onClick={() => handleRemoverFoto()}
+                                >
+                                    Remover
+                                </span>
+                            )
+                        }
+                    </div>
                 </div>
 
                 {
