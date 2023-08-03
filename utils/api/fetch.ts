@@ -29,7 +29,7 @@ export const Fetch = {
             // console.log(respostaJson.status);
 
             // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401, quando um usuário escreve na barra e procura por um ID que não existe;
+            // Exemplo: erros 404, 400 ou 401;
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
@@ -93,7 +93,7 @@ export const Fetch = {
             // console.log(respostaJson.status);
 
             // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401, quando um usuário escreve na barra e procura por um ID que não existe;
+            // Exemplo: erros 404, 400 ou 401;
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
@@ -144,7 +144,7 @@ export const Fetch = {
             // console.log(respostaJson.status);
 
             // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401, quando um usuário escreve na barra e procura por um ID que não existe;
+            // Exemplo: erros 404, 400 ou 401;
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
@@ -176,9 +176,9 @@ export const Fetch = {
 
         let respostaJson;
         let headers = {
-            'Accept': 'application/json',
-            'enctype': 'multipart/form-data',
-            'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
+            accept: 'text/plain',
+            // enctype: 'multipart/form-data',
+            Authorization: `Bearer ${Auth?.get()?.token ?? ''}`
         }
 
         try {
@@ -193,7 +193,7 @@ export const Fetch = {
             // console.log(respostaJson.status);
 
             // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401, quando um usuário escreve na barra e procura por um ID que não existe;
+            // Exemplo: erros 404, 400 ou 401;
             if (respostaJson.status) {
                 console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
                 respostaJson = null;
@@ -218,53 +218,6 @@ export const Fetch = {
         setDesabilitarBotoes(false);
 
         return respostaJson;
-    },
-
-    // async getApiExportarArquivo(url: string, isSpinner: boolean = true) {
-    //     this.loadingBar.start();
-    //     this.spinnerService.set(isSpinner);
-
-    //     const token = await this.getToken();
-    //     let respostaJson;
-    //     let status = 200;
-
-    //     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
-
-    //     try {
-    //         respostaJson = await firstValueFrom(
-    //             this.http.get(url, { headers, responseType: 'blob' })
-    //         );
-
-    //         try {
-    //             // @ts-ignore;
-    //             if (respostaJson.code) {
-    //                 // @ts-ignore;
-    //                 status = respostaJson.code;
-    //             }
-    //         } catch (erro: any) { }
-    //     } catch (erro: any) {
-    //         this.loadingBar.complete();
-    //         this.spinnerService.set(false);
-
-    //         respostaJson = erro.error;
-    //         status = erro.status;
-
-    //         const e = {
-    //             url: url,
-    //             token: token,
-    //             erro: erro.message,
-    //             data: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
-    //         };
-
-    //         // console.log(e);
-
-    //         if (status === 401) {
-    //             this.router.navigate([CONSTS_TELAS.ERRO_401_TOKEN_EXPIRADO]);
-    //         }
-    //     }
-
-    //     this.loadingBar.complete();
-    //     this.spinnerService.set(false);
-    // }
+    }
 
 }

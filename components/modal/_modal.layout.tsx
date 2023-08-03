@@ -58,7 +58,7 @@ export default function ModalLayout({ handleModal, logo, isExibirApenasLogo, tit
     )
 }
 
-const FecharModal = {
+export const FecharModal = {
     fecharModalClicandoNoBotao(handleModal: any) {
         handleModal();
     },

@@ -1,5 +1,6 @@
 'use client';
 import Botao from '@/components/botao';
+import DivUpload from '@/components/upload/divUpload';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_HASHTAGS from '@/utils/api/consts/hashtags';
@@ -7,6 +8,7 @@ import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import styleReactSelect from '@/utils/consts/style.react-select';
+import UPLOAD_SETTINGS from '@/utils/consts/upload.settings';
 import { Aviso } from '@/utils/functions/aviso';
 import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSelect';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
@@ -27,6 +29,7 @@ export default function Page() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
     const [listaHashtags, setListaHashtags] = useState<iSelect[]>([]);
+    const [arquivoUpload, setArquivoUpload] = useState<string | null>('');
 
     useEffect(() => {
         async function handleListarHashtags() {
@@ -128,6 +131,18 @@ export default function Page() {
                     styles={styleReactSelect}
                     placeholder='Hashtags'
                     noOptionsMessage={() => 'Nenhuma opção encontrada'}
+                />
+
+                <DivUpload
+                    imagem={arquivoUpload ?? ''}
+                    apiPasta='XXXXXXXXXXX'
+                    titulo='Capa da playlist'
+                    infoAleatoriaUm={`Escolhe uma imagem da hora aí`}
+                    infoAleatoriaDois={`Peso máximo: ${UPLOAD_SETTINGS.LIMITE_MB} MB`}
+                    textoBotaoDireita='Alterar capa'
+                    limitarAspectRatio={null}
+                    arquivoUpload={arquivoUpload}
+                    setArquivoUpload={setArquivoUpload}
                 />
 
                 {/* =-=-=-=-=-=-= EXEMPLO DE COMO USAR UM REACT-SELECT PARA SETAR UM VALOR ÚNICO (NÃO UM ARRAY) =-=-=-=-=-=-= */}

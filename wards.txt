@@ -1,0 +1,2 @@
+REFACTOR EM FETCH.TS PORQUE TÁ UMA BOSTA
+usar um resposta.ok em vez de status pra verificar se deu ruim
