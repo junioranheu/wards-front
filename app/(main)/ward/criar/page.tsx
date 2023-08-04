@@ -30,7 +30,7 @@ export default function Page() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
     const [listaHashtags, setListaHashtags] = useState<iSelect[]>([]);
-    const [arquivoUpload, setArquivoUpload] = useState<string | null>('');
+    const [arquivoUpload, setArquivoUpload] = useState<File | ArrayBuffer | string | null>('');
 
     useEffect(() => {
         async function handleListarHashtags() {
@@ -63,6 +63,10 @@ export default function Page() {
     }
 
     async function handleSubmit() {
+
+        console.log(arquivoUpload);
+        return false;
+
         if (!formData.titulo || !formData.conteudo || !formHashtags.length) {
             Aviso.toast('Preencha todos os campos para criar uma nova ward', 5000, CONSTS_EMOJIS.ERRO, true);
             return false;
@@ -83,13 +87,11 @@ export default function Page() {
             listaHashtags: formHashtags
         }
 
-        const formFileImagemPrincipal = createEmptyFile("empty-file.txt", "text/plain");
-
         const formDataInput: FormData = new FormData();
         formDataInput.append('input.titulo', formData.titulo);
         formDataInput.append('input.conteudo', formData.conteudo);
         formDataInput.append('input.listaHashtags', JSON.stringify(formHashtags));
-        formDataInput.append('formFileImagemPrincipal', formFileImagemPrincipal);
+        // formDataInput.append('formFileImagemPrincipal', arquivoUpload);
 
         const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, formDataInput);
 
@@ -101,11 +103,6 @@ export default function Page() {
         // }
 
         // alert('refreshhhhhhhhhhhhhh :)');
-    }
-
-    function createEmptyFile(fileName: string, contentType: string): File {
-        const blob = new Blob([], { type: contentType });
-        return new File([blob], fileName, { type: contentType });
     }
 
     return (
@@ -137,11 +134,11 @@ export default function Page() {
                 <SeparadorHorizontal />
 
                 <DivUpload
-                    imagem={arquivoUpload ?? ''}
                     titulo='Imagem principal da ward'
                     infoAleatoriaUm=':)'
                     infoAleatoriaDois={`Tamanho máximo: ${UPLOAD_SETTINGS.LIMITE_MB} MBs`}
                     textoBotaoDireita='Alterar imagem'
+                    isBase64={true}
                     arquivoUpload={arquivoUpload}
                     setArquivoUpload={setArquivoUpload}
                 />

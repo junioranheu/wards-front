@@ -14,7 +14,7 @@ import StylesUpload from './index.module.scss';
 interface iParametros {
     isBase64: boolean; // true = base64, false = file;
     handleModal: Dispatch<boolean>;
-    setArquivoUpload: Dispatch<File> | any;
+    setArquivoUpload: Dispatch<File | ArrayBuffer | string | null>;
 }
 
 export default function ModalUpload({ isBase64, handleModal, setArquivoUpload }: iParametros) {
