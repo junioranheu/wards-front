@@ -52,7 +52,7 @@ export default function DivUpload({ titulo, infoAleatoriaUm, infoAleatoriaDois, 
         }
 
         handlePreview();
-    }, [arquivoUpload]);
+    }, [arquivoUpload, isBase64]);
 
     function handleRemoverFoto() {
         setArquivoUpload('');
