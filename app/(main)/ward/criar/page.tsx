@@ -63,11 +63,7 @@ export default function Page() {
     }
 
     async function handleSubmit() {
-
-        console.log(arquivoUpload);
-        return false;
-
-        if (!formData.titulo || !formData.conteudo || !formHashtags.length) {
+        if (!formData.titulo || !formData.conteudo || !formHashtags.length || !arquivoUpload) {
             Aviso.toast('Preencha todos os campos para criar uma nova ward', 5000, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
@@ -138,7 +134,7 @@ export default function Page() {
                     infoAleatoriaUm=':)'
                     infoAleatoriaDois={`Tamanho máximo: ${UPLOAD_SETTINGS.LIMITE_MB} MBs`}
                     textoBotaoDireita='Alterar imagem'
-                    isBase64={true}
+                    isBase64={false}
                     arquivoUpload={arquivoUpload}
                     setArquivoUpload={setArquivoUpload}
                 />

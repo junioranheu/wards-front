@@ -40,7 +40,7 @@ export default function DivUpload({ titulo, infoAleatoriaUm, infoAleatoriaDois, 
 
                 converterIFormFileParaBase64(arquivoUpload as File)
                     .then((base64String) => {
-                        console.log(base64String);
+                        // console.log(base64String);
                         setPreview(base64String);
                         return false;
                     });
