@@ -176,16 +176,16 @@ export const Fetch = {
 
         let respostaJson;
         let headers = {
-            accept: 'text/plain',
-            // enctype: 'multipart/form-data',
-            Authorization: `Bearer ${Auth?.get()?.token ?? ''}`
+            'Accept': 'application/json',
+            'enctype': 'multipart/form-data',
+            'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
         }
 
         try {
             let resposta = await fetch(url, {
                 method: CONSTS_VERBOS_HTTP.POST,
                 headers: headers,
-                body: JSON.stringify(body)
+                body: body // Para esse caso, sem "JSON.stringify()" pelamor;
             });
 
             respostaJson = await resposta.json();

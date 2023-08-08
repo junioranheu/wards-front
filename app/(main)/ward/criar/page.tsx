@@ -68,30 +68,19 @@ export default function Page() {
             return false;
         }
 
-        // const input = {
-        //     input: {
-        //         titulo: formData.titulo,
-        //         conteudo: formData.conteudo,
-        //         listaHashtags: formHashtags
-        //     },
-        //     formFileImagemPrincipal: null
-        // };
+        const input: FormData = new FormData();
+        input.append('titulo', formData.titulo);
+        input.append('conteudo', formData.conteudo);
+        // @ts-ignore;
+        input.append('listaHashtags', formHashtags);
+        input.append('formFileImagemPrincipal', arquivoUpload as File);
 
-        const input = {
-            titulo: formData.titulo,
-            conteudo: formData.conteudo,
-            listaHashtags: formHashtags
-        }
+        console.log(arquivoUpload as File);
 
-        const formDataInput: FormData = new FormData();
-        formDataInput.append('input.titulo', formData.titulo);
-        formDataInput.append('input.conteudo', formData.conteudo);
-        formDataInput.append('input.listaHashtags', JSON.stringify(formHashtags));
-        // formDataInput.append('formFileImagemPrincipal', arquivoUpload);
+        const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, input);
 
-        const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, formDataInput);
-
-        console.log(resp);
+        // const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, formDataInput);
+        // console.log(resp);
 
         // if (resp?.mensagens || !resp) {
         //     Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
