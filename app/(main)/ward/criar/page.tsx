@@ -69,10 +69,10 @@ export default function Page() {
         }
 
         const input: FormData = new FormData();
-        input.append('titulo', formData.titulo);
-        input.append('conteudo', formData.conteudo);
+        input.append('Titulo', formData.titulo);
+        input.append('Conteudo', formData.conteudo);
         // @ts-ignore;
-        input.append('listaHashtags', formHashtags);
+        input.append('ListaHashtags', formHashtags);
         input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
         // @ts-ignore;
