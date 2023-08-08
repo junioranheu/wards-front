@@ -73,9 +73,12 @@ export default function Page() {
         input.append('conteudo', formData.conteudo);
         // @ts-ignore;
         input.append('listaHashtags', formHashtags);
-        input.append('formFileImagemPrincipal', arquivoUpload as File);
+        input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
-        console.log(arquivoUpload as File);
+        // @ts-ignore;
+        // for (const pair of input.entries()) {
+        //     console.log(pair[0] + ': ' + pair[1]);
+        // }
 
         const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, input);
 
