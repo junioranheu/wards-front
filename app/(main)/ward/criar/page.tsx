@@ -75,22 +75,14 @@ export default function Page() {
         input.append('ListaHashtags', formHashtags);
         input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
-        // @ts-ignore;
-        // for (const pair of input.entries()) {
-        //     console.log(pair[0] + ': ' + pair[1]);
-        // }
-
         const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, input);
 
-        // const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, formDataInput);
-        // console.log(resp);
+        if (resp?.mensagens || !resp) {
+            Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
+            return false;
+        }
 
-        // if (resp?.mensagens || !resp) {
-        //     Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);
-        //     return false;
-        // }
-
-        // alert('refreshhhhhhhhhhhhhh :)');
+        alert('refreshhhhhhhhhhhhhh :)');
     }
 
     return (
