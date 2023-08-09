@@ -16,10 +16,13 @@ import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
 import iSelect from '@/utils/types/iSelect';
+import dynamic from 'next/dynamic';
 import { ChangeEvent, KeyboardEvent, lazy, useEffect, useId, useRef, useState } from 'react';
+import 'react-quill/dist/quill.snow.css';
 import Select from 'react-select';
 import Styles from './index.module.scss';
 const DivUpload = lazy(() => import('@/components/upload/divUpload'));
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 interface iFormData {
     titulo: string;
@@ -107,11 +110,10 @@ export default function Page() {
                     value={formData.titulo}
                 />
 
-                <textarea
-                    placeholder='Conteúdo'
-                    name='conteudo'
-                    rows={5}
-                    onChange={handleChange}
+                <ReactQuill
+                    theme='snow'
+                    placeholder='Conteúdo da ward'
+                    onChange={(e) => setFormData({ ...formData, 'conteudo': e })}
                     value={formData.conteudo}
                 />
 
