@@ -351,6 +351,26 @@ textarea {
     }
 }
 
+/* =-=-=-=-=-=-=-=-=-=-= react-quill (rich HTML editor) =-=-=-=-=-=-=-=-=-=-= */
+.quill {
+    // background-color: orange !important;
+
+    .ql-toolbar,
+    .ql-container {
+        border: var(--border) !important;
+    }
+
+    .ql-toolbar {
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+    }
+
+    .ql-container {
+        border-bottom-left-radius: 0.75rem;
+        border-bottom-right-radius: 0.75rem;
+    }
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= react-cookie-gpdr =-=-=-=-=-=-=-=-=-=-= */
 .cookie_widget_container {
     background: var(--branco-alt) !important;
