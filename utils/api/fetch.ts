@@ -2,6 +2,7 @@ import CONSTS_VERBOS_HTTP from '@/utils/consts/verbosHTTP';
 import { Auth } from '@/utils/context/usuarioContext';
 import gerarHorarioBrasilia from '@/utils/functions/gerar.horarioBrasilia';
 import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
+import { verificarIsTokenJWTValido } from '@/utils/functions/verificar.isTokenJWTValido';
 import nProgress from 'nprogress';
 
 export const Fetch = {
@@ -25,10 +26,13 @@ export const Fetch = {
         nProgress.start();
         setDesabilitarBotoes(true);
 
+        const token = Auth?.get()?.token ?? '';
+        verificarIsTokenJWTValido(token);
+
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
+            'Authorization': `Bearer ${token}`
         };
 
         try {
@@ -62,10 +66,13 @@ export const Fetch = {
     },
 
     async getCorsExterno(url: string) {
+        const token = Auth?.get()?.token ?? '';
+        verificarIsTokenJWTValido(token);
+
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
+            'Authorization': `Bearer ${token}`
         };
 
         try {
@@ -97,10 +104,13 @@ export const Fetch = {
     },
 
     async postIFormFile(url: string, body: FormData) {
+        const token = Auth?.get()?.token ?? '';
+        verificarIsTokenJWTValido(token);
+
         const headers = {
             'Accept': 'application/json',
             'enctype': 'multipart/form-data',
-            'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
+            'Authorization': `Bearer ${token}`
         };
 
         try {
