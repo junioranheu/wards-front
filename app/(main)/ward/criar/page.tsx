@@ -10,6 +10,7 @@ import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import styleReactSelect from '@/utils/consts/style.react-select';
 import UPLOAD_SETTINGS from '@/utils/consts/upload.settings';
 import { Aviso } from '@/utils/functions/aviso';
+import gerarNumeroAleatorio from '@/utils/functions/gerar.numeroAleatorio';
 import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSelect';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
@@ -30,7 +31,6 @@ export default function Page() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
     const [listaHashtags, setListaHashtags] = useState<iSelect[]>([]);
-    const [arquivoUpload, setArquivoUpload] = useState<File | ArrayBuffer | string | null>('');
 
     useEffect(() => {
         async function handleListarHashtags() {
@@ -46,7 +46,8 @@ export default function Page() {
 
     const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
     const [formHashtags, setFormHashtags] = useState<number[]>([]);
-    const [exemploReactSelectUnico, setExemploReactSelectUnico] = useState<string>('');
+    const [arquivoUpload, setArquivoUpload] = useState<File | ArrayBuffer | string | null>(null);
+    // const [exemploReactSelectUnico, setExemploReactSelectUnico] = useState<string>('');
 
     function handleHashtagsChangeMulti(item: any) {
         setFormHashtags(item.map((x: iSelect) => x.value));
@@ -82,7 +83,11 @@ export default function Page() {
             return false;
         }
 
-        alert('refreshhhhhhhhhhhhhh :)');
+        Aviso.toast('Ward salva com sucesso!', 5500, CONSTS_EMOJIS.SUCESSO, true);
+
+        setTimeout(() => {
+            location.reload();
+        }, gerarNumeroAleatorio(2000, 2500));
     }
 
     return (
@@ -92,11 +97,22 @@ export default function Page() {
             </div>
 
             <div className={Styles.form}>
-                <input type='text' placeholder='Título da ward' name='titulo'
-                    onChange={handleChange} onKeyDown={handleKeyPress} />
+                <input
+                    type='text'
+                    placeholder='Título da ward'
+                    name='titulo'
+                    onChange={handleChange}
+                    onKeyDown={handleKeyPress}
+                    value={formData.titulo}
+                />
 
-                <textarea placeholder='Conteúdo' name='conteudo' rows={5}
-                    onChange={handleChange} />
+                <textarea
+                    placeholder='Conteúdo'
+                    name='conteudo'
+                    rows={5}
+                    onChange={handleChange}
+                    value={formData.conteudo}
+                />
 
                 <Select
                     instanceId={useId()}
