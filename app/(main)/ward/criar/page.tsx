@@ -12,6 +12,7 @@ import UPLOAD_SETTINGS from '@/utils/consts/upload.settings';
 import { Aviso } from '@/utils/functions/aviso';
 import gerarNumeroAleatorio from '@/utils/functions/gerar.numeroAleatorio';
 import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSelect';
+import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
 import iSelect from '@/utils/types/iSelect';
@@ -45,7 +46,7 @@ export default function Page() {
     const refBtn = useRef<HTMLButtonElement>(null);
 
     const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
-    const [formHashtags, setFormHashtags] = useState<number[]>([]);
+    const [formHashtags, setFormHashtags] = useState<string[]>([]);
     const [arquivoUpload, setArquivoUpload] = useState<File | ArrayBuffer | string | null>(null);
     // const [exemploReactSelectUnico, setExemploReactSelectUnico] = useState<string>('');
 
@@ -72,8 +73,7 @@ export default function Page() {
         const input: FormData = new FormData();
         input.append('Titulo', formData.titulo);
         input.append('Conteudo', formData.conteudo);
-        // @ts-ignore;
-        input.append('ListaHashtags', formHashtags);
+        input.append('ListaHashtags', formHashtags.join(','));
         input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
         const resp = await Fetch.postIFormFile(CONSTS_WARDS.criar, input);
@@ -83,6 +83,7 @@ export default function Page() {
             return false;
         }
 
+        setDesabilitarBotoes(true);
         Aviso.toast('Ward salva com sucesso!', 5500, CONSTS_EMOJIS.SUCESSO, true);
 
         setTimeout(() => {

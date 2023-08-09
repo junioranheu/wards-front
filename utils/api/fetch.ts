@@ -39,10 +39,10 @@ export const Fetch = {
             });
 
             const responseJson = await response.json();
+            console.log(response, responseJson);
 
             if (!response.ok) {
                 console.log(`Erro ${responseJson.status} em ${url}. Tipo de erro: ${responseJson.title}`);
-                return null;
             }
 
             return responseJson;
@@ -79,7 +79,6 @@ export const Fetch = {
 
             if (!response.ok) {
                 console.log(`Erro ${responseJson.status} em ${url}. Tipo de erro: ${responseJson.title}`);
-                return null;
             }
 
             return responseJson;
@@ -116,7 +115,6 @@ export const Fetch = {
 
             if (!response.ok) {
                 console.log(`Erro ${responseJson.status} em ${url}. Tipo de erro: ${responseJson.title}`);
-                return null;
             }
 
             return responseJson;
