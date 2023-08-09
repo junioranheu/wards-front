@@ -7,7 +7,7 @@ import { Aviso } from './aviso';
 import normalizarURL from './normalizar.URL';
 
 export default async function redirecionarWardAleatoria() {
-    const ward = await Fetch.getApi(CONSTS_WARDS.obterAleatorio) as iWard;
+    const ward = await Fetch.get(CONSTS_WARDS.obterAleatorio) as iWard;
 
     if (!ward) {
         Aviso.toast('Parece que houve um problema ao buscar uma ward aleatória. Tente novamente mais tarde', 5500, CONSTS_EMOJIS.ERRO, true);

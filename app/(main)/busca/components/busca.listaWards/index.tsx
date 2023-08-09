@@ -27,7 +27,7 @@ export default function BuscaListaWards({ termoBuscado, listaWards, setListaWard
 
     useEffect(() => {
         async function handleListarWards() {
-            const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(0, 50, false)}&keyword=${termoBuscado}`) as iWard[];
+            const resp = await Fetch.get(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(0, 50, false)}&keyword=${termoBuscado}`) as iWard[];
             // console.log(resp, resp.length);
 
             // @ts-ignore;

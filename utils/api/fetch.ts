@@ -5,219 +5,134 @@ import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import nProgress from 'nprogress';
 
 export const Fetch = {
-    async getApi(url: string) {
+    async get(url: string) {
+        return await this.requestApi(url, CONSTS_VERBOS_HTTP.GET);
+    },
+
+    async post(url: string, body: any) {
+        return await this.requestApi(url, CONSTS_VERBOS_HTTP.POST, body);
+    },
+
+    async put(url: string, body: any) {
+        return await this.requestApi(url, CONSTS_VERBOS_HTTP.PUT, body);
+    },
+
+    async delete(url: string, body: any) {
+        return await this.requestApi(url, CONSTS_VERBOS_HTTP.DELETE, body);
+    },
+
+    async requestApi(url: string, method: string, body: any | null = null) {
         nProgress.start();
         setDesabilitarBotoes(true);
 
-        let respostaJson;
-        let headers = {
+        const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
-        }
+        };
 
         try {
-            let resposta = await fetch(url, {
-                method: CONSTS_VERBOS_HTTP.GET,
-                headers: headers
-            });
-
-            // console.log(resposta);
-
-            respostaJson = await resposta.json();
-            // console.log(respostaJson);
-            // console.log(respostaJson.status);
-
-            // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401;
-            if (respostaJson.status) {
-                console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
-                respostaJson = null;
-                nProgress.done();
-                setDesabilitarBotoes(false);
-            }
-        } catch (erro: any) {
-            const e = {
-                'url': url,
-                'erro': erro.message,
-                'data': gerarHorarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
-            }
-
-            console.table(e);
-            nProgress.done();
-            setDesabilitarBotoes(false);
-            // Aviso.toast('Houve uma falha na requisição GET ao servidor!', 5000, CONSTS_EMOJIS.ERRO, true);
-        }
-
-        nProgress.done();
-        setDesabilitarBotoes(false);
-
-        return respostaJson;
-    },
-
-    async postApi(url: string, body: string | any | null) {
-        let respostaJson = await Fetch.conteudoPostPutDelete(CONSTS_VERBOS_HTTP.POST, url, body);
-        return respostaJson;
-    },
-
-    async putApi(url: string, body: string | any | null) {
-        let respostaJson = await Fetch.conteudoPostPutDelete(CONSTS_VERBOS_HTTP.PUT, url, body);
-        return respostaJson;
-    },
-
-    async deleteApi(url: string, body: string | any | null) {
-        let respostaJson = await Fetch.conteudoPostPutDelete(CONSTS_VERBOS_HTTP.DELETE, url, body);
-        return respostaJson;
-    },
-
-    async conteudoPostPutDelete(verboHTTP: string, url: string, body: string | any | null) {
-        nProgress.start();
-        setDesabilitarBotoes(true);
-
-        let respostaJson;
-        let headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
-        }
-
-        try {
-            let resposta = await fetch(url, {
-                method: verboHTTP,
+            const response = await fetch(url, {
+                method: method,
                 headers: headers,
-                body: JSON.stringify(body)
+                body: body ? JSON.stringify(body) : undefined
             });
 
-            respostaJson = await resposta.json();
-            // console.log(respostaJson);
-            // console.log(respostaJson.status);
+            const responseJson = await response.json();
 
-            // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401;
-            if (respostaJson.status) {
-                console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
-                respostaJson = null;
-                nProgress.done();
-                setDesabilitarBotoes(false);
+            if (!response.ok) {
+                console.log(`Erro ${responseJson.status} em ${url}. Tipo de erro: ${responseJson.title}`);
+                return null;
             }
-        } catch (erro: any) {
-            const e = {
+
+            return responseJson;
+        } catch (error: any) {
+            const errorData = {
                 'url': url,
                 'body': body,
-                'erro': erro.message,
+                'erro': error.message,
                 'data': gerarHorarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
-            }
+            };
 
-            console.table(e);
+            console.table(errorData);
+            return null;
+        } finally {
             nProgress.done();
             setDesabilitarBotoes(false);
-            // Aviso.toast('Houve uma falha na requisição POST/PUT/DELETE ao servidor!', 5000, CONSTS_EMOJIS.ERRO, true);
         }
-
-        nProgress.done();
-        setDesabilitarBotoes(false);
-
-        return respostaJson;
     },
 
-    async getApiCorsExterno(url: string) {
-        nProgress.start();
-        setDesabilitarBotoes(true);
-
-        let respostaJson;
-        let headers = {
+    async getCorsExterno(url: string) {
+        const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
-        }
+        };
 
         try {
-            let resposta = await fetch(url, {
+            const response = await fetch(url, {
                 method: CONSTS_VERBOS_HTTP.GET,
                 headers: headers
             });
 
-            // console.log(resposta);
+            const responseJson = await response.json();
 
-            respostaJson = await resposta.json();
-            // console.log(respostaJson);
-            // console.log(respostaJson.status);
-
-            // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401;
-            if (respostaJson.status) {
-                console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
-                respostaJson = null;
-                nProgress.done();
-                setDesabilitarBotoes(false);
+            if (!response.ok) {
+                console.log(`Erro ${responseJson.status} em ${url}. Tipo de erro: ${responseJson.title}`);
+                return null;
             }
-        } catch (erro: any) {
-            const e = {
+
+            return responseJson;
+        } catch (error: any) {
+            const errorData = {
                 'url': url,
-                'erro': erro.message,
+                'erro': error.message,
                 'data': gerarHorarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
-            }
+            };
 
-            console.table(e);
+            console.table(errorData);
+            return null;
+        } finally {
             nProgress.done();
             setDesabilitarBotoes(false);
-            // Aviso.toast('Houve uma falha na requisição GET (externo) ao servidor!', 5000, CONSTS_EMOJIS.ERRO, true);
         }
-
-        nProgress.done();
-        setDesabilitarBotoes(false);
-
-        return respostaJson;
     },
 
-    async postIFormFileApi(url: string, body: FormData) {
-        nProgress.start();
-        setDesabilitarBotoes(true);
-
-        let respostaJson;
-        let headers = {
+    async postIFormFile(url: string, body: FormData) {
+        const headers = {
             'Accept': 'application/json',
             'enctype': 'multipart/form-data',
             'Authorization': `Bearer ${Auth?.get()?.token ?? ''}`
-        }
+        };
 
         try {
-            let resposta = await fetch(url, {
+            const response = await fetch(url, {
                 method: CONSTS_VERBOS_HTTP.POST,
                 headers: headers,
-                body: body // Para esse caso, sem "JSON.stringify()" pelamor;
+                body: body
             });
 
-            respostaJson = await resposta.json();
-            // console.log(respostaJson);
-            // console.log(respostaJson.status);
+            const responseJson = await response.json();
 
-            // Caso o respostaJson.status seja diferente de nulo, é porque algo deu erro...
-            // Exemplo: erros 404, 400 ou 401;
-            if (respostaJson.status) {
-                console.log(`Erro ${respostaJson.status} em ${url}. Tipo de erro: ${respostaJson.title}`);
-                respostaJson = null;
-                nProgress.done();
-                setDesabilitarBotoes(false);
+            if (!response.ok) {
+                console.log(`Erro ${responseJson.status} em ${url}. Tipo de erro: ${responseJson.title}`);
+                return null;
             }
-        } catch (erro: any) {
-            const e = {
+
+            return responseJson;
+        } catch (error: any) {
+            const errorData = {
                 'url': url,
                 'body': body,
-                'erro': erro.message,
+                'erro': error.message,
                 'data': gerarHorarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
-            }
+            };
 
-            console.table(e);
+            console.table(errorData);
+            return null;
+        } finally {
             nProgress.done();
             setDesabilitarBotoes(false);
-            // Aviso.toast('Houve uma falha na requisição POST (iFormFile) ao servidor!', 5000, CONSTS_EMOJIS.ERRO, true);
         }
-
-        nProgress.done();
-        setDesabilitarBotoes(false);
-
-        return respostaJson;
     }
-
-}
+};

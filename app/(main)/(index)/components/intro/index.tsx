@@ -35,7 +35,7 @@ export default function Intro() {
             email: emailCadastroNewsletter
         };
 
-        const resp = await Fetch.postApi(CONSTS_NEWS_LETTERS.criar, input);
+        const resp = await Fetch.post(CONSTS_NEWS_LETTERS.criar, input);
 
         if (resp?.mensagens || !resp) {
             Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);

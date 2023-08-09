@@ -29,7 +29,7 @@ export default function Wards() {
 
     async function handleListarWards() {
         const qtdRegistrosPorRequest = 3;
-        const resp = await Fetch.getApi(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
+        const resp = await Fetch.get(`${CONSTS_WARDS.listar}?${filtroPaginacaoInput(indexBuscaAtual, qtdRegistrosPorRequest, false)}`) as iWard[];
 
         if (!resp) {
             Aviso.toast('Nenhuma ward foi encontrada no momento. Tente novamente mais tarde!', 7500, CONSTS_EMOJIS.ERRO, true);

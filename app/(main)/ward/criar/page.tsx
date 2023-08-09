@@ -34,7 +34,7 @@ export default function Page() {
 
     useEffect(() => {
         async function handleListarHashtags() {
-            const resp = await Fetch.getApi(CONSTS_HASHTAGS.listar) as iHashtag[];
+            const resp = await Fetch.get(CONSTS_HASHTAGS.listar) as iHashtag[];
             setListaHashtags(normalizarArrayParaSelect(resp, 'hashtagId', 'tag'));
         }
 
@@ -75,7 +75,7 @@ export default function Page() {
         input.append('ListaHashtags', formHashtags);
         input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
-        const resp = await Fetch.postIFormFileApi(CONSTS_WARDS.criar, input);
+        const resp = await Fetch.postIFormFile(CONSTS_WARDS.criar, input);
 
         if (resp?.mensagens || !resp) {
             Aviso.toast(resp?.mensagens![0], 5500, CONSTS_EMOJIS.ERRO, true);

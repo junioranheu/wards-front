@@ -26,7 +26,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
     useEffect(() => {
         async function handleObterWard() {
-            const resp = await Fetch.getApi(`${CONSTS_WARDS.obter}?id=${params.id}`) as iWard;
+            const resp = await Fetch.get(`${CONSTS_WARDS.obter}?id=${params.id}`) as iWard;
 
             // @ts-ignore;
             if (resp?.mensagens || !resp) {
