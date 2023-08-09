@@ -446,7 +446,21 @@ textarea {
 @media (max-width:1281px) {}
 
 /* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {}
+@media (max-width:1025px) {
+    .titulo {
+        // background-color: orange;
+        font-size: 2.0725rem;
+        line-height: 3.5rem;
+    }
+
+    .subtitulo {
+        // background-color: purple;
+        color: var(--preto);
+        font-size: 1.35rem;
+        line-height: 2.5rem;
+    }
+
+}
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {}
