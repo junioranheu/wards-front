@@ -1,5 +1,6 @@
 'use client';
 import Botao from '@/components/botao';
+import InputRichTextEditor from '@/components/input.rich-text-editor';
 import SeparadorHorizontal from '@/components/separador/separador.horizontal';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import useTitulo from '@/hooks/useTitulo';
@@ -16,18 +17,10 @@ import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
 import iSelect from '@/utils/types/iSelect';
-import dynamic from 'next/dynamic';
-import { ChangeEvent, KeyboardEvent, lazy, useEffect, useId, useRef, useState } from 'react';
-import 'react-quill/dist/quill.snow.css';
+import { KeyboardEvent, lazy, useEffect, useId, useRef, useState } from 'react';
 import Select from 'react-select';
 import Styles from './index.module.scss';
 const DivUpload = lazy(() => import('@/components/upload/divUpload'));
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
-interface iFormData {
-    titulo: string;
-    conteudo: string;
-}
 
 export default function Page() {
 
@@ -48,17 +41,14 @@ export default function Page() {
 
     const refBtn = useRef<HTMLButtonElement>(null);
 
-    const [formData, setFormData] = useState<iFormData>({ titulo: '', conteudo: '' });
+    const [formTitulo, setFormTitulo] = useState<string>('');
+    const [formConteudo, setFormConteudo] = useState<string>('');
     const [formHashtags, setFormHashtags] = useState<string[]>([]);
     const [arquivoUpload, setArquivoUpload] = useState<File | ArrayBuffer | string | null>(null);
     // const [exemploReactSelectUnico, setExemploReactSelectUnico] = useState<string>('');
 
     function handleHashtagsChangeMulti(item: any) {
         setFormHashtags(item.map((x: iSelect) => x.value));
-    }
-
-    function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
     function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
@@ -68,14 +58,14 @@ export default function Page() {
     }
 
     async function handleSubmit() {
-        if (!formData.titulo || !formData.conteudo || !formHashtags.length || !arquivoUpload) {
+        if (!formTitulo || !formConteudo || !formHashtags.length || !arquivoUpload) {
             Aviso.toast('Preencha todos os campos para criar uma nova ward', 5000, CONSTS_EMOJIS.ERRO, true);
             return false;
         }
 
         const input: FormData = new FormData();
-        input.append('Titulo', formData.titulo);
-        input.append('Conteudo', formData.conteudo);
+        input.append('Titulo', formTitulo);
+        input.append('Conteudo', formConteudo);
         input.append('ListaHashtags', formHashtags.join(','));
         input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
@@ -105,16 +95,15 @@ export default function Page() {
                     type='text'
                     placeholder='Título da ward'
                     name='titulo'
-                    onChange={handleChange}
+                    onChange={(e) => setFormTitulo(e.target.value)}
                     onKeyDown={handleKeyPress}
-                    value={formData.titulo}
+                    value={formTitulo}
                 />
 
-                <ReactQuill
-                    theme='snow'
+                <InputRichTextEditor
                     placeholder='Conteúdo da ward'
-                    onChange={(e) => setFormData({ ...formData, 'conteudo': e })}
-                    value={formData.conteudo}
+                    valor={formConteudo}
+                    setValor={setFormConteudo}
                 />
 
                 <Select
