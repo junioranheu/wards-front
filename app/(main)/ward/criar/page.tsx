@@ -9,10 +9,14 @@ import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import styleReactSelect from '@/utils/consts/style.react-select';
+import CONSTS_TELAS from '@/utils/consts/telas';
 import UPLOAD_SETTINGS from '@/utils/consts/upload.settings';
 import { Aviso } from '@/utils/functions/aviso';
 import gerarNumeroAleatorio from '@/utils/functions/gerar.numeroAleatorio';
+import normalizarURL from '@/utils/functions/normalizar.URL';
 import normalizarArrayParaSelect from '@/utils/functions/normalizar.arrayParaSelect';
+import normalizarRemoverEncodedStringHTML from '@/utils/functions/normalizar.removerEncodedStringHTML';
+import normalizarSanitizeHTML from '@/utils/functions/normalizar.sanitizeHTML';
 import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iHashtag from '@/utils/types/iHashtag';
@@ -65,7 +69,7 @@ export default function Page() {
 
         const input: FormData = new FormData();
         input.append('Titulo', formTitulo);
-        input.append('Conteudo', formConteudo);
+        input.append('Conteudo', normalizarSanitizeHTML(normalizarRemoverEncodedStringHTML(formConteudo)));
         input.append('ListaHashtags', formHashtags.join(','));
         input.append('FormFileImagemPrincipal', arquivoUpload as File);
 
@@ -80,7 +84,11 @@ export default function Page() {
         Aviso.toast('Ward salva com sucesso!', 5500, CONSTS_EMOJIS.SUCESSO, true);
 
         setTimeout(() => {
-            location.reload();
+            try {
+                window.location.href = `${CONSTS_TELAS.WARD}/${resp}/${normalizarURL(formTitulo)}`;
+            } catch (error: any) {
+                location.reload();
+            }
         }, gerarNumeroAleatorio(2000, 2500));
     }
 
