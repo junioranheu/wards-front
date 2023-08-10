@@ -44,7 +44,7 @@ export default function BuscaListaWards({ termoBuscado, listaWards, setListaWard
         const handleDelayDebounce = setTimeout(() => {
             nProgress.done();
             handleListarWards();
-        }, 1750);
+        }, 1000);
 
         setListaWards([]);
 
