@@ -128,12 +128,12 @@ code {
     color: #abb2bf;
     font-family: 'Courier New', monospace;
     font-size: 0.975rem;
-    padding: 1rem;
+    padding: 1.5rem;
     line-height: normal;
     border-radius: 0.5rem;
     text-align: left;
     overflow-x: auto;
-    // white-space: pre-wrap; // ***
+    white-space: pre-wrap;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */

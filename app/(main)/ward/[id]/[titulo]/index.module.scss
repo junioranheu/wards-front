@@ -107,6 +107,10 @@
 
                 user-select: text !important;
 
+                code {
+                    margin-top: 1rem;
+                }
+
                 strong,
                 b {
                     font-weight: 700;
@@ -122,12 +126,14 @@
                     // background-color: orange;
                     line-height: 2.225rem;
                     font-size: 1.525rem;
+                    margin-bottom: 0.25rem;
                 }
 
                 h3 {
                     // background-color: orange;
                     line-height: 2rem;
                     font-size: 1.225rem;
+                    margin-bottom: 0.25rem;
                 }
             }
         }

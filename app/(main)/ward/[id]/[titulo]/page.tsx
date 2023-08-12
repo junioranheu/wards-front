@@ -38,6 +38,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
             // console.log(resp);
             setWard(resp);
+            Aviso.toast('Ward produzida pelo ChatGPT (GPT-3.5)', 5000, CONSTS_EMOJIS.INFO, true);
         }
 
         handleObterWard();
