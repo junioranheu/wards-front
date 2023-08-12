@@ -16,7 +16,7 @@ import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Styles from './index.module.scss';
 
 export default function Ward({ params }: { params: { id: string, titulo: string } }) {
@@ -69,15 +69,15 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
             <div className={Styles.titulo}>
                 <span>{ward?.titulo}</span>
 
-                <div className={Styles.hashtags}>
-                    <Tags />
-
-                    {
-                        listaHashtags?.map((h: string, i: number) => (
-                            <span key={i}>{h}</span>
-                        ))
-                    }
-                </div>
+                {
+                    listaHashtags.length ? (
+                        <div className={Styles.hashtags}>
+                            <Tags listaTags={listaHashtags} />
+                        </div>
+                    ) : (
+                        <Fragment></Fragment>
+                    )
+                }
             </div>
 
             <div className={Styles.visual}>

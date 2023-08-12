@@ -1,11 +1,17 @@
 import Styles from './index.module.scss';
 
-export default function Tags() {
+interface iParametros {
+    listaTags: string[];
+}
+
+export default function Tags({ listaTags }: iParametros) {
     return (
         <ul className={Styles.tags}>
-            <li><a href="#" className={Styles.tag}>HTML</a></li>
-            <li><a href="#" className={Styles.tag}>CSS</a></li>
-            <li><a href="#" className={Styles.tag}>JavaScript</a></li>
+            {
+                listaTags?.map((t: string, i: number) => (
+                    <li key={i}><a href="#" className={Styles.tag}>{t}</a></li>
+                ))
+            }
         </ul>
     )
 }

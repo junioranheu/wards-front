@@ -11,52 +11,77 @@
 
     li {
         float: left;
-    }
 
-    .tag {
-        background: #eee;
-        border-radius: 3px 0 0 3px;
-        color: #999;
-        display: inline-block;
-        height: 26px;
-        line-height: 26px;
-        padding: 0 20px 0 23px;
-        position: relative;
-        margin: auto;
-        text-decoration: none;
-        -webkit-transition: color 0.2s;
+        .tag {
+            background: #eee;
+            border-radius: 3px 0 0 3px;
+            color: #999;
+            display: inline-block;
+            height: 26px;
+            line-height: 26px;
+            padding: 0 20px 0 23px;
+            position: relative;
+            margin: auto;
+            text-decoration: none;
 
-        font-family: inherit;
-        font-size: 0.85rem;
-        font-weight: 500;
-        letter-spacing: 1px;
-        cursor: default;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: default;
 
-        &:hover {
-            color: #999 !important;
-        }
+            &:hover {
+                color: #999 !important;
+            }
 
-        &::before {
-            background: var(--branco);
-            border-radius: 10px;
-            box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
-            content: '';
-            height: 6px;
-            left: 10px;
-            position: absolute;
-            width: 6px;
-            top: 10px;
-        }
+            &::before {
+                background: var(--branco);
+                border-radius: 10px;
+                box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+                content: '';
+                height: 6px;
+                left: 10px;
+                position: absolute;
+                width: 6px;
+                top: 10px;
+            }
 
-        &::after {
-            background: var(--branco-alt);
-            border-bottom: 13px solid transparent;
-            border-left: 10px solid #eee;
-            border-top: 13px solid transparent;
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
+            &::after {
+                background: var(--branco-alt);
+                border-bottom: 13px solid transparent;
+                border-left: 10px solid #eee;
+                border-top: 13px solid transparent;
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
         }
     }
 }
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res + */
+@media (max-width:1536px) {}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .tags {
+        // background-color: purple !important;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0.5rem;
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}
