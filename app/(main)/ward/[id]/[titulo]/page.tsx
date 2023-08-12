@@ -1,6 +1,7 @@
 'use client';
 import ImgPadrao from '@/assets/images/outros/coding.webp';
 import ImgJuniorAnheu from '@/assets/images/outros/junioranheu.webp';
+import BotaoScrolltop from '@/components/botao.scrollTop';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
@@ -92,6 +93,13 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                         dangerouslySetInnerHTML={{ __html: normalizarCodigo(ward?.conteudo, 'code') }}
                     />
                 </div>
+            </div>
+
+            <div className={Styles.centralizarElemento}>
+                <BotaoScrolltop
+                    isExibirTexto={false}
+                    marginTop={0}
+                />
             </div>
         </section>
     )
