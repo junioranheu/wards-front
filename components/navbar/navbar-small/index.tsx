@@ -105,6 +105,17 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
             </div>
 
             <Botao
+                texto='Início'
+                url={null}
+                isNovaAba={false}
+                handleFuncao={() => handleClick(CONSTS_TELAS.INDEX)}
+                Svg={null}
+                refBtn={null}
+                isEnabled={true}
+                isPequeno={true}
+            />
+
+            <Botao
                 texto='Sobre'
                 url={null}
                 isNovaAba={false}
