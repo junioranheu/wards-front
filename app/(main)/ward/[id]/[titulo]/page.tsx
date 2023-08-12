@@ -23,6 +23,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
     const router = useRouter();
 
     const [ward, setWard] = useState<iWard>();
+    const [listaHashtags, setListaHashtags] = useState<string[]>([]);
     useTitulo(ward?.titulo ?? '@junioranheu', true);
 
     useEffect(() => {
@@ -38,6 +39,8 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
 
             // console.log(resp);
             setWard(resp);
+            resp.listaHashtags && setListaHashtags(resp.listaHashtags);
+
             Aviso.toast('Ward produzida pelo ChatGPT (GPT-3.5)', 5000, CONSTS_EMOJIS.INFO, true);
         }
 
@@ -85,6 +88,14 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                     <div className={Styles.infos}>
                         <span className={Styles.nome}>{handleNormalizarUsuario(ward.usuarios.nomeCompleto)}</span>
                         <span className={Styles.data}>{handleNormalizarData(ward.data, ward?.dataMod)}</span>
+                    </div>
+
+                    <div className={Styles.hashtags}>
+                        {
+                            listaHashtags?.map((h: string, i: number) => (
+                                <span>{h}</span>
+                            ))
+                        }
                     </div>
                 </div>
 
