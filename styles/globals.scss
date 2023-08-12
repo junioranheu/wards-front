@@ -129,11 +129,11 @@ code {
     font-family: 'Courier New', monospace;
     font-size: 0.975rem;
     padding: 1rem;
-    // line-height: auto;
+    line-height: normal;
     border-radius: 0.5rem;
     text-align: left;
     overflow-x: auto;
-    white-space: pre-wrap;
+    // white-space: pre-wrap; // ***
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */
