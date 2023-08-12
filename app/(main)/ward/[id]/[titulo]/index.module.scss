@@ -96,8 +96,8 @@
             .conteudo {
                 // background-color: purple;
                 min-width: 100%;
-                font-size: 1.15rem;
-                line-height: 2rem;
+                font-size: 1.05rem;
+                line-height: 1.725rem;
                 font-weight: 400;
                 text-align: left;
 
@@ -112,25 +112,21 @@
                     font-weight: 700;
                 }
 
-                code {
-                    // background-color: purple;
-                    display: block;
-                    text-align: left;
-                    white-space: pre-wrap;
-                }
-
                 h1 {
-                    // color: orange;
-                    font-size: 2.225rem;
+                    // background-color: orange;
+                    line-height: 3rem;
+                    font-size: 2.5rem;
                 }
 
                 h2 {
-                    // color: orange;
+                    // background-color: orange;
+                    line-height: 2.225rem;
                     font-size: 1.525rem;
                 }
 
                 h3 {
-                    // color: orange;
+                    // background-color: orange;
+                    line-height: 2rem;
                     font-size: 1.225rem;
                 }
             }

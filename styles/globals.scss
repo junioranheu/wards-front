@@ -80,6 +80,10 @@ a {
     }
 }
 
+::selection {
+    background: var(--principal);
+}
+
 .wavy {
     text-decoration-line: underline;
     text-decoration-style: wavy;
@@ -123,12 +127,13 @@ code {
     background-color: #282c34;
     color: #abb2bf;
     font-family: 'Courier New', monospace;
-    font-size: 1rem;
+    font-size: 0.975rem;
     padding: 1rem;
-    line-height: 1.6;
+    // line-height: auto;
     border-radius: 0.5rem;
     text-align: left;
     overflow-x: auto;
+    white-space: pre-wrap;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-=-=-= */
