@@ -37,7 +37,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                 return false;
             }
 
-            console.log(resp);
+            console.log('resp', resp);
             setWard(resp);
             resp.listaHashtags && setListaHashtags(resp.listaHashtags);
 
