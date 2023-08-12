@@ -37,7 +37,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                 return false;
             }
 
-            console.log('resp', resp);
+            console.log(resp);
             setWard(resp);
             resp.listaHashtags && setListaHashtags(resp.listaHashtags);
 
@@ -93,7 +93,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                     <div className={Styles.hashtags}>
                         {
                             listaHashtags?.map((h: string, i: number) => (
-                                <span>{h}</span>
+                                <span key={i}>{h}</span>
                             ))
                         }
                     </div>
