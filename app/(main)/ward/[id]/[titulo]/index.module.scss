@@ -22,6 +22,11 @@
         }
     }
 
+    .hashtags {
+        // background-color: orange;
+        margin-top: 1rem;
+    }
+
     .visual {
         // background-color: purple;
         // margin: auto;
@@ -88,10 +93,6 @@
                     font-weight: 500;
                     color: rgba(21, 23, 26, 50%);
                 }
-            }
-
-            .hashtags {
-                background-color: orange;
             }
         }
 
@@ -233,6 +234,11 @@
                 line-height: 2.5rem;
                 font-weight: 800;
             }
+        }
+
+        .hashtags {
+            // background-color: orange;
+            margin-top: 0.5rem;
         }
 
         .visual {

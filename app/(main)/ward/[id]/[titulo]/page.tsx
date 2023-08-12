@@ -2,6 +2,7 @@
 import ImgPadrao from '@/assets/images/outros/coding.webp';
 import ImgJuniorAnheu from '@/assets/images/outros/junioranheu.webp';
 import BotaoScrolltop from '@/components/botao.scrollTop';
+import Tags from '@/components/tag';
 import useTitulo from '@/hooks/useTitulo';
 import CONSTS_WARDS from '@/utils/api/consts/wards';
 import { Fetch } from '@/utils/api/fetch';
@@ -37,7 +38,7 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                 return false;
             }
 
-            console.log(resp);
+            // console.log(resp);
             setWard(resp);
             resp.listaHashtags && setListaHashtags(resp.listaHashtags);
 
@@ -67,6 +68,16 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
         <section className={Styles.main}>
             <div className={Styles.titulo}>
                 <span>{ward?.titulo}</span>
+
+                <div className={Styles.hashtags}>
+                    <Tags />
+
+                    {
+                        listaHashtags?.map((h: string, i: number) => (
+                            <span key={i}>{h}</span>
+                        ))
+                    }
+                </div>
             </div>
 
             <div className={Styles.visual}>
@@ -88,14 +99,6 @@ export default function Ward({ params }: { params: { id: string, titulo: string 
                     <div className={Styles.infos}>
                         <span className={Styles.nome}>{handleNormalizarUsuario(ward.usuarios.nomeCompleto)}</span>
                         <span className={Styles.data}>{handleNormalizarData(ward.data, ward?.dataMod)}</span>
-                    </div>
-
-                    <div className={Styles.hashtags}>
-                        {
-                            listaHashtags?.map((h: string, i: number) => (
-                                <span key={i}>{h}</span>
-                            ))
-                        }
                     </div>
                 </div>
 
