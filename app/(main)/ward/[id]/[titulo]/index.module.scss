@@ -31,7 +31,7 @@
             object-fit: cover;
             width: 100%;
             height: auto;
-            max-height: 75vh;
+            max-height: 55vh;
             border-radius: 1rem;
         }
     }
@@ -118,21 +118,21 @@
 
                 h1 {
                     // background-color: orange;
-                    line-height: 3rem;
                     font-size: 2.5rem;
+                    line-height: 3rem;
                 }
 
                 h2 {
                     // background-color: orange;
-                    line-height: 2.225rem;
                     font-size: 1.525rem;
+                    line-height: 2.225rem;
                     margin-bottom: 0.25rem;
                 }
 
                 h3 {
                     // background-color: orange;
-                    line-height: 2rem;
                     font-size: 1.225rem;
+                    line-height: 2rem;
                     margin-bottom: 0.25rem;
                 }
             }
@@ -190,7 +190,6 @@
                 object-fit: cover;
                 width: 100%;
                 height: auto;
-                max-height: 50vh;
                 border-radius: 1rem;
             }
         }
@@ -228,6 +227,20 @@
                 font-size: 1.85rem;
                 line-height: 2.5rem;
                 font-weight: 800;
+            }
+        }
+
+        .visual {
+            display: none;
+        }
+
+        .direita {
+            .conteudo {
+                h1 {
+                    // background-color: orange;
+                    font-size: 1.75rem !important;
+                    line-height: 2.5rem !important;
+                }
             }
         }
     }
