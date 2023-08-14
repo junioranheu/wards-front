@@ -56,21 +56,23 @@ export default function LayoutPublic({ children }: iParametros) {
                 </body>
             </UsuarioProvider>
 
-            <CookieWidget
-                location='right'
-                color='var(--principal)'
-                policyLink=''
-                policyLinkText=''
-                title={`${CONSTS_SISTEMA.NOME_SISTEMA} 🍪`}
-                subtitle={CONSTS_SISTEMA.DESCRICAO_SISTEMA}
-                text={`O ${CONSTS_SISTEMA.NOME_SISTEMA} usa cookies para oferecer uma experiência melhor. Ao continuar navegando, você concorda com o uso de cookies.`}
-                cookieSecurity={true}
-                hideOnScrollDown={false}
-                rejectButtonText='Rejeitar'
-                acceptButtonText='Aceitar'
-                onAccept={() => null}
-                onReject={() => null}
-            />
+            <section className={CONST_MANROPE.className}>
+                <CookieWidget
+                    location='right'
+                    color='var(--principal)'
+                    policyLink=''
+                    policyLinkText=''
+                    title={`${CONSTS_SISTEMA.NOME_SISTEMA} 🍪`}
+                    subtitle={CONSTS_SISTEMA.DESCRICAO_SISTEMA}
+                    text={`O ${CONSTS_SISTEMA.NOME_SISTEMA} usa cookies para oferecer uma experiência melhor. Ao continuar navegando, você concorda com o uso de cookies.`}
+                    cookieSecurity={true}
+                    hideOnScrollDown={false}
+                    rejectButtonText='Rejeitar'
+                    acceptButtonText='Aceitar'
+                    onAccept={() => null}
+                    onReject={() => null}
+                />
+            </section>
         </html>
     )
 }
