@@ -1,6 +1,6 @@
 import useEsconderScroll from '@/hooks/useEsconderScroll';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
-import Styles from './index.module.scss';
+import Styles from './splash.module.scss';
 
 export default function Splash() {
 

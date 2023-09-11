@@ -2,7 +2,7 @@ import ImgLoading from '@/assets/images/outros/loading.webp';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { Tooltip } from 'react-tooltip';
-import Styles from './index.module.scss';
+import Styles from './gif.loading.module.scss';
 
 export default function GifLoading() {
 

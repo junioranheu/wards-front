@@ -2,7 +2,7 @@ import Botao from '@/components/botao';
 import SeparadorHorizontal from '@/components/separador/separador.horizontal';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { Dispatch, KeyboardEvent, SetStateAction } from 'react';
-import Styles from './index.module.scss';
+import Styles from './modal.auth.module.scss';
 
 interface iParametros {
     handleModal: Dispatch<boolean>;

@@ -1,7 +1,7 @@
 'use client';
 import Botao from '@/components/botao';
 import CONSTS_TELAS from '@/utils/consts/telas';
-import Styles from './index.module.scss';
+import Styles from './ops.module.scss';
 
 export default function Ops() {
     return (

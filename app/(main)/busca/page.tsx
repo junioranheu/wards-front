@@ -6,7 +6,7 @@ import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { Fragment, lazy, useEffect, useState } from 'react';
-import Styles from './index.module.scss';
+import Styles from './busca.module.scss';
 const BuscaInput = lazy(() => import('./components/busca.input'));
 const BuscaListaHashtags = lazy(() => import('./components/busca.listaHashtags'));
 const BuscaListaWards = lazy(() => import('./components/busca.listaWards'));

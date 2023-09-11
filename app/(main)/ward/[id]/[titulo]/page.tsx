@@ -17,7 +17,7 @@ import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
-import Styles from './index.module.scss';
+import Styles from './ward.id.titulo.module.scss';
 
 export default function Ward({ params }: { params: { id: string, titulo: string } }) {
 

@@ -23,7 +23,7 @@ import iHashtag from '@/utils/types/iHashtag';
 import iSelect from '@/utils/types/iSelect';
 import { KeyboardEvent, lazy, useEffect, useId, useRef, useState } from 'react';
 import Select from 'react-select';
-import Styles from './index.module.scss';
+import Styles from './criar.module.scss';
 const DivUpload = lazy(() => import('@/components/upload/divUpload'));
 
 export default function Page() {

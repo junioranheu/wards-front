@@ -2,7 +2,7 @@ import IconeScrollCima from '@/components/icones/scroll.cima';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { Fragment } from 'react';
 import { Tooltip } from 'react-tooltip';
-import Styles from './index.module.scss';
+import Styles from './botao.scrollTop.module.scss';
 
 interface iParametros {
     isExibirTexto: boolean;

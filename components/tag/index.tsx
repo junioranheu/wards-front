@@ -1,4 +1,4 @@
-import Styles from './index.module.scss';
+import Styles from './tag.module.scss';
 
 interface iParametros {
     listaTags: string[];

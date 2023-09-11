@@ -15,7 +15,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Fragment, lazy, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Styles from './index.module.scss';
+import Styles from './wards.module.scss';
 const GifLoading = lazy(() => import('@/components/gif.loading'));
 const BotaoScrolltop = lazy(() => import('@/components/botao.scrollTop'));
 

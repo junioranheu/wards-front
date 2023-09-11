@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { Dispatch, KeyboardEvent, Ref, SetStateAction } from 'react';
-import Styles from './index.module.scss';
+import Styles from './botao.alternativo.module.scss';
 
 interface iParametros {
     valorInput: string;

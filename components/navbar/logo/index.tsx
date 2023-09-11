@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
 import { Tooltip } from 'react-tooltip';
-import Styles from '../index.module.scss';
+import Styles from '../navbar.module.scss';
 
 interface iParametros {
     placeholder: string;

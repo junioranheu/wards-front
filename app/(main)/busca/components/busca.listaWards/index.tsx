@@ -13,7 +13,7 @@ import iWard from '@/utils/types/iWard';
 import { useRouter } from 'next/navigation';
 import nProgress from 'nprogress';
 import { Dispatch, SetStateAction, useEffect } from 'react';
-import Styles from './index.module.scss';
+import Styles from './busca.listaWards.module.scss';
 
 interface iParametros {
     termoBuscado: string | null;

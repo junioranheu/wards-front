@@ -8,8 +8,8 @@ import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleato
 import verificarAcessoIsExibirElemento from '@/utils/functions/verificar.acesso.isExibirElemento';
 import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
-import Styles from '../index.module.scss';
 import Logo from '../logo';
+import Styles from '../navbar.module.scss';
 
 interface iParametros {
     isAuth: boolean;

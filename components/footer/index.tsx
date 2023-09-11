@@ -2,7 +2,7 @@ import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleatoria';
 import Link from 'next/link';
-import Styles from './index.module.scss';
+import Styles from './footer.module.scss';
 
 export default function Footer() {
     return (

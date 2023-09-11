@@ -9,9 +9,9 @@ import redirecionarWardAleatoria from '@/utils/functions/redirecionar.wardAleato
 import verificarAcessoIsExibirElemento from '@/utils/functions/verificar.acesso.isExibirElemento';
 import { useRouter } from 'next/navigation';
 import { Dispatch, Fragment, SetStateAction } from 'react';
-import Styles from '../index.module.scss';
 import Logo from '../logo';
-import StylesNavbarSmall from './index.module.scss';
+import Styles from '../navbar.module.scss';
+import StylesNavbarSmall from './navbar.small.module.scss';
 
 interface iParametros {
     isNavbarSmallOpen: boolean;

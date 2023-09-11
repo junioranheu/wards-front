@@ -9,7 +9,7 @@ import { Aviso } from '@/utils/functions/aviso';
 import obterPrimeiraPalavra from '@/utils/functions/obter.primeiraPalavra';
 import validarEmail from '@/utils/functions/validar.email';
 import { lazy, useRef, useState } from 'react';
-import Styles from './index.module.scss';
+import Styles from './intro.module.scss';
 const VideoSource = lazy(() => import('@/components/video.source'));
 
 export default function Intro() {

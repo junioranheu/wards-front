@@ -1,6 +1,6 @@
 import IconeLupa from '@/components/icones/lupa';
 import { Dispatch } from 'react';
-import Styles from './index.module.scss';
+import Styles from './busca.input.module.scss';
 
 interface iParametros {
     termoBuscado: string | null;

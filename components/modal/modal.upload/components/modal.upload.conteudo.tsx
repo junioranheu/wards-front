@@ -1,7 +1,7 @@
 import 'cropperjs/dist/cropper.css';
 import { Dispatch, useRef } from 'react';
 import Cropper from 'react-cropper'; // https://www.npmjs.com/package/react-cropper | https://github.com/fengyuanchen/cropperjs#options
-import StylesUpload from '../index.module.scss';
+import StylesUpload from '../modal.upload.module.scss';
 
 interface iParametros {
     arquivoBlob: string;

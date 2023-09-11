@@ -2,7 +2,7 @@ import removerHTML from '@/utils/functions/remover.HTML';
 import setArrayAgrupar from '@/utils/functions/set.array.agrupar';
 import iWard from '@/utils/types/iWard';
 import { Fragment, useEffect, useState } from 'react';
-import Styles from './index.module.scss';
+import Styles from './busca.listaHashtags.module.scss';
 
 interface iParametros {
     termoBuscado: string | null;

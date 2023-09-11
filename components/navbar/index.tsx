@@ -14,8 +14,8 @@ import iUsuario from '@/utils/types/iUsuario';
 import iUsuarioContext from '@/utils/types/iUsuario.context';
 import { Fragment, lazy, useState } from 'react';
 const ModalAuth = lazy(() => import('@/components/modal/modal.auth'));
-const NavbarFull = lazy(() => import('./navbar-full'));
-const NavbarSmall = lazy(() => import('./navbar-small'));
+const NavbarFull = lazy(() => import('./navbar.full'));
+const NavbarSmall = lazy(() => import('./navbar.small'));
 
 export default function Navbar() {
 

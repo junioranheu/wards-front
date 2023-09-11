@@ -9,7 +9,7 @@ import gerarUUID from '@/utils/functions/gerar.UUID';
 import nProgress from 'nprogress';
 import { Dispatch, useEffect, useState } from 'react';
 import ModalUploadConteudo from './components/modal.upload.conteudo';
-import StylesUpload from './index.module.scss';
+import StylesUpload from './modal.upload.module.scss';
 
 interface iParametros {
     isBase64: boolean; // true = base64, false = file;
