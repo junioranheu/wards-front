@@ -37,9 +37,11 @@ export default function Page() {
             <div className={Styles.titulo}>
                 <span>Chat</span>
 
+                {/* <span>Pessoas on-line</span> */}
+
                 <div>
                     <input type="text" value={inputMensagem} onChange={handleInputChange} />
-                    <button onClick={() => handleSendMessage()}>Send</button>
+                    <button onClick={() => handleSendMessage()}>Enviar mensagem</button>
                 </div>
 
                 <ul>
