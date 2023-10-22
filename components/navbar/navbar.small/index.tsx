@@ -164,6 +164,21 @@ function ConteudoNavbarSmall({ isNavbarSmallOpen, setIsNavbarSmallOpen, isAuth, 
             }
 
             {
+                verificarAcessoIsExibirElemento([]) && (
+                    <Botao
+                        texto='Chat'
+                        url={null}
+                        isNovaAba={false}
+                        handleFuncao={() => handleClick(CONSTS_TELAS.CHAT)}
+                        Svg={null}
+                        refBtn={null}
+                        isEnabled={true}
+                        isPequeno={true}
+                    />
+                )
+            }
+
+            {
                 !isAuth ? (
                     <Fragment>
                         <SeparadorHorizontal />

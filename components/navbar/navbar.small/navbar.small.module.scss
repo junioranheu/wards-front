@@ -51,3 +51,27 @@
         }
     }
 }
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries (height) =-=-=-=-=-=-=-=-=-=-= */
+@media (max-height:750px) {
+    .navbarSmall {
+        // background-color: orange !important;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        button {
+            font-size: 0.85rem !important;
+
+            &:last-of-type {
+                background-color: var(--principal);
+                color: var(--branco);
+            }
+
+            &:first-of-type {
+                // background-color: orange;
+                margin-top: 1rem;
+            }
+        }
+    }
+}

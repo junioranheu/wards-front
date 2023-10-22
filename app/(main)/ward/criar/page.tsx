@@ -11,6 +11,7 @@ import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import styleReactSelect from '@/utils/consts/style.react-select';
 import CONSTS_TELAS from '@/utils/consts/telas';
 import UPLOAD_SETTINGS from '@/utils/consts/upload.settings';
+import CONSTS_USUARIO_ROLES from '@/utils/consts/usuario.roles';
 import { Aviso } from '@/utils/functions/aviso';
 import gerarNumeroAleatorio from '@/utils/functions/gerar.numeroAleatorio';
 import normalizarURL from '@/utils/functions/normalizar.URL';
@@ -39,7 +40,7 @@ export default function Page() {
             setListaHashtags(normalizarArrayParaSelect(resp, 'hashtagId', 'tag'));
         }
 
-        verificarAcesso([1]);
+        verificarAcesso([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]);
         handleListarHashtags();
     }, [isAuth]);
 
@@ -141,17 +142,17 @@ export default function Page() {
 
                 {/* =-=-=-=-=-=-= EXEMPLO DE COMO USAR UM REACT-SELECT PARA SETAR UM VALOR ÚNICO (NÃO UM ARRAY) =-=-=-=-=-=-= */}
                 {/* <Select
-                            instanceId={useId()}
-                            defaultValue={null}
-                            onChange={(e) => setExemploReactSelectUnico(e?.label)}
-                            options={listaHashtags}
-                            isDisabled={false}
-                            isSearchable={true}
-                            isMulti={false}
-                            styles={styleReactSelect}
-                            placeholder='Hashtags'
-                            noOptionsMessage={() => 'Nenhuma opção encontrada'}
-                        /> */}
+                                instanceId={useId()}
+                                defaultValue={null}
+                                onChange={(e) => setExemploReactSelectUnico(e?.label)}
+                                options={listaHashtags}
+                                isDisabled={false}
+                                isSearchable={true}
+                                isMulti={false}
+                                styles={styleReactSelect}
+                                placeholder='Hashtags'
+                                noOptionsMessage={() => 'Nenhuma opção encontrada'}
+                            /> */}
 
                 <SeparadorHorizontal />
 

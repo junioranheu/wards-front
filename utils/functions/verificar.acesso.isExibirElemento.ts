@@ -8,6 +8,10 @@ export default function verificarAcessoIsExibirElemento(listaRolesNecessarias: n
         return false;
     }
 
+    if (!listaRolesNecessarias?.length) {
+        return true;
+    }
+
     let isExibir = false;
 
     // console.log('listaRolesNecessarias', listaRolesNecessarias);

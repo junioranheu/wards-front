@@ -10,9 +10,11 @@ import { Aviso } from '@/utils/functions/aviso';
 import formatarData from '@/utils/functions/formatar.data';
 import normalizarURL from '@/utils/functions/normalizar.URL';
 import normalizarBlobParaImagemBase64 from '@/utils/functions/normalizar.blobParaImagemBase64';
+import setDesabilitarBotoes from '@/utils/functions/set.desabilitarBotoes';
 import iWard from '@/utils/types/iWard';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import nProgress from 'nprogress';
 import { Fragment, lazy, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Styles from './wards.module.scss';
@@ -48,6 +50,8 @@ export default function Wards() {
     }
 
     function handleRedirecionar(ward: iWard) {
+        nProgress.start();
+        setDesabilitarBotoes(true);
         router.push(`${CONSTS_TELAS.WARD}/${ward.wardId}/${normalizarURL(ward.titulo)}`);
     }
 

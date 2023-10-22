@@ -4,7 +4,8 @@ const CONSTS_TELAS = {
     BUSCA: '/busca',
     WARD: '/ward',
     CRIAR: '/ward/criar',
-    ERRO: '/ops'
+    ERRO: '/ops',
+    CHAT: '/lab/chat'
 };
 
 export default CONSTS_TELAS;

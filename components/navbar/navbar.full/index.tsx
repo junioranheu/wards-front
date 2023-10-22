@@ -29,7 +29,11 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
                 <a onClick={() => redirecionarWardAleatoria()}>Estou com sorte ✨</a>
 
                 {
-                    verificarAcessoIsExibirElemento([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]) && <Link href={CONSTS_TELAS.CRIAR}>Criar ward 🆕</Link>
+                    verificarAcessoIsExibirElemento([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]) && <Link href={CONSTS_TELAS.CRIAR}>Criar ward 📜</Link>
+                }
+
+                {
+                    verificarAcessoIsExibirElemento([]) && <Link href={CONSTS_TELAS.CHAT}>Chat 💬</Link>
                 }
             </div>
 

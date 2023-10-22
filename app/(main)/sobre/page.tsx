@@ -17,7 +17,7 @@ export default function Page() {
                 <span>Sobre @junioranheu e o projeto <span className='cor-principal'>{CONSTS_SISTEMA.NOME_SISTEMA}</span></span>
             </div>
 
-            <div className={Styles.visual}>
+            <div className={`${Styles.visual} ${CONSTS_SISTEMA.ANIMATE} animate__slow`}>
                 <VideoSource video='gongos' />
             </div>
 
