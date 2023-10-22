@@ -15,7 +15,7 @@ const Wards = lazy(() => import('./components/wards'));
 
 export default function Page() {
 
-    useTitulo(`${CONSTS_SISTEMA.NOME_SISTEMA} • Tipo um Stack Overflow`, false);
+    useTitulo(`${CONSTS_SISTEMA.NOME_SISTEMA} • Tipo um blog do Stack Overflow`, false);
 
     const [isSplash, setIsSplash] = useState<boolean>(true);
 

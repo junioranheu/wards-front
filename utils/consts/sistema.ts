@@ -1,6 +1,6 @@
 const CONSTS_SISTEMA = {
     NOME_SISTEMA: 'Wards',
-    DESCRICAO_SISTEMA: 'Posts e how-to sobre desenvolvimento de software. Tipo um Stack Overflow.',
+    DESCRICAO_SISTEMA: 'Posts e how-to sobre desenvolvimento de software. Tipo um blog do Stack Overflow.',
     KEYWORDS_SISTEMA: 'software, programação, desenvolvimento, dev, how-to, aprender, C#, javascript, back-end, front-end, backend, frontend, dicas, junioranheu',
     COR_SISTEMA: '#4ECDC4',
 
