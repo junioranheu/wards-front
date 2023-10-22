@@ -9,10 +9,12 @@ export function useSignalR(hub: string, usuario: string, usuarioId: string) {
     const [connection, setConnection] = useState<HubConnection | null>(null);
     const [mensagensPublico, setMensagensPublico] = useState<iSignalR[]>([]);
     const [mensagensPrivado, setMensagensPrivado] = useState<iSignalR[]>([]);
+    const [listaUsuariosOnline, setListaUsuariosOnline] = useState<string[]>([]);
 
     enum listaMetodosSignalR {
         EnviarMensagem = 'EnviarMensagem',
-        EnviarMensagemPrivada = 'EnviarMensagemPrivada'
+        EnviarMensagemPrivada = 'EnviarMensagemPrivada',
+        ObterListaUsuariosOnline = 'ObterListaUsuariosOnline'
     }
 
     useEffect(() => {
@@ -35,7 +37,7 @@ export function useSignalR(hub: string, usuario: string, usuarioId: string) {
 
     function handleIniciarServico(newConnection: HubConnection) {
         newConnection.start().then(() => {
-            Aviso.toast('Conexão estabelecida com sucesso com o chat', 3500, CONSTS_EMOJIS.SUCESSO, true);
+            Aviso.toast('Conexão estabelecida com sucesso com o chat em tempo real', 3500, CONSTS_EMOJIS.SUCESSO, true);
         }).catch(
             (x) => Aviso.toast(`Erro ao estabelecer conexão com o chat: ${x}`, 10000, CONSTS_EMOJIS.ERRO, true)
         );
@@ -54,9 +56,17 @@ export function useSignalR(hub: string, usuario: string, usuarioId: string) {
         newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iSignalR) => {
             setMensagensPrivado((x) => [...x, resp]);
         });
+
+        newConnection.on(listaMetodosSignalR.ObterListaUsuariosOnline, (resp: string[]) => {
+            setListaUsuariosOnline(resp);
+        });
     }
 
     return {
-        connection, listaMetodosSignalR, mensagensPublico, mensagensPrivado
+        connection,
+        listaMetodosSignalR,
+        mensagensPublico,
+        mensagensPrivado,
+        listaUsuariosOnline
     };
 }

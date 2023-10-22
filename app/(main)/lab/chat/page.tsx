@@ -6,28 +6,24 @@ import base from '@/utils/api/base';
 import { Auth } from '@/utils/context/usuarioContext';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import iSignalR from '@/utils/types/iSignalR.response';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Styles from './chat.module.scss';
 
 export default function Page() {
 
-    useTitulo('Lab // Chat', true);
+    useTitulo('Chat', true);
     const [isAuth, setIsAuth] = useUsuarioContext();
 
     useEffect(() => {
         verificarAcesso([], true);
     }, [isAuth]);
 
-    const { connection, listaMetodosSignalR, mensagensPublico, mensagensPrivado } = useSignalR(`${base}/chatHub`, Auth.get()?.nomeCompleto!, Auth.get()?.email!);
+    const { connection, listaMetodosSignalR, mensagensPublico, mensagensPrivado, listaUsuariosOnline } = useSignalR(`${base}/chatHub`, Auth.get()?.nomeCompleto!, Auth.get()?.email!);
     const [inputMensagem, setInputMensagem] = useState<string>('');
-
-    function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-        setInputMensagem(event.target.value);
-    }
 
     function handleSendMessage() {
         if (connection && inputMensagem.trim()) {
-            connection.invoke(listaMetodosSignalR.EnviarMensagem, inputMensagem);
+            connection.invoke(listaMetodosSignalR.EnviarMensagem, inputMensagem, false);
             setInputMensagem('');
         }
     }
@@ -40,14 +36,30 @@ export default function Page() {
                 {/* <span>Pessoas on-line</span> */}
 
                 <div>
-                    <input type="text" value={inputMensagem} onChange={handleInputChange} />
+                    <input type='text' value={inputMensagem} onChange={(e) => setInputMensagem(e.target.value)} />
                     <button onClick={() => handleSendMessage()}>Enviar mensagem</button>
                 </div>
 
                 <ul>
                     {
+                        listaUsuariosOnline.map((x: string, index) => (
+                            <li key={index}>{x}</li>
+                        ))
+                    }
+                </ul>
+
+                <hr />
+
+                <ul>
+                    {
                         mensagensPublico.map((m: iSignalR, index) => (
-                            <li key={index}>{m.usuarioNome}: {m.mensagem}</li>
+                            <li key={index}>
+                                {
+                                    m.isSistema ? <b>aea</b> : ''
+                                }
+
+                                {m.usuarioNome}: {m.mensagem}
+                            </li>
                         ))
                     }
                 </ul>
