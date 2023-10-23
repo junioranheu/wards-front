@@ -1,17 +1,15 @@
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
-import iSignalR from '@/utils/types/iSignalR.response';
-import iSignalRUsuarioOnline from '@/utils/types/iSignalR.usuarioOnline';
+import { iMensagem, iUsuarioOnline } from '@/utils/types/iSignalR';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { useEffect, useState } from 'react';
 
 export function useSignalR(hub: string) {
 
     const [connection, setConnection] = useState<HubConnection | null>(null);
-    const [mensagensPublico, setMensagensPublico] = useState<iSignalR[]>([]);
-    const [mensagensPrivado, setMensagensPrivado] = useState<iSignalR[]>([]);
-    const [listaUsuariosOnline, setListaUsuariosOnline] = useState<iSignalRUsuarioOnline[]>([]);
+    const [mensagens, setMensagens] = useState<iMensagem[]>([]);
+    const [listaUsuariosOnline, setListaUsuariosOnline] = useState<iUsuarioOnline[]>([]);
 
     enum listaMetodosSignalR {
         EnviarMensagem = 'EnviarMensagem',
@@ -60,16 +58,15 @@ export function useSignalR(hub: string) {
             return;
         }
 
-        newConnection.on(listaMetodosSignalR.EnviarMensagem, (resp: iSignalR) => {
-            setMensagensPublico((x) => [...x, resp]);
+        newConnection.on(listaMetodosSignalR.EnviarMensagem, (resp: iMensagem) => {
+            setMensagens((x) => [...x, resp]);
         });
 
-        newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iSignalR) => {
-            console.log('setMensagensPrivado', resp);
-            setMensagensPrivado((x) => [...x, resp]);
+        newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iMensagem) => {
+            setMensagens((x) => [...x, resp]);
         });
 
-        newConnection.on(listaMetodosSignalR.ObterListaUsuariosOnline, (resp: iSignalRUsuarioOnline[]) => {
+        newConnection.on(listaMetodosSignalR.ObterListaUsuariosOnline, (resp: iUsuarioOnline[]) => {
             setListaUsuariosOnline(resp);
         });
     }
@@ -77,8 +74,7 @@ export function useSignalR(hub: string) {
     return {
         connection,
         listaMetodosSignalR,
-        mensagensPublico,
-        mensagensPrivado,
+        mensagens,
         listaUsuariosOnline
     };
 }
