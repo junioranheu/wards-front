@@ -35,6 +35,7 @@
             list-style: none;
             padding: 0;
             width: fit-content;
+            white-space: nowrap;
 
             li {
                 font-size: 0.9rem;
@@ -59,8 +60,10 @@
         flex-direction: column;
         gap: 1rem;
 
-        .mensagem {
+        .mensagens {
             max-height: 30rem;
+            min-height: 30rem;
+
             border: 1px solid var(--bege);
             border-radius: 0.4rem;
             padding: 1rem;
@@ -70,12 +73,20 @@
             flex-direction: column;
             gap: 1rem;
 
-            .sistema {
-                color: var(--preto);
-                opacity: 0.5;
-                font-size: 0.7rem;
-                font-style: italic;
+            .mensagem {
+                &.sistema {
+                    color: var(--preto);
+                    opacity: 0.5;
+                    font-size: 0.7rem;
+                    font-style: italic;
+                }
             }
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
     }
 }
@@ -84,15 +95,17 @@
 @media (max-width:1920px) {
     .main {
         // background-color: purple;
-        width: 90vw;
+        width: 60vw;
     }
 }
 
-/* hi-res + */
-@media (max-width:1536px) {}
-
 /* hi-res laptops and desktops */
-@media (max-width:1281px) {}
+@media (max-width:1281px) {
+    .main {
+        // background-color: purple;
+        width: 90vw;
+    }
+}
 
 /* big landscape tablets, laptops, and desktops */
 @media (max-width:1025px) {}

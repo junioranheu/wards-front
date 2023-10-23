@@ -70,10 +70,10 @@ export default function Page() {
             </div>
 
             <div className={Styles.chat}>
-                <div className={Styles.mensagem}>
+                <div className={Styles.mensagens}>
                     {
                         mensagens.map((m: iMensagem, index) => (
-                            <div key={index} className={(m.isSistema ? Styles.sistema : '')}>
+                            <div key={index} className={`${Styles.mensagem} ${(m.isSistema ? Styles.sistema : '')}`}>
                                 {m.usuarioIdDestinatario ? <small>from {m.usuarioNome}</small> : <Fragment></Fragment>}
 
                                 <strong>{m.usuarioNome}:</strong> {m.mensagem} [{m.timestamp.toString()}]
@@ -82,7 +82,7 @@ export default function Page() {
                     }
                 </div>
 
-                <div>
+                <div className={Styles.inputs}>
                     <span>{usuarioSelecionado ? `Enviar mensagem privada a ${usuarioSelecionado}` : ''}</span>
                     <input type='text' className='inputAlt' value={inputMensagem} onChange={(e) => setInputMensagem(e.target.value)} />
 
