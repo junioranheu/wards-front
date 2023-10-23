@@ -7,11 +7,13 @@ import { Fetch } from '@/utils/api/fetch';
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import CONSTS_MODAL from '@/utils/consts/modal.tamanho';
 import CONSTS_SISTEMA from '@/utils/consts/sistema';
+import CONSTS_TELAS from '@/utils/consts/telas';
 import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
 import gerarStringAleatoria from '@/utils/functions/gerar.stringAleatoria';
 import iUsuario from '@/utils/types/iUsuario';
 import iUsuarioContext from '@/utils/types/iUsuario.context';
+import { usePathname, useRouter } from 'next/navigation';
 import { Fragment, lazy, useState } from 'react';
 const ModalAuth = lazy(() => import('@/components/modal/modal.auth'));
 const NavbarFull = lazy(() => import('./navbar.full'));
@@ -20,6 +22,8 @@ const NavbarSmall = lazy(() => import('./navbar.small'));
 export default function Navbar() {
 
     const [isAuth, setIsAuth] = useUsuarioContext();
+    const pathname = usePathname();
+    const router = useRouter();
 
     const windowSize = useWindowSize();
     const mediaQueryLimite = 1025;
@@ -61,6 +65,10 @@ export default function Navbar() {
         Auth.set(auth);
         setIsAuth(true);
         setIsModalLoginOpen(false);
+
+        if (pathname === CONSTS_TELAS.ERRO) {
+            router.push(CONSTS_TELAS.INDEX);
+        }
     }
 
     function handleLogoff() {
@@ -101,6 +109,10 @@ export default function Navbar() {
         Auth.set(auth);
         setIsAuth(true);
         setIsModalCriarContaOpen(false);
+
+        if (pathname === CONSTS_TELAS.ERRO) {
+            router.push(CONSTS_TELAS.INDEX);
+        }
     }
 
     return (

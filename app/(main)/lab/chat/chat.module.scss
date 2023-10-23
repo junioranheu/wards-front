@@ -1,5 +1,5 @@
 .main {
-    background-color: orange;
+    // background-color: orange;
     width: 35vw;
     min-height: 100vh;
 
@@ -17,6 +17,64 @@
         span {
             font-size: 3.725rem;
             font-weight: 700;
+        }
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+
+        .usuarios {
+            width: 20%;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    cursor: pointer;
+                    padding: 5px;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: #eee;
+                    }
+
+                    &.selected {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+
+        .chat {
+            flex: 1;
+            padding: 10px;
+
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            .mensagem {
+                height: 400px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                overflow-y: auto;
+
+                .sistema {
+                    color: pink;
+                }
+
+                div {
+                    margin-bottom: 8px;
+                }
+            }
         }
     }
 }

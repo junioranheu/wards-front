@@ -1,15 +1,17 @@
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
+import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
 import iSignalR from '@/utils/types/iSignalR.response';
+import iSignalRUsuarioOnline from '@/utils/types/iSignalR.usuarioOnline';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { useEffect, useState } from 'react';
 
-export function useSignalR(hub: string, usuario: string, usuarioId: string) {
+export function useSignalR(hub: string) {
 
     const [connection, setConnection] = useState<HubConnection | null>(null);
     const [mensagensPublico, setMensagensPublico] = useState<iSignalR[]>([]);
     const [mensagensPrivado, setMensagensPrivado] = useState<iSignalR[]>([]);
-    const [listaUsuariosOnline, setListaUsuariosOnline] = useState<string[]>([]);
+    const [listaUsuariosOnline, setListaUsuariosOnline] = useState<iSignalRUsuarioOnline[]>([]);
 
     enum listaMetodosSignalR {
         EnviarMensagem = 'EnviarMensagem',
@@ -18,19 +20,28 @@ export function useSignalR(hub: string, usuario: string, usuarioId: string) {
     }
 
     useEffect(() => {
-        const newConnection = handleCriarNovaConecao(hub, usuario, usuarioId);
+        const newConnection = handleCriarNovaConecao(hub);
         handleIniciarServico(newConnection);
         handleRegistrarMetodosHub(newConnection);
         setConnection(newConnection);
 
-        return () => {
-            newConnection.stop();
-        };
-    }, [hub, usuario, usuarioId]);
+        window.addEventListener('beforeunload', handleBeforeUnload);
 
-    function handleCriarNovaConecao(hub: string, usuario: string, usuarioId: string) {
+        return () => {
+            handleBeforeUnload();
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+
+        function handleBeforeUnload() {
+            newConnection.stop();
+        }
+    }, [hub]);
+
+    function handleCriarNovaConecao(hub: string) {
+        const token = Auth?.get()?.token ?? '';
+
         return new HubConnectionBuilder().
-            withUrl(`${hub}/?usuario=${usuario}&usuarioId=${usuarioId}`).
+            withUrl(hub, { accessTokenFactory: () => token }).
             withAutomaticReconnect().
             build();
     }
@@ -54,10 +65,11 @@ export function useSignalR(hub: string, usuario: string, usuarioId: string) {
         });
 
         newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iSignalR) => {
+            console.log('setMensagensPrivado', resp);
             setMensagensPrivado((x) => [...x, resp]);
         });
 
-        newConnection.on(listaMetodosSignalR.ObterListaUsuariosOnline, (resp: string[]) => {
+        newConnection.on(listaMetodosSignalR.ObterListaUsuariosOnline, (resp: iSignalRUsuarioOnline[]) => {
             setListaUsuariosOnline(resp);
         });
     }

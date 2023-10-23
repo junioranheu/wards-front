@@ -6,7 +6,6 @@ export default interface iSignalR extends iErro {
     mensagem: string;
     usuarioNome: string | null;
     usuarioId: string | null;
-    usuarioNomeDestinatario: string | null;
     usuarioIdDestinatario: string | null;
     timestamp: Date;
     isSistema: boolean;
