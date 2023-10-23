@@ -7,7 +7,7 @@ import base from '@/utils/api/base';
 import formatarData from '@/utils/functions/formatar.data';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import { iMensagem, iUsuarioOnline } from '@/utils/types/iSignalR';
-import { Fragment, KeyboardEvent, useEffect, useState } from 'react';
+import { Fragment, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import Styles from './chat.module.scss';
 
 export default function Page() {
@@ -22,6 +22,8 @@ export default function Page() {
     const { connection, listaMetodosSignalR, mensagens, listaUsuariosOnline } = useSignalR(`${base}/chatHub`);
     const [inputMensagem, setInputMensagem] = useState<string>('');
     const [usuarioSelecionado, setUsuarioSelecionado] = useState<string | null>('');
+    const refMensagens = useRef<HTMLDivElement>(null);
+    const refMensagensRaw = 'refMensagensRaw';
 
     function handleToggleSelecionarUsuario(usuario: string | null) {
         if (usuarioSelecionado === usuario) {
@@ -44,6 +46,26 @@ export default function Page() {
         }
 
         setInputMensagem('');
+
+        setTimeout(() => {
+            handleScroll();
+        }, 500);
+    }
+
+    function handleScroll() {
+        const listaMensagens = refMensagens?.current?.children;
+
+        if (!listaMensagens?.length) {
+            return false;
+        }
+
+        const ultimaMensagem = listaMensagens[listaMensagens.length - 1];
+
+        if (ultimaMensagem) {
+            // @ts-ignore;
+            const topPos = ultimaMensagem.offsetTop;
+            document.getElementsByClassName(refMensagensRaw)[0].scrollTop = topPos;
+        }
     }
 
     function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
@@ -77,9 +99,9 @@ export default function Page() {
             </div>
 
             <div className={Styles.chat}>
-                <div className={Styles.mensagens}>
+                <div className={`${Styles.mensagens} ${refMensagensRaw}`} ref={refMensagens}>
                     {
-                        mensagens.map((m: iMensagem, index) => (
+                        mensagens.map((m: iMensagem, index: number) => (
                             <div key={index} className={Styles.mensagem}>
                                 <span className={`${Styles.texto} ${(m.isSistema ? Styles.sistema : '')} ${(m.usuarioIdDestinatario ? Styles.privado : '')}`}>
                                     {

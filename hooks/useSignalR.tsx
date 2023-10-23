@@ -3,6 +3,7 @@ import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
 import { iMensagem, iUsuarioOnline } from '@/utils/types/iSignalR';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import nProgress from 'nprogress';
 import { useEffect, useState } from 'react';
 
 export function useSignalR(hub: string) {
@@ -18,10 +19,12 @@ export function useSignalR(hub: string) {
     }
 
     useEffect(() => {
+        nProgress.start();
         const newConnection = handleCriarNovaConecao(hub);
         handleIniciarServico(newConnection);
         handleRegistrarMetodosHub(newConnection);
         setConnection(newConnection);
+        nProgress.done();
 
         window.addEventListener('beforeunload', handleBeforeUnload);
 
