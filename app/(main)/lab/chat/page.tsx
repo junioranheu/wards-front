@@ -1,4 +1,5 @@
 'use client';
+import Botao from '@/components/botao';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import { useSignalR } from '@/hooks/useSignalR';
 import useTitulo from '@/hooks/useTitulo';
@@ -44,7 +45,7 @@ export default function Page() {
 
             <div className={Styles.container}>
                 <div className={Styles.usuarios}>
-                    <h2>Users</h2>
+                    <h2>Usuários</h2>
                     <ul>
                         {
                             listaUsuariosOnline.map((x: iSignalRUsuarioOnline, index) => (
@@ -87,8 +88,18 @@ export default function Page() {
 
                     <div>
                         <h2>{usuarioSelecionado ? `Enviar mensagem privada a ${usuarioSelecionado}` : ''}</h2>
-                        <input type='text' value={inputMensagem} onChange={(e) => setInputMensagem(e.target.value)} />
-                        <button onClick={() => handleEnviarMensagem()}>Enviar mensagem</button>
+                        <input type='text' className='inputAlt' value={inputMensagem} onChange={(e) => setInputMensagem(e.target.value)} />
+
+                        <Botao
+                            texto='Enviar mensagem'
+                            url={null}
+                            isNovaAba={false}
+                            handleFuncao={() => handleEnviarMensagem()}
+                            Svg={null}
+                            refBtn={null}
+                            isEnabled={true}
+                            isPequeno={true}
+                        />
                     </div>
                 </div>
             </div>
