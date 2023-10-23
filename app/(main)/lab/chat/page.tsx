@@ -4,6 +4,9 @@ import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import { useSignalR } from '@/hooks/useSignalR';
 import useTitulo from '@/hooks/useTitulo';
 import base from '@/utils/api/base';
+import CONSTS_EMOJIS from '@/utils/consts/emojis';
+import { Auth } from '@/utils/context/usuarioContext';
+import { Aviso } from '@/utils/functions/aviso';
 import formatarData from '@/utils/functions/formatar.data';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import { iMensagem, iUsuarioOnline } from '@/utils/types/iSignalR';
@@ -28,6 +31,11 @@ export default function Page() {
     function handleToggleSelecionarUsuario(usuario: string | null) {
         if (usuarioSelecionado === usuario) {
             setUsuarioSelecionado('');
+            return;
+        }
+
+        if (Auth.get()?.email === usuario) {
+            Aviso.toast('Você não pode enviar uma mensagem privada a você mesmo', 5500, CONSTS_EMOJIS.ERRO, true);
             return;
         }
 
@@ -81,17 +89,18 @@ export default function Page() {
 
                 <ul>
                     {
-                        listaUsuariosOnline.map((x: iUsuarioOnline, index) => (
+                        listaUsuariosOnline.map((x: iUsuarioOnline, index: number) => (
                             <li
                                 key={index}
                                 style={{
                                     cursor: 'pointer',
                                     padding: '5px',
-                                    background: x.usuarioId === usuarioSelecionado ? 'var(--principal)' : 'transparent',
+                                    background: x.usuarioId === usuarioSelecionado ? 'var(--bege)' : 'transparent',
                                 }}
                                 onClick={() => handleToggleSelecionarUsuario(x.usuarioId)}
                             >
                                 {x.usuarioNome}
+                                {(x.usuarioId === Auth.get()?.email) ? ' ⭐' : ''}
                             </li>
                         ))
                     }
@@ -105,7 +114,23 @@ export default function Page() {
                             <div key={index} className={Styles.mensagem}>
                                 <span className={`${Styles.texto} ${(m.isSistema ? Styles.sistema : '')} ${(m.usuarioIdDestinatario ? Styles.privado : '')}`}>
                                     {
-                                        !m.isSistema ? <strong>{m.usuarioNome}: </strong> : <Fragment></Fragment>
+                                        !m.isSistema ? (
+                                            <div>
+                                                {
+                                                    m.usuarioIdDestinatario ? (
+                                                        Auth.get()?.email === m.usuarioId ? (
+                                                            <span>Você enviou uma mensagem privada para <b>{m.usuarioNomeDestinatario}</b>:</span>
+                                                        ) : (
+                                                            <span><b>{m.usuarioNome}</b> enviou uma mensagem privada para você:</span>
+                                                        )
+                                                    ) : (
+                                                        <strong>{m.usuarioNome}: </strong>
+                                                    )
+                                                }
+                                            </div>
+                                        ) : (
+                                            <Fragment></Fragment>
+                                        )
                                     }
 
                                     {m.mensagem}
@@ -121,8 +146,11 @@ export default function Page() {
                 <div className={Styles.inputs}>
                     {
                         usuarioSelecionado && (
-                            <span className={Styles.avisoUsuarioSelecionado} onClick={() => setUsuarioSelecionado('')}>
-                                {usuarioSelecionado ? `Enviando mensagem privada para ${usuarioSelecionado}. Clique aqui para cancelar envio privado` : ''}
+                            <span
+                                className={Styles.avisoUsuarioSelecionado}
+                                onClick={() => setUsuarioSelecionado('')}
+                            >
+                                {usuarioSelecionado ? `Enviando mensagem privada para ${usuarioSelecionado}. Clique aqui para cancelar o envio privado` : ''}
                             </span>
                         )
                     }

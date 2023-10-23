@@ -62,10 +62,12 @@ export function useSignalR(hub: string) {
         }
 
         newConnection.on(listaMetodosSignalR.EnviarMensagem, (resp: iMensagem) => {
+            console.log(resp);
             setMensagens((x) => [...x, resp]);
         });
 
         newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iMensagem) => {
+            console.log(resp);
             setMensagens((x) => [...x, resp]);
         });
 
