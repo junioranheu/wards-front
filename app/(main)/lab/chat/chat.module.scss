@@ -1,7 +1,7 @@
 .main {
     // background-color: orange;
     width: 50vw;
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: row;
@@ -153,7 +153,24 @@
 }
 
 /* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {}
+@media (max-width:1025px) {
+    .main {
+        // background-color: orange;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+
+        .usuarios {
+            // background-color: purple;
+            width: 100%;
+            max-width: 100%;
+
+            span {
+                text-align: left;
+            }
+        }
+    }
+}
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {}
