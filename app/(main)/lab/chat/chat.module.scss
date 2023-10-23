@@ -74,11 +74,47 @@
             gap: 1rem;
 
             .mensagem {
-                &.sistema {
-                    color: var(--preto);
-                    opacity: 0.5;
+                // background-color: orange;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.3rem;
+
+                width: fit-content;
+
+                .texto {
+                    // background-color: orange;
+                    font-size: 1rem;
+
+                    display: flex;
+                    flex-direction: column;
+
+                }
+
+                .sistema {
                     font-size: 0.7rem;
                     font-style: italic;
+                    color: var(--preto);
+                    opacity: 0.5;
+                }
+
+                .privado {
+                    color: coral;
+                }
+
+                .timestamp {
+                    font-size: 0.7rem;
+                    font-style: italic;
+                    color: var(--preto);
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                }
+
+                &:hover {
+                    .timestamp {
+                        // background-color: purple;
+                        opacity: 0.65;
+                    }
                 }
             }
         }
@@ -87,6 +123,15 @@
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
+
+            .avisoUsuarioSelecionado {
+                cursor: pointer;
+                font-size: 0.7rem;
+                background-color: var(--bege);
+                padding: 0.75rem;
+                border-radius: 0.4rem;
+                width: fit-content;
+            }
         }
     }
 }

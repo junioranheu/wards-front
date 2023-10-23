@@ -4,9 +4,10 @@ import useUsuarioContext from '@/hooks/context/useUsuarioContext';
 import { useSignalR } from '@/hooks/useSignalR';
 import useTitulo from '@/hooks/useTitulo';
 import base from '@/utils/api/base';
+import formatarData from '@/utils/functions/formatar.data';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
 import { iMensagem, iUsuarioOnline } from '@/utils/types/iSignalR';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, KeyboardEvent, useEffect, useState } from 'react';
 import Styles from './chat.module.scss';
 
 export default function Page() {
@@ -45,6 +46,12 @@ export default function Page() {
         setInputMensagem('');
     }
 
+    function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
+        if (event.key === 'Enter') {
+            handleEnviarMensagem();
+        }
+    }
+
     return (
         <section className={Styles.main}>
             <div className={Styles.usuarios}>
@@ -73,18 +80,39 @@ export default function Page() {
                 <div className={Styles.mensagens}>
                     {
                         mensagens.map((m: iMensagem, index) => (
-                            <div key={index} className={`${Styles.mensagem} ${(m.isSistema ? Styles.sistema : '')}`}>
-                                {m.usuarioIdDestinatario ? <small>from {m.usuarioNome}</small> : <Fragment></Fragment>}
+                            <div key={index} className={Styles.mensagem}>
+                                <span className={`${Styles.texto} ${(m.isSistema ? Styles.sistema : '')} ${(m.usuarioIdDestinatario ? Styles.privado : '')}`}>
+                                    {
+                                        !m.isSistema ? <strong>{m.usuarioNome}: </strong> : <Fragment></Fragment>
+                                    }
 
-                                <strong>{m.usuarioNome}:</strong> {m.mensagem} [{m.timestamp.toString()}]
+                                    {m.mensagem}
+                                </span>
+
+                                <span className={Styles.timestamp}>•</span>
+                                <span className={Styles.timestamp}>{formatarData(m.timestamp, 2).toLocaleLowerCase()}</span>
                             </div>
                         ))
                     }
                 </div>
 
                 <div className={Styles.inputs}>
-                    <span>{usuarioSelecionado ? `Enviar mensagem privada a ${usuarioSelecionado}` : ''}</span>
-                    <input type='text' className='inputAlt' value={inputMensagem} onChange={(e) => setInputMensagem(e.target.value)} />
+                    {
+                        usuarioSelecionado && (
+                            <span className={Styles.avisoUsuarioSelecionado} onClick={() => setUsuarioSelecionado('')}>
+                                {usuarioSelecionado ? `Enviando mensagem privada para ${usuarioSelecionado}. Clique aqui para cancelar envio privado` : ''}
+                            </span>
+                        )
+                    }
+
+                    <input
+                        type='text'
+                        className='inputAlt'
+                        placeholder='Escreva sua mensagem aqui...'
+                        value={inputMensagem}
+                        onChange={(e) => setInputMensagem(e.target.value)}
+                        onKeyDown={(e) => handleKeyPress(e)}
+                    />
 
                     <Botao
                         texto='Enviar mensagem'
