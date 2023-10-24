@@ -18,3 +18,9 @@ export interface iUsuarioOnline extends iErro {
     connectionId: string | null;
     timestamp: Date;
 }
+
+export enum listaMetodosSignalR {
+    EnviarMensagem = 'EnviarMensagem',
+    EnviarMensagemPrivada = 'EnviarMensagemPrivada',
+    ObterListaUsuariosOnline = 'ObterListaUsuariosOnline'
+}

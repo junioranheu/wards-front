@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import toast from 'react-hot-toast';
 
 export const Aviso = {
@@ -9,7 +10,7 @@ export const Aviso = {
             backdropFilter: 'blur(5px)',
             color: 'var(--branco)',
             userSelect: 'none'
-        } as any;
+        } as CSSProperties;
 
         const styleDark = {
             background: 'rgb(59, 59, 59)',
@@ -17,7 +18,7 @@ export const Aviso = {
             boxShadow: '0 4px 30px rgba(0, 0, 0, 0.25)',
             color: 'var(--branco)',
             userSelect: 'none'
-        } as any;
+        } as CSSProperties;
 
         const style = isDark ? styleDark : styleGlass;
 

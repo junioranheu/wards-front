@@ -1,7 +1,7 @@
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
-import { iMensagem, iUsuarioOnline } from '@/utils/types/iSignalR';
+import { iMensagem, iUsuarioOnline, listaMetodosSignalR } from '@/utils/types/iSignalR';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import nProgress from 'nprogress';
 import { useEffect, useState } from 'react';
@@ -11,12 +11,6 @@ export function useSignalR(hub: string) {
     const [connection, setConnection] = useState<HubConnection | null>(null);
     const [mensagens, setMensagens] = useState<iMensagem[]>([]);
     const [listaUsuariosOnline, setListaUsuariosOnline] = useState<iUsuarioOnline[]>([]);
-
-    enum listaMetodosSignalR {
-        EnviarMensagem = 'EnviarMensagem',
-        EnviarMensagemPrivada = 'EnviarMensagemPrivada',
-        ObterListaUsuariosOnline = 'ObterListaUsuariosOnline'
-    }
 
     useEffect(() => {
         nProgress.start();
@@ -62,12 +56,10 @@ export function useSignalR(hub: string) {
         }
 
         newConnection.on(listaMetodosSignalR.EnviarMensagem, (resp: iMensagem) => {
-            console.log(resp);
             setMensagens((x) => [...x, resp]);
         });
 
         newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iMensagem) => {
-            console.log(resp);
             setMensagens((x) => [...x, resp]);
         });
 
@@ -78,7 +70,6 @@ export function useSignalR(hub: string) {
 
     return {
         connection,
-        listaMetodosSignalR,
         mensagens,
         listaUsuariosOnline
     };
