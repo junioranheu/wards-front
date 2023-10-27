@@ -12,6 +12,8 @@ export default function Page() {
 
     return (
         <section className={Styles.main}>
+            <h1>Log em tempo real</h1>
+
             <div className={Styles.logs}>
                 {
                     logs.map((x: iLog, index: number) => (
