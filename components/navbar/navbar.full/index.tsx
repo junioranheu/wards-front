@@ -35,6 +35,10 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
                 {
                     verificarAcessoIsExibirElemento([]) && <Link href={CONSTS_TELAS.CHAT}>Chat 💬</Link>
                 }
+
+                {
+                    verificarAcessoIsExibirElemento([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]) && <Link href={CONSTS_TELAS.LOG}>Log 🔧</Link>
+                }
             </div>
 
             <div className={Styles.direita}>

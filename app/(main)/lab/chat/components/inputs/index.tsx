@@ -1,6 +1,6 @@
 import Styles from '@/app/(main)/lab/chat/chat.module.scss';
 import Botao from '@/components/botao';
-import { listaMetodosSignalR } from '@/utils/types/iSignalR';
+import { listaMetodosSignalRChat } from '@/utils/types/iSignalR';
 import { HubConnection } from '@microsoft/signalr';
 import { Dispatch, KeyboardEvent, RefObject, SetStateAction, useState } from 'react';
 
@@ -22,9 +22,9 @@ export default function Inputs({ connection, usuarioSelecionado, setUsuarioSelec
         }
 
         if (usuarioSelecionado) {
-            connection.invoke(listaMetodosSignalR.EnviarMensagemPrivada, usuarioSelecionado, inputMensagem, false);
+            connection.invoke(listaMetodosSignalRChat.EnviarMensagemPrivada, usuarioSelecionado, inputMensagem, false);
         } else {
-            connection.invoke(listaMetodosSignalR.EnviarMensagem, inputMensagem, false);
+            connection.invoke(listaMetodosSignalRChat.EnviarMensagem, inputMensagem, false);
         }
 
         setInputMensagem('');

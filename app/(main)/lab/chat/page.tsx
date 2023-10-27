@@ -1,6 +1,6 @@
 'use client';
 import useUsuarioContext from '@/hooks/context/useUsuarioContext';
-import { useSignalR } from '@/hooks/useSignalR';
+import { useSignalRChat } from '@/hooks/useSignalR.chat';
 import useTitulo from '@/hooks/useTitulo';
 import base from '@/utils/api/base';
 import verificarAcesso from '@/utils/functions/verificar.acesso';
@@ -19,7 +19,7 @@ export default function Page() {
         verificarAcesso([], true);
     }, [isAuth]);
 
-    const { connection, mensagens, listaUsuariosOnline } = useSignalR(`${base}/chatHub`);
+    const { connection, mensagens, listaUsuariosOnline } = useSignalRChat(`${base}/chatHub`);
     const [usuarioSelecionado, setUsuarioSelecionado] = useState<string | null>('');
 
     const refMensagens = useRef<HTMLDivElement>(null);

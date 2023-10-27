@@ -1,12 +1,12 @@
 import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
-import { iMensagem, iUsuarioOnline, listaMetodosSignalR } from '@/utils/types/iSignalR';
+import { iMensagem, iUsuarioOnline, listaMetodosSignalRChat } from '@/utils/types/iSignalR';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import nProgress from 'nprogress';
 import { useEffect, useState } from 'react';
 
-export function useSignalR(hub: string) {
+export function useSignalRChat(hub: string) {
 
     const [connection, setConnection] = useState<HubConnection | null>(null);
     const [mensagens, setMensagens] = useState<iMensagem[]>([]);
@@ -55,15 +55,15 @@ export function useSignalR(hub: string) {
             return;
         }
 
-        newConnection.on(listaMetodosSignalR.EnviarMensagem, (resp: iMensagem) => {
+        newConnection.on(listaMetodosSignalRChat.EnviarMensagem, (resp: iMensagem) => {
             setMensagens((x) => [...x, resp]);
         });
 
-        newConnection.on(listaMetodosSignalR.EnviarMensagemPrivada, (resp: iMensagem) => {
+        newConnection.on(listaMetodosSignalRChat.EnviarMensagemPrivada, (resp: iMensagem) => {
             setMensagens((x) => [...x, resp]);
         });
 
-        newConnection.on(listaMetodosSignalR.ObterListaUsuariosOnline, (resp: iUsuarioOnline[]) => {
+        newConnection.on(listaMetodosSignalRChat.ObterListaUsuariosOnline, (resp: iUsuarioOnline[]) => {
             setListaUsuariosOnline(resp);
         });
     }
