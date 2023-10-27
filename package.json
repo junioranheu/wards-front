@@ -17,6 +17,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "guid-typescript": "^1.0.9",
+    "lottie-react": "^2.4.0",
     "moment-timezone": "^0.5.43",
     "next": "^13.4.12",
     "next-videos": "^1.4.1",

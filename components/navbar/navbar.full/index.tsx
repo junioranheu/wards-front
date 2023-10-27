@@ -37,7 +37,7 @@ export default function NavbarFull({ isAuth, setIsModalLoginOpen, setIsModalCria
                 }
 
                 {
-                    verificarAcessoIsExibirElemento([CONSTS_USUARIO_ROLES.ADMINISTRADOR_ID]) && <Link href={CONSTS_TELAS.LOG}>Log 🔧</Link>
+                    verificarAcessoIsExibirElemento([]) && <Link href={CONSTS_TELAS.LOG}>Log 🔧</Link>
                 }
             </div>
 

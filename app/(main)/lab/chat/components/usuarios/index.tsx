@@ -2,7 +2,7 @@ import CONSTS_EMOJIS from '@/utils/consts/emojis';
 import { Auth } from '@/utils/context/usuarioContext';
 import { Aviso } from '@/utils/functions/aviso';
 import { iUsuarioOnline } from '@/utils/types/iSignalR';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, Fragment, SetStateAction } from 'react';
 
 interface iParametros {
     listaUsuariosOnline: iUsuarioOnline[];
@@ -27,21 +27,25 @@ export default function Usuarios({ listaUsuariosOnline, usuarioSelecionado, setU
     }
 
     return (
-        <ul>
-            {
-                listaUsuariosOnline.map((x: iUsuarioOnline, index: number) => (
-                    <li
-                        key={index}
-                        style={{
-                            background: x.usuarioId === usuarioSelecionado ? 'var(--bege)' : 'transparent',
-                        }}
-                        onClick={() => handleToggleSelecionarUsuario(x.usuarioId)}
-                    >
-                        {x.usuarioNome}
-                        {(x.usuarioId === Auth.get()?.email) ? ' ⭐' : ''}
-                    </li>
-                ))
-            }
-        </ul>
+        listaUsuariosOnline.length ? (
+            <ul>
+                {
+                    listaUsuariosOnline.map((x: iUsuarioOnline, index: number) => (
+                        <li
+                            key={index}
+                            style={{
+                                background: x.usuarioId === usuarioSelecionado ? 'var(--bege)' : 'transparent',
+                            }}
+                            onClick={() => handleToggleSelecionarUsuario(x.usuarioId)}
+                        >
+                            {x.usuarioNome}
+                            {(x.usuarioId === Auth.get()?.email) ? ' ⭐' : ''}
+                        </li>
+                    ))
+                }
+            </ul>
+        ) : (
+            <Fragment></Fragment>
+        )
     )
 }
