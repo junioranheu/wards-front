@@ -12,11 +12,12 @@ interface iParametros {
     url: string | null;
     isDireita: boolean;
     isMargemTop: boolean;
+    isOcultarImagemOnMobile: boolean;
 }
 
-export default function Projeto({ miniInfo, titulo, descricao, Img, listaTecnologias, url, isDireita, isMargemTop }: iParametros) {
+export default function Projeto({ miniInfo, titulo, descricao, Img, listaTecnologias, url, isDireita, isMargemTop, isOcultarImagemOnMobile }: iParametros) {
     return (
-        <section className={`${Styles.projeto} ${(isDireita ? Styles.direita : '')} ${(isMargemTop ? Styles.margemTop : '')}`}>
+        <section className={`${Styles.projeto} ${(isDireita ? Styles.direita : '')} ${(isMargemTop ? Styles.margemTop : '')} ${(isOcultarImagemOnMobile ? Styles.ocultarMobile : '')}`}>
             <div
                 className={Styles.imagem}
                 onClick={() => window.open(url ?? CONSTS_SISTEMA.URL_GITHUB, '_blank')}

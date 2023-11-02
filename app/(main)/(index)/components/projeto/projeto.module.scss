@@ -129,6 +129,32 @@
         align-items: center;
         gap: 3rem;
 
+        &.ocultarMobile {
+            // background-color: orange;
+
+            .imagem {
+                display: none;
+            }
+        }
+
+        &:nth-child(2) {
+            // background-color: orange !important;
+
+            &.margemTop {
+                // background-color: purple;
+                margin-top: 5rem;
+            }
+        }
+
+        &:nth-child(n+3) {
+            // background-color: orange !important;
+
+            &.margemTop {
+                // background-color: purple;
+                margin-top: 3rem;
+            }
+        }
+
         &.direita {
             // background-color: orange;
             flex-direction: column;

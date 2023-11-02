@@ -74,6 +74,7 @@ export default function Page() {
                     url={CONSTS_SISTEMA.URL_WARDS_BACKEND_GITHUB}
                     isDireita={true}
                     isMargemTop={true}
+                    isOcultarImagemOnMobile={true}
                 />
 
                 <Projeto
@@ -89,6 +90,7 @@ export default function Page() {
                     url={CONSTS_TELAS.SOBRE}
                     isDireita={false}
                     isMargemTop={true}
+                    isOcultarImagemOnMobile={true}
                 />
 
                 <Wards />
