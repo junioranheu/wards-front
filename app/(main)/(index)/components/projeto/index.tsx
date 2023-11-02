@@ -21,7 +21,7 @@ export default function Projeto({ miniInfo, titulo, descricao, Img, listaTecnolo
             <div
                 className={Styles.imagem}
                 onClick={() => window.open(url ?? CONSTS_SISTEMA.URL_GITHUB, '_blank')}
-                title={titulo}
+                title={miniInfo}
             >
                 <FancyImage
                     Img={Img}
