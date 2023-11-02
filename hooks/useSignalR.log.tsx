@@ -40,7 +40,7 @@ export function useSignalRLog(hub: string) {
 
     function handleIniciarServico(newConnection: HubConnection) {
         newConnection.start().then(() => {
-            Aviso.toast('Conexão estabelecida com sucesso com o servidor em tempo real', 3500, CONSTS_EMOJIS.SUCESSO, true);
+            Aviso.toast('Conexão estabelecida com sucesso ao servidor em tempo real', 3500, CONSTS_EMOJIS.SUCESSO, true);
         }).catch(
             (x) => Aviso.toast(`Erro ao estabelecer conexão com o servidor: ${x}`, 10000, CONSTS_EMOJIS.ERRO, true)
         );

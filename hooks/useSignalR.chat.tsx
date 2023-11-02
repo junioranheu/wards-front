@@ -43,7 +43,7 @@ export function useSignalRChat(hub: string) {
 
     function handleIniciarServico(newConnection: HubConnection) {
         newConnection.start().then(() => {
-            Aviso.toast('Conexão estabelecida com sucesso com o chat em tempo real', 3500, CONSTS_EMOJIS.SUCESSO, true);
+            Aviso.toast('Conexão estabelecida com sucesso ao chat em tempo real', 3500, CONSTS_EMOJIS.SUCESSO, true);
         }).catch(
             (x) => Aviso.toast(`Erro ao estabelecer conexão com o chat: ${x}`, 10000, CONSTS_EMOJIS.ERRO, true)
         );
