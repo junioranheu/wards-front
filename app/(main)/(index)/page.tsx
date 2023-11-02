@@ -57,6 +57,22 @@ export default function Page() {
                 <Intro />
 
                 <Projeto
+                    miniInfo='Sobre mim e o projeto'
+                    titulo='<sobre-wards-e-@junioranheu />'
+                    descricao={
+                        `Descubra um pouco mais sobre mim e principalmente sobre o projeto <span class="wavy">wards</span>.
+                        <br/><br/>Lembrando que esse projeto <b>não</b> tem propósitos reais; ou seja, ser uma plataforma ativa e estar regularmente atualizado.
+                        Ele é exclusivamente destinado a estudos e prática no desenvolvimento full stack.`
+                    }
+                    Img={ImgJunior}
+                    listaTecnologias={['Sobre', 'Wards', '@junioranheu']}
+                    url={CONSTS_TELAS.SOBRE}
+                    isDireita={true}
+                    isMargemTop={true}
+                    isOcultarImagemOnMobile={true}
+                />
+
+                <Projeto
                     miniInfo='Repositório completo de back-end no GitHub'
                     titulo='<repo-github.com/wards-api />'
                     descricao={
@@ -72,22 +88,6 @@ export default function Page() {
                     Img={ImgGitHub}
                     listaTecnologias={['Back-end', 'C#', '.NET 7', 'Etc']}
                     url={CONSTS_SISTEMA.URL_WARDS_BACKEND_GITHUB}
-                    isDireita={true}
-                    isMargemTop={true}
-                    isOcultarImagemOnMobile={true}
-                />
-
-                <Projeto
-                    miniInfo='Sobre mim e o projeto'
-                    titulo='<sobre-wards-e-@junioranheu />'
-                    descricao={
-                        `Descubra um pouco mais sobre mim e principalmente sobre o projeto <span class="wavy">wards</span>.
-                        <br/><br/>Lembrando que esse projeto <b>não</b> tem propósitos reais; ou seja, ser uma plataforma ativa e estar regularmente atualizado.
-                        Ele é exclusivamente destinado a estudos e prática no desenvolvimento full stack.`
-                    }
-                    Img={ImgJunior}
-                    listaTecnologias={['Sobre', 'Wards', '@junioranheu']}
-                    url={CONSTS_TELAS.SOBRE}
                     isDireita={false}
                     isMargemTop={true}
                     isOcultarImagemOnMobile={true}
