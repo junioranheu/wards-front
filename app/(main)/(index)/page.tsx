@@ -60,7 +60,7 @@ export default function Page() {
                     miniInfo='Repositório completo de back-end no GitHub'
                     titulo='<repo-github.com/wards-api />'
                     descricao={
-                        `Um repositório de códigos em C#, super úteis que servem de apoio para outros projetos em .NET. 
+                        `Um repositório de códigos em <span class="wavy">C#</span>, super úteis que servem de apoio para outros projetos em <span class="wavy">.NET</span>. 
                         <br/><br/>Contém múltiplos exemplos referentes à criação de uma API com .NET 7, 
                         token JWT e refresh token, criptografia de senha, 
                         padrão DDD, EF e Dapper, Clean Arch, 
