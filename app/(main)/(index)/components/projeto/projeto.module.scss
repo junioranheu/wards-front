@@ -1,0 +1,220 @@
+.projeto {
+    // background-color: purple !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    width: 100%; // bug fix;
+
+    &.direita {
+        // background-color: orange;
+        flex-direction: row-reverse;
+
+        .infos {
+            // background-color: orange;
+            margin-right: -5rem !important;
+            align-items: flex-start;
+
+            .titulo {
+                text-align: left;
+            }
+        }
+
+        .descricao {
+            // background-color: orange !important;
+            text-align: left !important;
+        }
+    }
+
+    &.margemTop {
+        // background-color: purple;
+        margin-top: 5.5rem;
+    }
+
+    .imagem {
+        // background-color: orange;
+        height: fit-content;
+
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+    }
+
+    .infos {
+        // background-color: orange;
+        margin-left: -5rem !important;
+        z-index: 1 !important;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        margin-left: auto;
+        text-align: right;
+        gap: 1.5rem;
+
+        .titulo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+
+            span {
+                &:nth-child(1) {
+                    color: var(--principal);
+                    font-size: 0.65rem;
+                    font-weight: 600;
+                    letter-spacing: 0.075rem;
+                }
+
+                &:nth-child(2) {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--preto);
+                    transition: 0.3s;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: var(--principal);
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+
+        .descricao {
+            background-color: rgba(30, 38, 57, 0.965);
+            padding: 1rem 1.5rem;
+            border-radius: 0.4rem;
+
+            max-width: 35rem;
+            text-align: right;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: #8892B0;
+        }
+
+        .tecnologias {
+            // background-color: orange;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            white-space: nowrap;
+
+            span {
+                font-size: 0.75rem;
+                letter-spacing: 0.075rem;
+            }
+        }
+
+        .icones {
+            // background-color: orange;
+            display: flex;
+            flex-direction: row;
+            gap: 1.25rem;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+    .projeto {
+        // background-color: purple;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+
+        &.direita {
+            // background-color: orange;
+            flex-direction: column;
+
+            .infos {
+                // background-color: purple;
+                margin-right: 0 !important;
+                align-items: flex-end;
+
+                .titulo {
+                    text-align: right;
+                }
+
+                .descricao {
+                    text-align: right !important;
+                }
+            }
+        }
+
+        .infos {
+            // background-color: orange;
+            margin-left: 0 !important;
+            align-items: flex-start;
+            text-align: left;
+
+            .titulo {
+                text-align: left;
+            }
+
+            .descricao {
+                text-align: left;
+                max-width: fit-content;
+            }
+        }
+    }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+    .projeto {
+        // background-color: purple !important;
+
+        &.direita {
+            // background-color: orange;
+            flex-direction: column;
+
+            .infos {
+                // background-color: purple;
+                margin-left: 0 !important;
+                align-items: flex-start;
+
+                .titulo {
+                    text-align: left;
+                }
+
+                .descricao {
+                    text-align: left !important;
+                }
+            }
+        }
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .projeto {
+        // background-color: orange !important;
+
+        .infos {
+            // background-color: purple;
+            width: 100%;
+
+            .tecnologias {
+                // background-color: orange;
+
+                span {
+                    // background-color: lime;
+
+                    &:nth-of-type(1n+5) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

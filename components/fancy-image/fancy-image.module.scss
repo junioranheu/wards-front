@@ -1,0 +1,94 @@
+.fancy {
+    position: relative;
+
+    .wrapper {
+        display: block;
+        position: relative;
+        width: 100%;
+        border-radius: 0.4rem;
+        transition: 0.3s;
+        // background-color: red;
+
+        &:hover,
+        &:focus {
+            outline: 0;
+            transition: 0.3s;
+            transform: translate(-4px, -4px);
+
+            &:after {
+                transform: translate(8px, 8px);
+            }
+
+            picture {
+                img {
+                    mix-blend-mode: normal;
+                    -webkit-filter: grayscale(0);
+                    filter: none;
+                }
+            }
+        }
+
+        picture {
+            img {
+                position: relative;
+                mix-blend-mode: multiply;
+                -webkit-filter: grayscale(1);
+                filter: grayscale(1);
+                transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+                border-radius: 0.4rem;
+            }
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.4rem;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        &:before {
+            top: 0;
+            left: 0;
+            mix-blend-mode: screen;
+        }
+
+        &:after {
+            border: 2px solid var(--principal);
+            top: 14px;
+            left: 14px;
+            z-index: -1;
+        }
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+/* hi-res + */
+@media (max-width:1536px) {}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .fancy {
+        // background-color: orange;
+        width: 80%;
+
+        img {
+            width: 100% !important;
+        }
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

@@ -33,11 +33,16 @@ export default function Page() {
                 </span>
 
                 <span>
+                    👉 Lembrando que esse projeto <b>não</b> tem propósitos reais; ou seja, ser uma plataforma ativa e estar regularmente atualizado.
+                    Ele é exclusivamente destinado a estudos e prática no desenvolvimento full stack.
+                </span>
+
+                <span>
                     Agora, voltemos ao assunto principal.
                 </span>
 
                 <span>
-                    Aqui é o lugar onde compartilho meus códigos e minha paixão por desenvolvimento de software — com foco principalmente em .NET e React.
+                    Aqui é <s>supostamente</s> o lugar onde compartilho meus códigos e minha paixão por desenvolvimento de software — com foco principalmente em .NET e React.
                     Como um desenvolvedor full stack, estou sempre em busca de maneiras para criar soluções web inovadoras, bem estruturadas e escálaveis.
                 </span>
 

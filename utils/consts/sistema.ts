@@ -11,7 +11,8 @@ const CONSTS_SISTEMA = {
 
     URl_LINKEDIN: 'https://www.linkedin.com/in/junioranheu/',
     URL_GITHUB: 'https://github.com/junioranheu',
-    URL_PORTFOLIO: 'https://junioranheu.vercel.app/'
+    URL_PORTFOLIO: 'https://junioranheu.vercel.app/',
+    URL_WARDS_BACKEND_GITHUB: 'https://github.com/junioranheu/wards-api'
 };
 
 export default CONSTS_SISTEMA;
