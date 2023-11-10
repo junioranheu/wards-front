@@ -5,7 +5,13 @@ const nextConfig = {
     swcMinify: true, // Minify em produção;
 
     images: {
-        domains: ['localhost']
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'localhost',
+                pathname: '**'
+            }
+        ]
     }
 }
 

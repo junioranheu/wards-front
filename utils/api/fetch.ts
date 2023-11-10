@@ -35,12 +35,21 @@ export const Fetch = {
             'Authorization': `Bearer ${token}`
         };
 
+        const abortController = new AbortController();
+        const { signal } = abortController;
+
         try {
             const response = await fetch(url, {
                 method: method,
                 headers: headers,
-                body: body ? JSON.stringify(body) : undefined
+                body: body ? JSON.stringify(body) : undefined,
+                signal: signal
             });
+
+            if (signal.aborted) {
+                console.log('Requisição abortada.');
+                return null;
+            }
 
             const responseJson = await response.json();
 
@@ -60,6 +69,7 @@ export const Fetch = {
             console.table(errorData);
             return null;
         } finally {
+            abortController.abort();
             nProgress.done();
             setDesabilitarBotoes(false);
         }
@@ -75,11 +85,20 @@ export const Fetch = {
             'Authorization': `Bearer ${token}`
         };
 
+        const abortController = new AbortController();
+        const { signal } = abortController;
+
         try {
             const response = await fetch(url, {
                 method: CONSTS_VERBOS_HTTP.GET,
-                headers: headers
+                headers: headers,
+                signal: signal
             });
+
+            if (signal.aborted) {
+                console.log('Requisição abortada.');
+                return null;
+            }
 
             const responseJson = await response.json();
 
@@ -98,6 +117,7 @@ export const Fetch = {
             console.table(errorData);
             return null;
         } finally {
+            abortController.abort();
             nProgress.done();
             setDesabilitarBotoes(false);
         }
@@ -113,12 +133,21 @@ export const Fetch = {
             'Authorization': `Bearer ${token}`
         };
 
+        const abortController = new AbortController();
+        const { signal } = abortController;
+
         try {
             const response = await fetch(url, {
                 method: CONSTS_VERBOS_HTTP.POST,
                 headers: headers,
-                body: body
+                body: body,
+                signal: signal
             });
+
+            if (signal.aborted) {
+                console.log('Requisição abortada.');
+                return null;
+            }
 
             const responseJson = await response.json();
 
@@ -138,6 +167,7 @@ export const Fetch = {
             console.table(errorData);
             return null;
         } finally {
+            abortController.abort();
             nProgress.done();
             setDesabilitarBotoes(false);
         }
