@@ -474,6 +474,11 @@ textarea {
     img {
         border-radius: 0.25rem;
     }
+
+    .swal2-loader {
+        border-bottom-color: var(--principal);
+        border-top-color: var(--principal);
+    }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Scroll =-=-=-=-=-=-=-=-=-=-= */
