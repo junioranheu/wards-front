@@ -83,7 +83,7 @@ export default function Page() {
                         Vertical Slice, Clean Code, upload de arquivos, FluentValidation, 
                         Health Check, Moq, envio de e-mail, Quartz.NET, bulk insert, 
                         streaming de arquivos em chunks, Parallel Threads, Cancellation Token, 
-                        Generic Repository, RabbitMQ, ChatGPT, SignalR e etc.`
+                        Generic Repository, RabbitMQ, ChatGPT, SignalR, Channels e etc.`
                     }
                     Img={ImgGitHub}
                     listaTecnologias={['Back-end', 'C#', '.NET 7', 'Etc']}

@@ -1,3 +1,4 @@
+import CONSTS_SISTEMA from '@/utils/consts/sistema';
 import { useEffect } from 'react';
 
 export default function useInstrucoesPadroes() {
@@ -5,6 +6,13 @@ export default function useInstrucoesPadroes() {
     useEffect(() => {
         function handleScrollTop() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+
+        function handleConsole() {
+            setTimeout(function () {
+                process.env.NODE_ENV === 'production' && console.clear();
+                console.log(`%cDesenvolvido por @junioranheu. ${CONSTS_SISTEMA.NOME_SISTEMA} - ${CONSTS_SISTEMA.DESCRICAO_SISTEMA}`, 'color: blue; font-family:monospace; font-size: 26px');
+            }, 1500);
         }
 
         function handleBloquearInspecionarElemento() {
@@ -38,6 +46,7 @@ export default function useInstrucoesPadroes() {
         }
 
         handleScrollTop();
+        handleConsole();
         handleBloquearInspecionarElemento();
     }, []);
 

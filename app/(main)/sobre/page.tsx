@@ -18,7 +18,11 @@ export default function Page() {
             </div>
 
             <div className={`${Styles.visual} ${CONSTS_SISTEMA.ANIMATE} animate__slow`}>
-                <VideoSource video='gongos' />
+                <VideoSource
+                    video='gongos'
+                    url={CONSTS_SISTEMA.URL_VIDEO_YOUTUBE_OS_CEGOS_DO_CASTELO}
+                    title='YouTube | os cegos do castelo • titãs'
+                />
             </div>
 
             <div className={Styles.sobre}>
