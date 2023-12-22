@@ -2,7 +2,7 @@ import Styles from '@/app/(main)/lab/chat/chat.module.scss';
 import { Auth } from '@/utils/context/usuarioContext';
 import formatarData from '@/utils/functions/formatar.data';
 import { iMensagem } from '@/utils/types/iSignalR';
-import { Fragment, RefObject, useEffect } from 'react';
+import { Fragment, RefObject } from 'react';
 
 interface iParametros {
     mensagens: iMensagem[];
@@ -11,11 +11,6 @@ interface iParametros {
 }
 
 export default function Mensagens({ mensagens, refMensagens, refMensagensRaw }: iParametros) {
-
-    useEffect(() => {
-        console.log(mensagens);
-    }, mensagens);
-
     return (
         <div className={`${Styles.mensagens} ${refMensagensRaw}`} ref={refMensagens}>
             {

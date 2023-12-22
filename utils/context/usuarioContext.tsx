@@ -1,5 +1,5 @@
 import iUsuarioContext from '@/utils/types/iUsuario.context';
-import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from 'react';
 
 interface iContext {
     isAuthContext: [isAuth: boolean, setIsAuth: Dispatch<SetStateAction<boolean>>];
@@ -8,7 +8,8 @@ interface iContext {
 const _item = '_auth';
 export const UsuarioContext = createContext<iContext | null>(null);
 
-export function UsuarioProvider(props: any) {
+export function UsuarioProvider({ children }: { children: ReactNode }): JSX.Element {
+
     const [isAuth, setIsAuth] = useState<boolean>(false);
 
     useEffect(() => {
@@ -16,8 +17,10 @@ export function UsuarioProvider(props: any) {
     }, [Auth?.get()?.isAuth]);
 
     return (
-        <UsuarioContext.Provider value={{ isAuthContext: [isAuth, setIsAuth] }}>
-            {props.children}
+        <UsuarioContext.Provider value={{
+            isAuthContext: [isAuth, setIsAuth]
+        }}>
+            {children}
         </UsuarioContext.Provider>
     );
 }
