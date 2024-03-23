@@ -31,7 +31,7 @@ export default function Page() {
                 </span>
 
                 <span>
-                    Me chamo Junior. Tenho {calcularIdade(25, 3, 1997)} anos. Vivo no interior de São Paulo.<br />
+                    Me chamo Junior. Tenho {calcularIdade(25, 3, 1997)} anos. Vivo em São Paulo.<br />
                     Adoro programar, ir à academia, tocar violão e jogar videogame com minha namorada.<br />
                     Você pode ver meu portfólio clicando <Link href={CONSTS_SISTEMA.URL_PORTFOLIO} target='_blank'><span className='cor-principal'>aqui</span></Link>.
                 </span>
